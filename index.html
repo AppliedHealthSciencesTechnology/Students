@@ -397,6 +397,53 @@
   const DB_DIR = "Json database";
 
 
+
+
+// =========================
+// Live ID existence check (Json database/<id>.json)
+// =========================
+let __checkTimer = null;
+let __checkSeq = 0;
+let __idExists = false;
+
+function debouncedCheckId(id){
+  if(__checkTimer) clearTimeout(__checkTimer);
+  __checkTimer = setTimeout(()=>{ checkIdExists(id); }, 250);
+}
+
+async function checkIdExists(id){
+  const seq = ++__checkSeq;
+  const url = `${DB_DIR}/${id}.json`;
+
+  // Neutral while checking
+  setIcon("idle");
+  openBtn.disabled = true;
+  __idExists = false;
+
+  try{
+    // Prefer HEAD; fallback to GET if needed
+    let res = await fetch(url, { method: "HEAD", cache: "no-store" });
+    if(res.status === 405 || res.status === 501){
+      res = await fetch(url, { method: "GET", cache: "no-store" });
+    }
+    if(seq !== __checkSeq) return;
+
+    if(res.ok){
+      __idExists = true;
+      setIcon("ok");
+      openBtn.disabled = false;
+    }else{
+      __idExists = false;
+      setIcon("err");
+      openBtn.disabled = true;
+    }
+  }catch(e){
+    if(seq !== __checkSeq) return;
+    __idExists = false;
+    setIcon("err");
+    openBtn.disabled = true;
+  }
+}
 // =========================
 // Time source (server Date header when possible)
 // =========================
@@ -699,11 +746,8 @@ function getTimeSourceLabel() {
     openBtn.disabled = true;
     setIcon("idle");
     setToast("", "");
-
-    // Live existence check: red if not found, green if found
     debouncedCheckId(id);
-
-    setIcon("ok");
+setIcon("ok");
     openBtn.disabled = false;
     setToast("Ready. Click Open.", "ok");
   }

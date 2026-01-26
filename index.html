@@ -344,13 +344,26 @@
 
     /* Toast warning state */
     .toast.warn{ border-color: rgba(245,158,11,.35); color: #92400e; background: rgba(245,158,11,.10); }
+
+    .disclaimer {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      line-height: 1.35;
+      color: rgba(0,0,0,.78);
+    }
+    .disclaimer b { font-weight: 800; }
+    
 </style>
 </head>
 <body>
 <div class="card">
 <div class="top">
 <div class="logoRow">
-<img alt="Delta University logo" class="logoImg" src="logo.png"/>
+<img alt="Delta University logo" class="logoImg" src="logo.png" onerror="this.style.display='none'"/>
 <div class="chip"><span class="dot"></span> Student Exam Info</div>
 </div>
 </div>
@@ -366,9 +379,11 @@
 </div>
 <div aria-live="polite" class="toast" id="toast" role="status"></div><div class="result" hidden="" id="result"></div>
 </div>
+
+<div class="disclaimer" dir="rtl"><b>تنبيه:</b> هذه الصفحة لخدمة الطلاب فقط. الطالب مُلزم بالمواعيد وأماكن الامتحان المُعلنة رسميًا من مكتب وكيل وعميد الكلية، وأي اختلاف يُعتد فيه بالإعلان الرسمي.</div>
 <div class="footer">
 <span><b>Tip:</b> Press Enter</span>
-<span>Shows: <b>Next exam only</b></span>
+<span>Shows: <b>Next exam only</b> · <span id="timeSrc"></span></span>
 </div>
 </div>
 <div aria-hidden="true" class="overlay" id="overlay">
@@ -379,8 +394,117 @@
 </div>
 </div>
 <script>
-  const DB_DIR = "Json database"; // folder next to index.html
+  const DB_DIR = "Json database";
+
+
+// =========================
+// Time source (server Date header when possible)
+// =========================
+let __timeSource = "device";
+
+/**
+ * Returns a Date object representing "now".
+ * - On https/http (GitHub Pages), it prefers the server time from the HTTP Date header.
+ * - On file:// offline mode, falls back to device time (no reliable headers).
+ */
+async function getNowSmart() {
+  const proto = location.protocol;
+  if (proto === "http:" || proto === "https:") {
+    // Prefer the hosting server time (harder to spoof than device clock)
+    const candidates = [
+      `${DB_DIR}/config.json`,
+      location.href
+    ];
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { method: "GET", cache: "no-store" });
+        const dh = res.headers.get("date");
+        if (dh) {
+          const dt = new Date(dh);
+          if (!isNaN(dt.getTime())) {
+            __timeSource = "server";
+            return dt;
+          }
+        }
+      } catch (e) {
+        // ignore and try next candidate
+      }
+    }
+  }
+  __timeSource = "device";
+  return new Date();
+}
+
+
+
+function updateTimeSourceUI() {
+  const el = document.getElementById("timeSrc");
+  if (el) el.textContent = `Time: ${getTimeSourceLabel()}`;
+}
+
+function getTimeSourceLabel() {
+  return __timeSource === "server" ? "Server time" : "Device time";
+}
+ // folder next to index.html
   let CONFIG = null;
+
+  // If you open this file directly (file://), browsers block fetch() from local JSON.
+  // To test locally WITHOUT a server, we ask once to pick the 'Json database' folder.
+  const LOCAL_FILES = new Map();
+  let LOCAL_READY = false;
+
+  async function ensureLocalDB(){
+    if(LOCAL_READY) return;
+
+    // 1) Modern browsers (Chromium): directory picker
+    if(window.showDirectoryPicker){
+      try{
+        toast("Offline mode: select the 'Json database' folder once.", "warn", true);
+        const dir = await window.showDirectoryPicker({ mode: "read" });
+        for await (const [name, handle] of dir.entries()){
+          if(handle.kind === "file"){
+            const file = await handle.getFile();
+            LOCAL_FILES.set(name, file);
+          }
+        }
+        LOCAL_READY = LOCAL_FILES.size > 0;
+        if(LOCAL_READY) return;
+      }catch(e){
+        // user cancelled -> fall through to file input
+      }
+    }
+
+    // 2) Fallback: <input webkitdirectory> (works in Chrome/Edge)
+    await new Promise((resolve) => {
+      toast("Offline mode: choose the 'Json database' folder.", "warn", true);
+      const input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.setAttribute("webkitdirectory", "");
+      input.style.display = "none";
+      document.body.appendChild(input);
+
+      input.addEventListener("change", () => {
+        const files = Array.from(input.files || []);
+        for(const f of files){
+          const rel = f.webkitRelativePath || f.name;
+          const parts = rel.split("/");
+          const name = parts[parts.length - 1];
+          LOCAL_FILES.set(name, f);
+        }
+        LOCAL_READY = LOCAL_FILES.size > 0;
+        input.remove();
+        resolve();
+      }, { once: true });
+
+      input.click();
+    });
+
+    if(!LOCAL_READY){
+      throw new Error("LOCAL_DB_NOT_SELECTED");
+    }
+  }
+
 
   function normalizeDigits(s){
     const ar = "٠١٢٣٤٥٦٧٨٩";
@@ -526,6 +650,16 @@
   }
 
   async function fetchJSON(url){
+    // Supports both GitHub Pages (http/https) and local file opening (file://)
+    if(location.protocol === "file:"){
+      await ensureLocalDB();
+      const name = (url||"").split("/").pop();
+      const f = LOCAL_FILES.get(name);
+      if(!f) throw new Error("FILE_NOT_FOUND " + name);
+      const txt = await f.text();
+      return JSON.parse(txt);
+    }
+
     const r = await fetch(url, { cache: "no-store" });
     if(!r.ok) throw new Error("HTTP " + r.status);
     return await r.json();
@@ -565,7 +699,7 @@
     setToast("Ready. Click Open.", "ok");
   }
 
-  async function openPaper(){
+  async async function openPaper(){
     const id = cleanAndGetId();
     if(id === null || id === "fault"){
       setToast("❌ Please enter a valid Student ID.", "err");
@@ -597,7 +731,8 @@
 
       const exam = student.nextExam;
       const start = new Date(exam.examStartISO);
-      const now = new Date();
+      const now = await getNowSmart();
+  updateTimeSourceUI();
 
       if(Number.isNaN(start.getTime())){
         setIcon("err");

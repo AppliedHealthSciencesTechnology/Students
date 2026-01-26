@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Delta University | Student Allocation</title>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Delta University | Student Exam Info</title>
+<style>
     :root{
       --navy:#061a3a;
       --navy2:#04122a;
@@ -265,52 +265,122 @@
     @media (prefers-reduced-motion: reduce){
       *{ transition:none !important; animation:none !important; }
     }
-  </style>
+  
+
+    /* ===== Result section (minimal addition, matches existing style) ===== */
+    .result{ margin-top: 14px; }
+    .resultCard{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 8px 26px rgba(17,24,39,.06);
+    }
+    .sectionHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+    .sectionTitle{
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: .2px;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .bNeutral{ background: rgba(31,41,55,.04); }
+    .bOk{ background: rgba(16,185,129,.10); border-color: rgba(16,185,129,.25); }
+    .bEarly{ background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.25); }
+    .bLate{ background: rgba(239,68,68,.10); border-color: rgba(239,68,68,.25); }
+
+    .kvGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media(min-width: 520px){
+      .kvGrid{ grid-template-columns: 1fr 1fr; }
+    }
+    .kv{ border:1px solid var(--line); border-radius: 14px; padding: 10px 12px; background: rgba(255,255,255,.75); }
+    .kv .k{ font-size: 12px; font-weight: 800; color: var(--muted); margin-bottom: 4px; }
+    .kv .v{ font-size: 14px; font-weight: 800; color: var(--ink); }
+
+    .divider{ height:1px; background: var(--line); margin: 12px 0; }
+
+    .tableWrap{ overflow-x:auto; border:1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.85); }
+    .examTable{
+      width:100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+    .examTable th, .examTable td{
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .examTable th{
+      background: rgba(17,24,39,.04);
+      font-size: 12px;
+      color: #111827;
+    }
+    .examTable td{ font-size: 13px; }
+    .examTable tr:last-child td{ border-bottom: none; }
+
+    .mutedLine{ color: var(--muted); font-weight: 800; }
+
+    /* Toast warning state */
+    .toast.warn{ border-color: rgba(245,158,11,.35); color: #92400e; background: rgba(245,158,11,.10); }
+</style>
 </head>
-
 <body>
-  <div class="card">
-    <div class="top">
-      <div class="logoRow">
-        <img class="logoImg" src="logo.png" alt="Delta University logo">
-        <div class="chip"><span class="dot"></span> Student Allocation</div>
-      </div>
-    </div>
-
-    <div class="body">
-      <p class="title">Student ID</p>
-      <p class="sub">Enter your ID then open your allocation PDF.</p>
-
-      <div class="field">
-        <input id="sid" inputmode="numeric" autocomplete="off" placeholder="e.g. 9211005" />
-        <div id="icon" class="statusIcon" aria-hidden="true">—</div>
-      </div>
-
-      <div class="actions">
-        <button id="openBtn" disabled>Open</button>
-      </div>
-
-      <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    </div>
-
-    <div class="footer">
-      <span><b>Tip:</b> Press Enter</span>
-      <span>PDF format: <b>ID.pdf</b></span>
-    </div>
-  </div>
-
-  <div id="overlay" class="overlay" aria-hidden="true">
-    <div class="overlayCard">
-      <div class="spinner"></div>
-      <p class="overlayTitle">Opening…</p>
-      <p class="overlaySub">Please wait</p>
-    </div>
-  </div>
-
+<div class="card">
+<div class="top">
+<div class="logoRow">
+<img alt="Delta University logo" class="logoImg" src="logo.png"/>
+<div class="chip"><span class="dot"></span> Student Exam Info</div>
+</div>
+</div>
+<div class="body">
+<p class="title">Student ID</p>
+<p class="sub">Enter your ID to view your next exam details.</p>
+<div class="field">
+<input autocomplete="off" id="sid" inputmode="numeric" placeholder="e.g. 9211005"/>
+<div aria-hidden="true" class="statusIcon" id="icon">—</div>
+</div>
+<div class="actions">
+<button disabled="" id="openBtn">Open</button>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div><div class="result" hidden="" id="result"></div>
+</div>
+<div class="footer">
+<span><b>Tip:</b> Press Enter</span>
+<span>Shows: <b>Next exam only</b></span>
+</div>
+</div>
+<div aria-hidden="true" class="overlay" id="overlay">
+<div class="overlayCard">
+<div class="spinner"></div>
+<p class="overlayTitle">Loading…</p>
+<p class="overlaySub">Please wait</p>
+</div>
+</div>
 <script>
-  // PDFs are hosted in /pdf folder on GitHub Pages:
-  // /pdf/9211005.pdf
-  const PDF_DIR = "pdf"; // folder name
+  const DB_DIR = "Json database"; // folder next to index.html
+  let CONFIG = null;
 
   function normalizeDigits(s){
     const ar = "٠١٢٣٤٥٦٧٨٩";
@@ -322,6 +392,7 @@
   const toastEl = document.getElementById("toast");
   const openBtn = document.getElementById("openBtn");
   const overlay = document.getElementById("overlay");
+  const resultEl = document.getElementById("result");
 
   function setToast(text, type=""){
     toastEl.textContent = text || "";
@@ -342,39 +413,156 @@
     return digitsOnly;
   }
 
+  function formatInTZ(iso, tz, kind){
+    const d = new Date(iso);
+    if(Number.isNaN(d.getTime())) return "";
+    if(kind === "date"){
+      return d.toLocaleDateString("en-GB", { timeZone: tz, year:"numeric", month:"2-digit", day:"2-digit" });
+    }
+    return d.toLocaleTimeString("en-GB", { timeZone: tz, hour:"2-digit", minute:"2-digit" });
+  }
+
+  function setIcon(state){
+    if(state === "ok"){
+      iconEl.className = "statusIcon ok";
+      iconEl.textContent = "✓";
+    }else if(state === "err"){
+      iconEl.className = "statusIcon err";
+      iconEl.textContent = "✕";
+    }else{
+      iconEl.className = "statusIcon";
+      iconEl.textContent = "—";
+    }
+  }
+
+  function hideResult(){
+    resultEl.hidden = true;
+    resultEl.innerHTML = "";
+  }
+
+  function renderResult(student, exam, mode, msg){
+    const badgeClass = mode === "ok" ? "bOk" : (mode === "late" ? "bLate" : (mode === "none" ? "bNeutral" : "bEarly"));
+    const badgeText  = mode === "ok" ? "AVAILABLE" : (mode === "late" ? "CLOSED" : (mode === "none" ? "INFO" : "TOO EARLY"));
+
+    const safe = (v)=> (v===null || v===undefined || v==="") ? "—" : String(v);
+
+    const tz = (CONFIG && CONFIG.timezone) ? CONFIG.timezone : "Africa/Cairo";
+
+    let examHTML = "";
+    if(exam === null){
+      examHTML = `
+        <div class="sectionHead">
+          <div class="sectionTitle">Next Exam</div>
+          <div class="badge ${badgeClass}">${badgeText}</div>
+        </div>
+        <div class="mutedLine">${msg || "No upcoming exams."}</div>
+      `;
+    }else{
+      const date = formatInTZ(exam.examStartISO, tz, "date");
+      const t1 = formatInTZ(exam.examStartISO, tz, "time");
+      const t2 = formatInTZ(exam.examEndISO, tz, "time");
+      const time = (t1 && t2) ? `${t1} – ${t2}` : (t1 || "—");
+
+      const showSeat = (mode === "ok");
+      const showLoc  = (mode === "ok");
+
+      const seat = showSeat ? safe(exam.seat) : "Hidden";
+      const loc  = showLoc  ? safe(exam.location) : "Hidden";
+
+      examHTML = `
+        <div class="sectionHead">
+          <div class="sectionTitle">Next Exam</div>
+          <div class="badge ${badgeClass}">${badgeText}</div>
+        </div>
+        <div class="tableWrap" role="region" aria-label="Next exam table">
+          <table class="examTable">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Code</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Seat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${safe(exam.courseName)}</td>
+                <td><b>${safe(exam.courseCode)}</b></td>
+                <td>${safe(date)}</td>
+                <td><b>${safe(time)}</b></td>
+                <td>${loc}</td>
+                <td>${seat}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    resultEl.innerHTML = `
+      <div class="resultCard">
+        <div class="sectionHead">
+          <div class="sectionTitle">Student Info</div>
+          <div class="badge bNeutral">ID: ${safe(student.id)}</div>
+        </div>
+
+        <div class="kvGrid">
+          <div class="kv"><div class="k">Name</div><div class="v">${safe(student.name)}</div></div>
+          <div class="kv"><div class="k">Semester</div><div class="v">${safe(student.semester)}</div></div>
+          <div class="kv"><div class="k">Academic Year</div><div class="v">${safe(student.academicYear)}</div></div>
+        </div>
+
+        <div class="divider"></div>
+        ${examHTML}
+      </div>
+    `;
+    resultEl.hidden = false;
+
+    if(msg){
+      setToast(msg, mode === "ok" ? "ok" : (mode === "late" ? "err" : (mode === "none" ? "ok" : "warn")));
+    }
+  }
+
+  async function fetchJSON(url){
+    const r = await fetch(url, { cache: "no-store" });
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    return await r.json();
+  }
+
+  async function loadConfig(){
+    try{
+      CONFIG = await fetchJSON(`${DB_DIR}/config.json`);
+      return true;
+    }catch(_){
+      CONFIG = null;
+      return false;
+    }
+  }
+
   function updateUI(){
     const id = cleanAndGetId();
 
     if(id === null){
-      iconEl.className = "statusIcon";
-      iconEl.textContent = "—";
+      setIcon("none");
       openBtn.disabled = true;
       setToast("", "");
+      hideResult();
       return;
     }
 
     if(id === "fault"){
-      iconEl.className = "statusIcon err";
-      iconEl.textContent = "✕";
+      setIcon("err");
       openBtn.disabled = true;
       setToast("❌ ID is invalid. Please enter 4–12 digits only.", "err");
+      hideResult();
       return;
     }
 
-    iconEl.className = "statusIcon ok";
-    iconEl.textContent = "✓";
+    setIcon("ok");
     openBtn.disabled = false;
     setToast("Ready. Click Open.", "ok");
-  }
-
-  async function fileExists(url){
-    // GitHub Pages allows this (same-origin), so 404 is detectable
-    try{
-      const r = await fetch(url, { method:"HEAD", cache:"no-store" });
-      return r.ok;
-    }catch(_){
-      return false;
-    }
   }
 
   async function openPaper(){
@@ -385,35 +573,72 @@
       return;
     }
 
-    const url = `${PDF_DIR}/${id}.pdf`;
-
     showOverlay(true);
     openBtn.disabled = true;
-    setToast("Checking file…", "ok");
+    setToast("Loading…", "ok");
 
-    // professional feel
-    await new Promise(r => setTimeout(r, 450));
+    await new Promise(r => setTimeout(r, 350));
 
-    const ok = await fileExists(url);
+    if(CONFIG === null) await loadConfig();
 
-    showOverlay(false);
-    openBtn.disabled = false;
+    const messages = (CONFIG && CONFIG.messages) ? CONFIG.messages : {};
+    const releaseHrs = (CONFIG && Number.isFinite(CONFIG.releaseWindowHours)) ? CONFIG.releaseWindowHours : 16;
+    const closeAtStart = (CONFIG && typeof CONFIG.closeAtExamStart === "boolean") ? CONFIG.closeAtExamStart : true;
 
-    if(!ok){
-      iconEl.className = "statusIcon err";
-      iconEl.textContent = "✕";
-      setToast("❌ File not found. It may not be uploaded yet (TBA).", "err");
-      return;
+    try{
+      const student = await fetchJSON(`${DB_DIR}/${id}.json`);
+      student.id = student.id || id;
+
+      if(!("nextExam" in student) || student.nextExam === null){
+        setIcon("ok");
+        renderResult(student, null, "none", messages.noUpcoming || "✅ No upcoming exams.");
+        return;
+      }
+
+      const exam = student.nextExam;
+      const start = new Date(exam.examStartISO);
+      const now = new Date();
+
+      if(Number.isNaN(start.getTime())){
+        setIcon("err");
+        setToast("❌ Invalid exam date in database.", "err");
+        hideResult();
+        return;
+      }
+
+      const releaseTime = new Date(start.getTime() - releaseHrs * 3600 * 1000);
+
+      if(now.getTime() < releaseTime.getTime()){
+        setIcon("ok");
+        renderResult(student, exam, "early", messages.tooEarly || "⏳ Seat & location will appear 16 hours before your exam.");
+        return;
+      }
+
+      if(closeAtStart && now.getTime() >= start.getTime()){
+        setIcon("err");
+        renderResult(student, exam, "late", messages.tooLate || "⛔ Exam started. Access closed.");
+        return;
+      }
+
+      setIcon("ok");
+      renderResult(student, exam, "ok", messages.ok || "✅ Available now.");
+    }catch(err){
+      setIcon("err");
+      hideResult();
+      const is404 = String(err && err.message || "").includes("HTTP 404");
+      const msg = is404 ? (messages.notFound || "❌ Student ID not found.") : "❌ Database unavailable. Please try again later.";
+      setToast(msg, "err");
+    }finally{
+      showOverlay(false);
+      openBtn.disabled = false;
     }
-
-    setToast("✅ Opening…", "ok");
-    setTimeout(() => window.open(url, "_blank"), 200);
   }
 
   sidEl.addEventListener("input", updateUI);
   sidEl.addEventListener("keydown", (e)=>{ if(e.key === "Enter") openPaper(); });
   openBtn.addEventListener("click", openPaper);
 
+  loadConfig();
   updateUI();
 </script>
 </body>

@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "timezone": "Africa/Cairo",
+  "releaseWindowHours": 16,
+  "closeAtExamStart": true,
+  "messages": {
+    "notFound": "❌ Student ID not found.",
+    "noUpcoming": "✅ No upcoming exams.",
+    "tooEarly": "⏳ Seat & location will appear 16 hours before your exam.",
+    "tooLate": "⛔ Exam started. Access closed.",
+    "ok": "✅ Available now."
+  }
+}

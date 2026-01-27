@@ -357,6 +357,41 @@
     }
     .disclaimer b { font-weight: 800; }
     
+
+    .actionsRow{ display:flex; justify-content:flex-end; margin-top:10px; }
+    .btnSecondary{
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.8);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btnSecondary:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .skeletonCard{
+      border: 1px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.5);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .skeletonLine{
+      height: 12px;
+      border-radius: 10px;
+      margin: 10px 0;
+      position: relative;
+      overflow: hidden;
+      background: rgba(0,0,0,.06);
+    }
+    .skeletonLine::after{
+      content:"";
+      position:absolute; inset:0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+      animation: shimmer 1.2s infinite;
+    }
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
+
 </style>
 </head>
 <body>
@@ -399,28 +434,55 @@
 
 
 
+
+  // Cache-busting to avoid stale GitHub Pages caching
+  const __CACHE_BUST = Date.now();
+  function withBust(url){
+    return url + (url.includes('?') ? '&' : '?') + 'v=' + __CACHE_BUST;
+  }
 // =========================
 // Live ID existence check (Json database/<id>.json)
 // =========================
 let __checkTimer = null;
 let __checkSeq = 0;
 let __idExists = false;
+// Cache existence checks to avoid repeated network calls
+const __existsCache = new Map();
 
 function debouncedCheckId(id){
   if(__checkTimer) clearTimeout(__checkTimer);
-  __checkTimer = setTimeout(()=>{ checkIdExists(id); }, 250);
+  __checkTimer = setTimeout(()=>{ checkIdExists(id); }, (window.matchMedia && window.matchMedia('(max-width: 520px)').matches) ? 400 : 250);
 }
 
 async function checkIdExists(id){
   const seq = ++__checkSeq;
-  const url = `${DB_DIR}/${id}.json`;
+
+  // Cache hit
+  const cached = __existsCache.get(id);
+  if(typeof cached === "boolean"){
+    __idExists = cached;
+    if(cached){
+      setIcon("ok");
+      openBtn.disabled = false;
+      stopCountdown();
+      setToast("Ready. Click Open.", "ok");
+    }else{
+      setIcon("err");
+      openBtn.disabled = true;
+      const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ Student ID not found.";
+      stopCountdown();
+      setToast(nfMsg, "err");
+    }
+    return;
+  }
+
+  const url = withBust(`${DB_DIR}/${id}.json`);
 
   // Neutral while checking
   setIcon("idle");
   openBtn.disabled = true;
   __idExists = false;
-  // Clear status message while checking
-  setToast("", "");
+  setToast("Checking ID…", "");
 
   try{
     // Prefer HEAD; fallback to GET if needed
@@ -432,14 +494,18 @@ async function checkIdExists(id){
 
     if(res.ok){
       __idExists = true;
+      __existsCache.set(id, true);
       setIcon("ok");
       openBtn.disabled = false;
+      stopCountdown();
       setToast("Ready. Click Open.", "ok");
     }else{
       __idExists = false;
+      __existsCache.set(id, false);
       setIcon("err");
       openBtn.disabled = true;
-      const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ ID not found in database.";
+      const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ Student ID not found.";
+      stopCountdown();
       setToast(nfMsg, "err");
     }
   }catch(e){
@@ -447,8 +513,9 @@ async function checkIdExists(id){
     __idExists = false;
     setIcon("err");
     openBtn.disabled = true;
-    const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ ID not found in database.";
-    setToast(nfMsg, "err");
+    const dbMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.dbUnavailable) ? cfg.messages.dbUnavailable : "❌ Database unavailable. Please try again later.";
+    stopCountdown();
+    setToast(dbMsg, "err");
   }
 }
 // =========================
@@ -594,6 +661,12 @@ function getTimeSourceLabel() {
   function formatInTZ(iso, tz, kind){
     const d = new Date(iso);
     if(Number.isNaN(d.getTime())) return "";
+    if(kind === "datePretty"){
+      return d.toLocaleDateString(undefined, { timeZone: tz, weekday:"short", year:"numeric", month:"short", day:"2-digit" });
+    }
+    if(kind === "timePretty"){
+      return d.toLocaleTimeString(undefined, { timeZone: tz, hour:"numeric", minute:"2-digit", hour12:true });
+    }
     if(kind === "date"){
       return d.toLocaleDateString("en-GB", { timeZone: tz, year:"numeric", month:"2-digit", day:"2-digit" });
     }
@@ -618,7 +691,33 @@ function getTimeSourceLabel() {
     resultEl.innerHTML = "";
   }
 
-  function renderResult(student, exam, mode, msg){
+  
+async function copyToClipboard(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    setToast("Copied.", "ok");
+    return true;
+  }catch(e){
+    try{
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      setToast("Copied.", "ok");
+      return true;
+    }catch(e2){
+      setToast("Copy failed.", "err");
+      return false;
+    }
+  }
+}
+
+function renderResult(student, exam, mode, msg){
     const badgeClass = mode === "ok" ? "bOk" : (mode === "late" ? "bLate" : (mode === "none" ? "bNeutral" : "bEarly"));
     const badgeText  = mode === "ok" ? "AVAILABLE" : (mode === "late" ? "CLOSED" : (mode === "none" ? "INFO" : "TOO EARLY"));
 
@@ -636,16 +735,16 @@ function getTimeSourceLabel() {
         <div class="mutedLine">${msg || "No upcoming exams."}</div>
       `;
     }else{
-      const date = formatInTZ(exam.examStartISO, tz, "date");
-      const t1 = formatInTZ(exam.examStartISO, tz, "time");
-      const t2 = formatInTZ(exam.examEndISO, tz, "time");
+      const date = formatInTZ(exam.examStartISO, tz, "datePretty");
+      const t1 = formatInTZ(exam.examStartISO, tz, "timePretty");
+      const t2 = formatInTZ(exam.examEndISO, tz, "timePretty");
       const time = (t1 && t2) ? `${t1} – ${t2}` : (t1 || "—");
 
       const showSeat = (mode === "ok");
       const showLoc  = (mode === "ok");
 
-      const seat = showSeat ? safe(exam.seat) : "Hidden";
-      const loc  = showLoc  ? safe(exam.location) : "Hidden";
+      const seat = showSeat ? safe(exam.seat) : "•••";
+      const loc  = showLoc  ? safe(exam.location) : "••••";
 
       examHTML = `
         <div class="sectionHead">
@@ -676,6 +775,9 @@ function getTimeSourceLabel() {
             </tbody>
           </table>
         </div>
+        <div class="actionsRow">
+          <button class="btnSecondary" type="button" id="copyBtn">Copy details</button>
+        </div>
       `;
     }
 
@@ -697,6 +799,26 @@ function getTimeSourceLabel() {
       </div>
     `;
     resultEl.hidden = false;
+
+    // Wire copy button (copies what is visible; masked values stay masked)
+    const copyBtn = document.getElementById("copyBtn");
+    if(copyBtn && exam !== null){
+      const lines = [
+        `Name: ${safe(student.name)}`,
+        `ID: ${safe(student.id)}`,
+        student.semester ? `Semester: ${safe(student.semester)}` : null,
+        student.academicYear ? `Academic Year: ${safe(student.academicYear)}` : null,
+        "",
+        "Next Exam:",
+        `Course: ${safe(exam.courseName)} (${safe(exam.courseCode)})`,
+        `Date: ${safe(date)}`,
+        `Time: ${safe(time)}`,
+        `Location: ${loc}`,
+        `Seat: ${seat}`
+      ].filter(Boolean);
+      const text = lines.join("\n");
+      copyBtn.onclick = ()=> copyToClipboard(text);
+    }
 
     if(msg){
       setToast(msg, mode === "ok" ? "ok" : (mode === "late" ? "err" : (mode === "none" ? "ok" : "warn")));
@@ -743,12 +865,16 @@ function getTimeSourceLabel() {
     if(id === "fault"){
       setIcon("err");
       openBtn.disabled = true;
-      setToast("❌ ID is invalid. Please enter 4–12 digits only.", "err");
+      stopCountdown();
+      __currentId = "";
+      setToast("❌ Invalid ID. Enter 4–12 digits only.", "err");
       hideResult();
       return;
     }
 
     // Valid format → wait for DB existence check
+    __currentId = id;
+    stopCountdown();
     __idExists = false;
     openBtn.disabled = true;
     setIcon("idle");
@@ -756,7 +882,74 @@ function getTimeSourceLabel() {
     debouncedCheckId(id);
 }
 
-  async function openPaper(){
+  
+function formatDateTime(dt){
+  try{
+    return dt.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
+  }catch(e){
+    return String(dt);
+  }
+}
+
+
+// =========================
+// Countdown until seat/location release
+// =========================
+let __countdownTimer = null;
+let __currentId = "";
+
+function formatCountdown(ms){
+  ms = Math.max(0, ms);
+  const totalSec = Math.floor(ms / 1000);
+  const sec = totalSec % 60;
+  const totalMin = Math.floor(totalSec / 60);
+  const min = totalMin % 60;
+  const hr = Math.floor(totalMin / 60);
+  const pad = (n)=> String(n).padStart(2,"0");
+  return `${pad(hr)}:${pad(min)}:${pad(sec)}`;
+}
+
+function stopCountdown(){
+  if(__countdownTimer){ clearInterval(__countdownTimer); __countdownTimer = null; }
+}
+
+function startCountdownToRelease(releaseTimeMs){
+  stopCountdown();
+  const tick = ()=>{
+    const nowMs = Date.now();
+    const left = releaseTimeMs - nowMs;
+    if(left <= 0){
+      stopCountdown();
+      // Trigger a re-check so UI can flip to AVAILABLE if allowed
+      if(__currentId) debouncedCheckId(__currentId);
+      return;
+    }
+    const leftStr = formatCountdown(left);
+    const base = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.tooEarly)
+      ? cfg.messages.tooEarly
+      : "⏳ Seat & location will appear 16 hours before your exam.";
+    setToast(`${base} سيظهر خلال: ${leftStr}`, "err");
+  };
+  tick();
+  __countdownTimer = setInterval(tick, 1000);
+}
+
+
+function showSkeleton(){
+  resultEl.hidden = false;
+  resultEl.innerHTML = `
+    <div class="skeletonCard" aria-busy="true">
+      <div class="skeletonLine" style="width:45%"></div>
+      <div class="skeletonLine" style="width:70%"></div>
+      <div class="skeletonLine" style="width:60%"></div>
+      <div class="skeletonLine" style="width:92%"></div>
+      <div class="skeletonLine" style="width:88%"></div>
+      <div class="skeletonLine" style="width:76%"></div>
+    </div>
+  `;
+}
+
+async function openPaper(){
     const id = cleanAndGetId();
 
     if(id === null || id === "fault"){
@@ -774,7 +967,10 @@ function getTimeSourceLabel() {
       return;
     }
 
-    showOverlay(true);
+    
+  // Skeleton while loading student data
+  showSkeleton();
+showOverlay(true);
     openBtn.disabled = true;
     setToast("Loading…", "ok");
 

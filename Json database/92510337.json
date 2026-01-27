@@ -3,5 +3,12 @@
   "name": "جني يسري عبد المنعم عبد الحي عياد",
   "semester": "Final - Fall",
   "academicYear": "2025/2026",
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "GEN001",
+    "courseName": "Introduction to Information and Communication Technology",
+    "examStartISO": "2026-01-28T09:00:00+02:00",
+    "examEndISO": "2026-01-28T10:00:00+02:00",
+    "location": "Computer lab 7 (428) (كلية الذكاء الاصطناعي)",
+    "seat": "26"
+  }
 }

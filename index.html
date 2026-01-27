@@ -438,7 +438,8 @@
   // Cache-busting to avoid stale GitHub Pages caching
   const __CACHE_BUST = Date.now();
   function withBust(url){
-    return url + (url.includes('?') ? '&' : '?') + 'v=' + __CACHE_BUST;
+    const u = url + (url.includes('?') ? '&' : '?') + 'v=' + __CACHE_BUST;
+    return encodeURI(u);
   }
 // =========================
 // Live ID existence check (Json database/<id>.json)
@@ -455,67 +456,20 @@ function debouncedCheckId(id){
 }
 
 async function checkIdExists(id){
-  const seq = ++__checkSeq;
-
-  // Cache hit
-  const cached = __existsCache.get(id);
-  if(typeof cached === "boolean"){
-    __idExists = cached;
-    if(cached){
-      setIcon("ok");
-      openBtn.disabled = false;
-      stopCountdown();
-      setToast("Ready. Click Open.", "ok");
-    }else{
-      setIcon("err");
-      openBtn.disabled = true;
-      const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ Student ID not found.";
-      stopCountdown();
-      setToast(nfMsg, "err");
-    }
-    return;
-  }
-
+  // IMPORTANT: Use GET (not HEAD). Some GitHub Pages/CDNs respond 405/ERR to HEAD.
   const url = withBust(`${DB_DIR}/${id}.json`);
-
-  // Neutral while checking
-  setIcon("idle");
-  openBtn.disabled = true;
-  __idExists = false;
-  setToast("Checking ID…", "");
-
   try{
-    // Prefer HEAD; fallback to GET if needed
-    let res = await fetch(url, { method: "HEAD", cache: "no-store" });
-    if(res.status === 405 || res.status === 501){
-      res = await fetch(url, { method: "GET", cache: "no-store" });
-    }
-    if(seq !== __checkSeq) return;
-
-    if(res.ok){
-      __idExists = true;
-      __existsCache.set(id, true);
-      setIcon("ok");
-      openBtn.disabled = false;
-      stopCountdown();
-      setToast("Ready. Click Open.", "ok");
-    }else{
-      __idExists = false;
-      __existsCache.set(id, false);
-      setIcon("err");
-      openBtn.disabled = true;
-      const nfMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.notFound) ? cfg.messages.notFound : "❌ Student ID not found.";
-      stopCountdown();
-      setToast(nfMsg, "err");
-    }
+    const resp = await fetch(url, {
+      method: "GET",
+      cache: "no-store",
+      headers: { "Accept": "application/json" }
+    });
+    if(resp.status === 200) return true;
+    if(resp.status === 404) return false;
+    // Any other status means the database folder exists but something is wrong
+    return "__DB_ERROR__";
   }catch(e){
-    if(seq !== __checkSeq) return;
-    __idExists = false;
-    setIcon("err");
-    openBtn.disabled = true;
-    const dbMsg = (typeof cfg !== "undefined" && cfg && cfg.messages && cfg.messages.dbUnavailable) ? cfg.messages.dbUnavailable : "❌ Database unavailable. Please try again later.";
-    stopCountdown();
-    setToast(dbMsg, "err");
+    return "__DB_ERROR__";
   }
 }
 // =========================
@@ -836,7 +790,7 @@ function renderResult(student, exam, mode, msg){
       return JSON.parse(txt);
     }
 
-    const r = await fetch(url, { cache: "no-store" });
+    const r = await fetch(withBust(url), { cache: "no-store" });
     if(!r.ok) throw new Error("HTTP " + r.status);
     return await r.json();
   }
@@ -846,10 +800,18 @@ function renderResult(student, exam, mode, msg){
       CONFIG = await fetchJSON(`${DB_DIR}/config.json`);
       return true;
     }catch(_){
-      CONFIG = null;
-      return false;
+      try{
+        // Fallback: allow config.json beside index.html
+        CONFIG = await fetchJSON(`config.json`);
+        return true;
+      }catch(__){
+        CONFIG = null;
+        return false;
+      }
     }
   }
+
+}
 
   function updateUI(){
     const id = cleanAndGetId();

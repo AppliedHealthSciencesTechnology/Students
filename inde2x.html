@@ -56,11 +56,7 @@
     align-items:center;
     gap:10px;
     min-width:0;
-    flex:1;
   }
-    .brandLogo{height:46px;width:auto;max-width:260px;display:block;object-fit:contain;}
-    @media (max-width:520px){.brandLogo{height:38px;max-width:200px;}}
-
   .logo{
     width:46px;height:46px;border-radius:12px;
     background:linear-gradient(135deg, #e8f2ff, #ffffff);
@@ -298,16 +294,6 @@
   .header-logo img, .logo img, .brand-logo img, img#logo, #logoWrap img { height: 46px; }
 }
 
-
-  .upcomingTitle{font-size:18px;font-weight:900;margin:16px 0 10px}
-  .upList{display:flex;flex-direction:column;gap:10px}
-  .upItem{border:1px solid rgba(28,98,166,.15);border-radius:18px;padding:14px;background:#fff}
-  .upHead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-  .upName{font-weight:900;line-height:1.25}
-  .upMeta{margin-top:6px;color:var(--muted);font-weight:700}
-  .upMeta2{margin-top:6px;color:var(--ink);font-weight:700}
-  .mutedLabel{display:inline-block;min-width:74px;color:var(--muted);font-weight:800}
-
 </style>
 </head>
 <body>
@@ -315,7 +301,11 @@
     <div class="card">
       <div class="topbar">
         <div class="brand">
-          <img id="brandLogo" class="brandLogo" src="logo.png" alt="Delta University logo" loading="eager" />
+          <div class="logo"><img id="brandLogo" src="logo.png" alt="Delta University logo" onerror="this.style.display='none'; this.parentElement.classList.add('logoFallback'); this.parentElement.textContent='DU';"></div>
+          <div class="brandText">
+            <div class="u">DELTA UNIVERSITY</div>
+            <div class="f">Faculty of Applied Health Sciences Technology</div>
+          </div>
         </div>
         <div class="pillTop"><span class="dot"></span> Student Exam Info</div>
       </div>
@@ -448,7 +438,7 @@
   function formatTimePretty(iso){
     const d = new Date(iso);
     if(isNaN(d.getTime())) return "—";
-    return d.toLocaleTimeString("en-US", { hour:"numeric", minute:"2-digit", hour12:true });
+    return d.toLocaleTimeString(undefined, { hour:"numeric", minute:"2-digit" });
   }
   function msToHMS(ms){
     const s = Math.max(0, Math.floor(ms/1000));
@@ -513,175 +503,111 @@
 
     try{
       const student = await fetchJSON(`${DB_DIR}/${id}.json`);
-      // Collect all exams (preferred: student.exams[]). Fallback: student.nextExam (single).
-const examsRaw = Array.isArray(student?.exams) ? student.exams : (student?.nextExam ? [student.nextExam] : []);
-const exams = examsRaw
-  .filter(e => e && e.examStartISO && e.examEndISO)
-  .map(e => ({
-    courseCode: e.courseCode || "",
-    courseName: e.courseName || "",
-    examStartISO: e.examStartISO,
-    examEndISO: e.examEndISO,
-    location: (e.location ?? null),
-    seat: (e.seat ?? null)
-  }))
-  .sort((a, b) => new Date(a.examStartISO) - new Date(b.examStartISO));
+      const exam = student?.nextExam || null;
 
-const now = await getNow();
-const revealWindowHrs = Number(cfg?.releaseHoursBeforeExam ?? 16);
+      const name = safe(student?.name);
+      const sem  = safe(student?.semester);
+      const year = safe(student?.academicYear);
 
-// Upcoming = exams that have not ended yet
-const upcomingAll = exams.filter(e => {
-  const end = parseISO(e.examEndISO);
-  return end && end.getTime() >= now.getTime();
-});
-
-const nextExam = upcomingAll.length ? upcomingAll[0] : null;
-const upcoming = upcomingAll.slice(1);
-
-// Variables used by the copy button (set when nextExam exists)
-let courseName = "";
-let courseCode = "";
-let date = "";
-let time = "";
-let locVal = "";
-let seatVal = "";
-
-if (!nextExam) {
-  resultEl.innerHTML = `
-    <div class="studentCard">
-      <div class="grid2">
-        <div class="infoBox">
-          <div class="label">Name</div>
-          <div class="value ar">${escapeHtml(name || "")}</div>
-        </div>
-        <div class="infoBox">
-          <div class="label">Semester</div>
-          <div class="value">${escapeHtml(semester || "")}</div>
-        </div>
-        <div class="infoBox">
-          <div class="label">Academic Year</div>
-          <div class="value">${escapeHtml(academicYear || "")}</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="nextExamTitle">Next Exam</div>
-      <div class="statusBox warn">
-        ❌ No upcoming exams found.
-      </div>
-    </div>
-  `;
-} else {
-  const examStart = parseISO(nextExam.examStartISO);
-  const examEnd = parseISO(nextExam.examEndISO);
-
-  courseName = nextExam.courseName || "";
-  courseCode = nextExam.courseCode || "";
-  date = examStart ? formatDateArabic(examStart) : "";
-  time = (examStart && examEnd) ? `${formatTimePretty(examStart)} – ${formatTimePretty(examEnd)}` : "";
-
-  const hrsLeft = examStart ? hoursUntil(examStart, now) : null;
-  const isRevealTime = (hrsLeft !== null) ? (hrsLeft <= revealWindowHrs) : false;
-
-  const countdownText = (hrsLeft === null)
-    ? ""
-    : (hrsLeft <= 0 ? "Location & seat are available now." : `Location & seat will appear ${Math.ceil(hrsLeft)} hours before your exam.`);
-
-  locVal = (isRevealTime && nextExam.location) ? String(nextExam.location) : "Will appear later";
-  seatVal = (isRevealTime && (nextExam.seat !== null && nextExam.seat !== undefined && String(nextExam.seat).trim() !== "")) ? String(nextExam.seat) : "Will appear later";
-
-  const statusClass = isRevealTime ? "ok" : "info";
-  const statusIcon = isRevealTime ? "✅" : "⏳";
-
-  const upcomingHtml = upcoming.length ? `
-    <div class="divider"></div>
-    <div class="upcomingTitle">Upcoming Exams</div>
-    <div class="upList">
-      ${upcoming.map(ex => {
-        const s = parseISO(ex.examStartISO);
-        const e = parseISO(ex.examEndISO);
-        const d = s ? formatDateArabic(s) : "";
-        const t = (s && e) ? `${formatTimePretty(s)} – ${formatTimePretty(e)}` : "";
-        const h = s ? hoursUntil(s, now) : null;
-        const ready = (h !== null) ? (h <= revealWindowHrs) : false;
-
-        const loc = (ready && ex.location) ? String(ex.location) : "Hidden (released 16h before)";
-        const seat = (ready && (ex.seat !== null && ex.seat !== undefined && String(ex.seat).trim() !== "")) ? String(ex.seat) : "Hidden (released 16h before)";
-
-        return `
-          <div class="upItem">
-            <div class="upHead">
-              <div class="upName">${escapeHtml(ex.courseName || "")}</div>
-              ${ex.courseCode ? `<span class="badge">${escapeHtml(ex.courseCode)}</span>` : ``}
+      if(!exam){
+        resultEl.hidden = false;
+        resultEl.innerHTML = `
+          <div class="paper">
+            <div class="paperHeader">
+              <div class="paperTitle">Student Info</div>
+              <div class="pill">ID: ${safe(student?.id || id)}</div>
             </div>
-            <div class="upMeta">${escapeHtml(d)} • ${escapeHtml(t)}</div>
-            <div class="upMeta2"><span class="mutedLabel">Location</span> ${escapeHtml(loc)}</div>
-            <div class="upMeta2"><span class="mutedLabel">Seat</span> ${escapeHtml(seat)}</div>
+            <div class="paperBody">
+              <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+              <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+              <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
+              <div class="divider"></div>
+              <div class="nextExamTitle">Next Exam</div>
+              <div class="okBox">✅ No upcoming exams.</div>
+            </div>
+          </div>`;
+        setToast("", "");
+        return;
+      }
+
+      const startISO = safe(exam.examStartISO);
+      const endISO   = safe(exam.examEndISO);
+      const date = formatDatePretty(startISO);
+      const t1 = formatTimePretty(startISO);
+      const t2 = formatTimePretty(endISO);
+      const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
+
+      const showHours = Number(CONFIG?.rules?.revealWindowHours ?? DEFAULT_SHOW_WINDOW_HOURS);
+      const now = await getServerNow();
+      const startDt = new Date(startISO);
+      const revealAt = isNaN(startDt.getTime()) ? null : new Date(startDt.getTime() - showHours*3600*1000);
+      const canReveal = !!(revealAt && now >= revealAt);
+
+      const locVal = canReveal ? safe(exam.location) : "••••";
+      const seatVal = canReveal ? safe(exam.seat) : "•••";
+
+      let counterHTML = "";
+      if(revealAt && !canReveal){
+        const diff = revealAt.getTime() - now.getTime();
+        counterHTML = `
+          <div class="countdownBox warn">
+            ⏳ Location & seat will appear in <b id="cdVal">${msToHMS(diff)}</b>
+          </div>`;
+        stopCountdown();
+        countdownTimer = setInterval(async ()=>{
+          const n = await getServerNow();
+          const d = revealAt.getTime() - n.getTime();
+          const el = document.getElementById("cdVal");
+          if(!el) return;
+          if(d <= 0){
+            stopCountdown();
+            openPaper();
+            return;
+          }
+          el.textContent = msToHMS(d);
+        }, 1000);
+      }else if(revealAt && canReveal){
+        counterHTML = `<div class="countdownBox ok">✅ Location & seat are available now.</div>`;
+      }
+
+      const courseCode = safe(exam.courseCode);
+      const courseName = safe(exam.courseName);
+
+      resultEl.hidden = false;
+      resultEl.innerHTML = `
+        <div class="paper">
+          <div class="paperHeader">
+            <div class="paperTitle">Student Info</div>
+            <div class="pill">ID: ${safe(student?.id || id)}</div>
           </div>
-        `;
-      }).join("")}
-    </div>
-  ` : ``;
+          <div class="paperBody">
+            <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+            <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+            <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
 
-  resultEl.innerHTML = `
-    <div class="studentCard">
-      <div class="grid2">
-        <div class="infoBox">
-          <div class="label">Name</div>
-          <div class="value ar">${escapeHtml(name || "")}</div>
-        </div>
-        <div class="infoBox">
-          <div class="label">Semester</div>
-          <div class="value">${escapeHtml(semester || "")}</div>
-        </div>
-        <div class="infoBox">
-          <div class="label">Academic Year</div>
-          <div class="value">${escapeHtml(academicYear || "")}</div>
-        </div>
-      </div>
+            <div class="divider"></div>
+            <div class="nextExamTitle">Next Exam</div>
+            ${counterHTML}
 
-      <div class="divider"></div>
-
-      <div class="nextExamTitle">Next Exam</div>
-
-      <div class="statusBox ${statusClass}">
-        ${statusIcon} ${escapeHtml(countdownText)}
-      </div>
-
-      <div class="courseCard">
-        <div class="courseHead">
-          <div class="courseName">${escapeHtml(courseName)}</div>
-          <div class="courseCode">${escapeHtml(courseCode)}</div>
-        </div>
-
-        <div class="courseTable">
-          <div class="row">
-            <div class="k">Date</div>
-            <div class="v ar">${escapeHtml(date)}</div>
+            <div class="examCard">
+              <div class="examHead">
+                <div class="examCourse">${courseName || "—"}</div>
+                <div class="examCode">${courseCode || ""}</div>
+              </div>
+              <table class="examTable">
+                <tr><th>Date</th><td>${date}</td></tr>
+                <tr><th>Time</th><td><b>${time}</b></td></tr>
+                <tr><th>Location</th><td>${locVal || "—"}</td></tr>
+                <tr><th>Seat</th><td>${seatVal || "—"}</td></tr>
+              </table>
+              <div class="actionsRow">
+                <button class="btnSecondary" type="button" id="copyBtn">Copy details</button>
+              </div>
+            </div>
           </div>
-          <div class="row">
-            <div class="k">Time</div>
-            <div class="v">${escapeHtml(time)}</div>
-          </div>
-          <div class="row">
-            <div class="k">Location</div>
-            <div class="v">${escapeHtml(locVal)}</div>
-          </div>
-          <div class="row">
-            <div class="k">Seat</div>
-            <div class="v">${escapeHtml(seatVal)}</div>
-          </div>
-        </div>
+        </div>`;
 
-        <button class="copyBtn" id="copyBtn">Copy details</button>
-      </div>
-
-      ${upcomingHtml}
-    </div>
-  `;
-}const copyBtn = document.getElementById("copyBtn");
+      const copyBtn = document.getElementById("copyBtn");
       if(copyBtn){
         copyBtn.onclick = async ()=>{
           const lines = [

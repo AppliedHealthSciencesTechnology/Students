@@ -282,7 +282,7 @@
     <div class="card">
       <div class="topbar">
         <div class="brand">
-          <div class="logo">DU</div>
+          <div class="logo"><img id="brandLogo" src="logo.png" alt="Delta University logo" onerror="this.style.display='none'; this.parentElement.classList.add('logoFallback'); this.parentElement.textContent='DU';"></div>
           <div class="brandText">
             <div class="u">DELTA UNIVERSITY</div>
             <div class="f">Faculty of Applied Health Sciences Technology</div>
@@ -414,7 +414,7 @@
   function formatDatePretty(iso){
     const d = new Date(iso);
     if(isNaN(d.getTime())) return "—";
-    return d.toLocaleDateString(undefined, { weekday:"short", year:"numeric", month:"short", day:"2-digit" });
+    return d.toLocaleDateString("ar-EG", { weekday:"short", year:"numeric", month:"short", day:"2-digit" });
   }
   function formatTimePretty(iso){
     const d = new Date(iso);

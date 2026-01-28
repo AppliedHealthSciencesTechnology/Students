@@ -56,11 +56,7 @@
     align-items:center;
     gap:10px;
     min-width:0;
-    flex:1;
   }
-    .brandLogo{height:46px;width:auto;max-width:260px;display:block;object-fit:contain;}
-    @media (max-width:520px){.brandLogo{height:38px;max-width:200px;}}
-
   .logo{
     width:46px;height:46px;border-radius:12px;
     background:linear-gradient(135deg, #e8f2ff, #ffffff);
@@ -298,16 +294,6 @@
   .header-logo img, .logo img, .brand-logo img, img#logo, #logoWrap img { height: 46px; }
 }
 
-
-  .upcomingTitle{font-size:18px;font-weight:900;margin:16px 0 10px}
-  .upList{display:flex;flex-direction:column;gap:10px}
-  .upItem{border:1px solid rgba(28,98,166,.15);border-radius:18px;padding:14px;background:#fff}
-  .upHead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-  .upName{font-weight:900;line-height:1.25}
-  .upMeta{margin-top:6px;color:var(--muted);font-weight:700}
-  .upMeta2{margin-top:6px;color:var(--ink);font-weight:700}
-  .mutedLabel{display:inline-block;min-width:74px;color:var(--muted);font-weight:800}
-
 </style>
 </head>
 <body>
@@ -315,7 +301,11 @@
     <div class="card">
       <div class="topbar">
         <div class="brand">
-          <img id="brandLogo" class="brandLogo" src="logo.png" alt="Delta University logo" loading="eager" />
+          <div class="logo"><img id="brandLogo" src="logo.png" alt="Delta University logo" onerror="this.style.display='none'; this.parentElement.classList.add('logoFallback'); this.parentElement.textContent='DU';"></div>
+          <div class="brandText">
+            <div class="u">DELTA UNIVERSITY</div>
+            <div class="f">Faculty of Applied Health Sciences Technology</div>
+          </div>
         </div>
         <div class="pillTop"><span class="dot"></span> Student Exam Info</div>
       </div>
@@ -349,436 +339,402 @@
     </div>
   </div>
 
-
-
 <script>
 (() => {
   "use strict";
 
-  // ====== CONFIG ======
-  const DB_FOLDER_NAME = "Json database"; // exact folder name in repo
-  const DEFAULT_REVEAL_HOURS = 16;        // show location/seat only within this window before exam start
-  const DEFAULT_LOCALE_DATE = "ar-EG";    // Arabic date
-  const DEFAULT_LOCALE_TIME = "en-US";    // AM/PM time
-  const ONE_MIN = 60 * 1000;
+  const DB_DIR = "Json database";
+  const DEFAULT_SHOW_WINDOW_HOURS = 16;
+  const CACHE_BUST = Date.now();
 
-  // ====== DOM ======
-  const studentIdEl = document.getElementById("studentId");
-  const openBtn = document.getElementById("openBtn");
-  const idIcon = document.getElementById("idIcon");
-  const toast = document.getElementById("toast");
-  const result = document.getElementById("result");
+  const idInput   = document.getElementById("studentId");
+  const openBtn   = document.getElementById("openBtn");
+  const iconBox   = document.getElementById("idIcon");
+  const toastEl   = document.getElementById("toast");
+  const resultEl  = document.getElementById("result");
 
+  let CONFIG = null;
+  const existsCache = new Map();
+  let checkTimer = null;
+  let checkSeq = 0;
   let countdownTimer = null;
-  let loadedConfig = null;
 
-  // ====== HELPERS ======
-  const baseUrl = new URL(".", window.location.href); // /Students/ (GitHub Pages folder)
-  const dbBase = new URL(DB_FOLDER_NAME + "/", baseUrl); // will auto-encode spaces to %20
+  const safe = (v) => (v === null || v === undefined) ? "" : String(v);
+  const encPath = (p) => encodeURI(p).replace(/#/g, "%23");
+  const withBust = (u) => encPath(u) + (u.includes("?") ? "&" : "?") + "v=" + CACHE_BUST;
 
-  const pad2 = (n) => String(n).padStart(2, "0");
+  function setIcon(state){
+    iconBox.classList.remove("ok","err","bad");
+    if(state === "ok") iconBox.classList.add("ok");
+    if(state === "err") iconBox.classList.add("err");
+    if(state === "bad") iconBox.classList.add("bad");
+    iconBox.textContent = (state === "ok") ? "✓" : (state === "err") ? "✕" : (state === "bad") ? "!" : "—";
+    iconBox.setAttribute("aria-label", state);
+  }
 
-  function clearCountdown() {
-    if (countdownTimer) {
-      clearInterval(countdownTimer);
-      countdownTimer = null;
+  function setToast(msg, kind){
+    toastEl.classList.remove("ok","err","warn");
+    if(kind) toastEl.classList.add(kind);
+    toastEl.textContent = msg || "";
+    toastEl.style.display = msg ? "block" : "none";
+  }
+
+  function normalizeDigits(s){
+    const ar = "٠١٢٣٤٥٦٧٨٩";
+    return safe(s).replace(/[٠-٩]/g, d => String(ar.indexOf(d)));
+  }
+
+  function stopCountdown(){
+    if(countdownTimer){ clearInterval(countdownTimer); countdownTimer = null; }
+  }
+
+  function showSkeleton(){
+    resultEl.hidden = false;
+    resultEl.innerHTML = `
+      <div class="skeletonCard" aria-busy="true">
+        <div class="skeletonLine" style="width:45%"></div>
+        <div class="skeletonLine" style="width:70%"></div>
+        <div class="skeletonLine" style="width:60%"></div>
+        <div class="skeletonLine" style="width:92%"></div>
+        <div class="skeletonLine" style="width:88%"></div>
+        <div class="skeletonLine" style="width:76%"></div>
+      </div>`;
+  }
+
+  async function fetchJSON(url){
+    const r = await fetch(withBust(url), { method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    return await r.json();
+  }
+
+  async function loadConfig(){
+    try{ CONFIG = await fetchJSON(`${DB_DIR}/config.json`); return true; }
+    catch(_){
+      try{ CONFIG = await fetchJSON(`config.json`); return true; }
+      catch(__){ CONFIG = null; return false; }
     }
   }
 
-  function showToast(msg, kind = "") {
-    toast.textContent = msg;
-    toast.classList.remove("ok", "warn", "bad");
-    if (kind) toast.classList.add(kind);
-    toast.classList.add("show");
-    window.clearTimeout(showToast._t);
-    showToast._t = window.setTimeout(() => toast.classList.remove("show"), 2400);
-  }
-
-  function setLoading(loading) {
-    openBtn.disabled = loading;
-    if (loading) openBtn.classList.add("loading");
-    else openBtn.classList.remove("loading");
-  }
-
-  function normalizeId(raw) {
-    return String(raw || "").replace(/\D+/g, "").slice(0, 12);
-  }
-
-  function fmtArabicDate(d) {
-    try {
-      return new Intl.DateTimeFormat(DEFAULT_LOCALE_DATE, {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      }).format(d);
-    } catch {
-      return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+  async function getServerNow(){
+    const candidates = [`${DB_DIR}/config.json`, location.href];
+    for(const u of candidates){
+      try{
+        const res = await fetch(withBust(u), { method:"GET", cache:"no-store" });
+        const dh = res.headers.get("date");
+        if(dh){
+          const dt = new Date(dh);
+          if(!isNaN(dt.getTime())) return dt;
+        }
+      }catch(_){}
     }
+    return new Date();
   }
 
-  function fmtTimeAMPM(d) {
-    try {
-      return new Intl.DateTimeFormat(DEFAULT_LOCALE_TIME, {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true
-      }).format(d);
-    } catch {
-      return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-    }
-  }
-
-  function safeText(x) {
-    return (x === null || x === undefined) ? "" : String(x);
-  }
-
-  function parseISO(iso) {
-    if (!iso) return null;
+  function formatDatePretty(iso, tz){
     const d = new Date(iso);
-    return isNaN(d.getTime()) ? null : d;
+    if(isNaN(d.getTime())) return "—";
+    return d.toLocaleDateString("ar-EG", { timeZone: tz, weekday:"short", year:"numeric", month:"short", day:"2-digit" });
+  }
+  function formatTimePretty(iso, tz){
+    const d = new Date(iso);
+    if(isNaN(d.getTime())) return "—";
+    return d.toLocaleTimeString("en-US", { timeZone: tz, hour:"numeric", minute:"2-digit", hour12:true });
+  }
+  function msToHMS(ms){
+    const s = Math.max(0, Math.floor(ms/1000));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const sec = s%60;
+    const pad = (n)=>String(n).padStart(2,"0");
+    return h>0 ? `${h}h ${pad(m)}m ${pad(sec)}s` : `${m}m ${pad(sec)}s`;
   }
 
-  function humanCountdown(ms) {
-    if (ms <= 0) return "0m";
-    const totalSec = Math.floor(ms / 1000);
-    const h = Math.floor(totalSec / 3600);
-    const m = Math.floor((totalSec % 3600) / 60);
-    const s = totalSec % 60;
-    if (h > 0) return `${h}h ${m}m`;
-    if (m > 0) return `${m}m ${s}s`;
-    return `${s}s`;
+  function debouncedCheck(id){
+    if(checkTimer) clearTimeout(checkTimer);
+    checkTimer = setTimeout(() => checkIdExists(id), 250);
   }
 
-  async function tryFetchJson(url) {
-    const u = new URL(url);
-    u.searchParams.set("v", Date.now().toString()); // bust cache
-    const res = await fetch(u.toString(), { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
-  }
+  async function checkIdExists(id){
+    const seq = ++checkSeq;
 
-  async function loadConfig() {
-    if (loadedConfig) return loadedConfig;
-
-    // Try config.json in root first, then inside DB folder
-    const candidates = [
-      new URL("config.json", baseUrl),
-      new URL("config.json", dbBase)
-    ];
-
-    for (const u of candidates) {
-      try {
-        const cfg = await tryFetchJson(u.toString());
-        loadedConfig = cfg || {};
-        return loadedConfig;
-      } catch (_) { /* ignore */ }
-    }
-
-    loadedConfig = {};
-    return loadedConfig;
-  }
-
-  function normalizeExams(data) {
-    // Accept multiple shapes:
-    // 1) { exams: [...] }
-    // 2) { nextExam: {...}, upcomingExams: [...] }
-    // 3) { nextExam: {...} }
-    const exams = [];
-    if (Array.isArray(data?.exams)) exams.push(...data.exams);
-    if (data?.nextExam) exams.push(data.nextExam);
-    if (Array.isArray(data?.upcomingExams)) exams.push(...data.upcomingExams);
-
-    // de-dup by courseCode+start
-    const seen = new Set();
-    const out = [];
-    for (const e of exams) {
-      const key = `${safeText(e?.courseCode)}|${safeText(e?.examStartISO)}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      out.push({
-        courseCode: safeText(e?.courseCode),
-        courseName: safeText(e?.courseName),
-        examStartISO: e?.examStartISO ?? null,
-        examEndISO: e?.examEndISO ?? null,
-        location: e?.location ?? null,
-        seat: e?.seat ?? null
-      });
-    }
-    return out;
-  }
-
-  function pickNextExam(exams, now) {
-    const dated = exams
-      .map(e => ({...e, start: parseISO(e.examStartISO), end: parseISO(e.examEndISO)}))
-      .filter(e => e.start && !isNaN(e.start.getTime()))
-      .sort((a,b) => a.start - b.start);
-
-    // next is first whose end is in future (or start in future if end missing)
-    for (const e of dated) {
-      const end = e.end || new Date(e.start.getTime() + 60*60*1000);
-      if (end.getTime() >= now.getTime()) return e;
-    }
-    return dated[0] || null;
-  }
-
-  function upcomingAfterNext(exams, next, now) {
-    const list = exams
-      .map(e => ({...e, start: parseISO(e.examStartISO), end: parseISO(e.examEndISO)}))
-      .filter(e => e.start && e.start.getTime() >= now.getTime())
-      .sort((a,b) => a.start - b.start);
-
-    if (!next?.start) return list.slice(0, 10);
-    const nextKey = `${safeText(next.courseCode)}|${safeText(next.examStartISO)}`;
-    return list.filter(e => `${safeText(e.courseCode)}|${safeText(e.examStartISO)}` !== nextKey).slice(0, 10);
-  }
-
-  function renderStudent(data, cfg) {
-    clearCountdown();
-
-    const now = new Date();
-    const revealHours = Number(cfg?.releaseWindowHours ?? cfg?.revealHours ?? DEFAULT_REVEAL_HOURS);
-    const exams = normalizeExams(data);
-    const next = pickNextExam(exams, now);
-    const upcoming = upcomingAfterNext(exams, next, now);
-
-    const name = safeText(data?.name);
-    const semester = safeText(data?.semester);
-    const academicYear = safeText(data?.academicYear);
-
-    const ui = {
-      labels: {
-        name: cfg?.labels?.name ?? "Name",
-        semester: cfg?.labels?.semester ?? "Semester",
-        year: cfg?.labels?.academicYear ?? "Academic Year",
-        nextExam: cfg?.labels?.nextExam ?? "Next Exam",
-        upcoming: cfg?.labels?.upcomingExams ?? "Upcoming Exams",
-        date: cfg?.labels?.date ?? "Date",
-        time: cfg?.labels?.time ?? "Time",
-        location: cfg?.labels?.location ?? "Location",
-        seat: cfg?.labels?.seat ?? "Seat",
-        copy: cfg?.labels?.copy ?? "Copy details"
-      },
-      messages: {
-        availableNow: cfg?.messages?.availableNow ?? "Location & seat are available now.",
-        availableIn: cfg?.messages?.availableIn ?? "Location & seat will appear in",
-        notFound: cfg?.messages?.notFound ?? "No upcoming exams found."
+    if(existsCache.has(id)){
+      const ok = existsCache.get(id);
+      if(ok){
+        setIcon("ok"); openBtn.disabled = false; setToast("Ready. Click Open.", "ok");
+      }else{
+        setIcon("err"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
       }
-    };
-
-    let html = "";
-
-    // Student info (same visual style: fields)
-    html += `
-      <div class="divider"></div>
-      <div class="field">
-        <div class="label">${ui.labels.name}</div>
-        <div class="value ar">${html_lib.escape(name) || "-"}</div>
-      </div>
-      <div class="field">
-        <div class="label">${ui.labels.semester}</div>
-        <div class="value">${html_lib.escape(semester) || "-"}</div>
-      </div>
-      <div class="field">
-        <div class="label">${ui.labels.year}</div>
-        <div class="value">${html_lib.escape(academicYear) || "-"}</div>
-      </div>
-    `;
-
-    // Next exam
-    html += `<div class="nextExamTitle">${ui.labels.nextExam}</div>`;
-
-    if (!next) {
-      html += `<div class="countdownBox warn">⚠️ ${ui.messages.notFound}</div>`;
-      result.innerHTML = html;
-      result.hidden = false;
       return;
     }
 
-    const start = next.start;
-    const end = next.end || (start ? new Date(start.getTime() + 60*60*1000) : null);
-    const revealAt = start ? new Date(start.getTime() - revealHours * 60 * 60 * 1000) : null;
-    const revealed = revealAt ? (now.getTime() >= revealAt.getTime()) : true;
+    setIcon("idle"); openBtn.disabled = true;
+    setToast("Checking ID…", "");
 
-    // Countdown message
-    if (revealed) {
-      html += `<div class="countdownBox ok">✅ ${ui.messages.availableNow}</div>`;
-    } else {
-      const msLeft = revealAt.getTime() - now.getTime();
-      const txt = humanCountdown(msLeft);
-      html += `<div class="countdownBox warn">⏳ ${ui.messages.availableIn} <b>${txt}</b></div>`;
-      // live update
-      countdownTimer = setInterval(() => {
-        const now2 = new Date();
-        const ms2 = revealAt.getTime() - now2.getTime();
-        const box = result.querySelector(".countdownBox.warn");
-        if (!box) return;
-        if (ms2 <= 0) {
-          box.classList.remove("warn");
-          box.classList.add("ok");
-          box.innerHTML = `✅ ${ui.messages.availableNow}`;
-          // re-render to show location/seat now
-          clearCountdown();
-          renderStudent(data, cfg);
-          return;
-        }
-        box.innerHTML = `⏳ ${ui.messages.availableIn} <b>${humanCountdown(ms2)}</b>`;
-      }, 1000);
+    try{
+      const res = await fetch(withBust(`${DB_DIR}/${id}.json`), { method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }});
+      if(seq !== checkSeq) return;
+
+      if(res.status === 200){
+        existsCache.set(id, true);
+        setIcon("ok"); openBtn.disabled = false;
+        setToast("Ready. Click Open.", "ok");
+      }else if(res.status === 404){
+        existsCache.set(id, false);
+        setIcon("err"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
+      }else{
+        setIcon("bad"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
+      }
+    }catch(_){
+      if(seq !== checkSeq) return;
+      setIcon("bad"); openBtn.disabled = true;
+      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
     }
+  }
 
-    const dateStr = start ? fmtArabicDate(start) : "-";
-    const timeStr = (start && end) ? `${fmtTimeAMPM(start)} – ${fmtTimeAMPM(end)}` : "-";
+  
+  function renderUpcomingHTML(exams, tz){
+    if(!exams || !exams.length) return "";
+    const rows = exams.slice(0, 8).map((e)=>{
+      const d = formatDatePretty(e.examStartISO, tz);
+      const t1 = formatTimePretty(e.examStartISO, tz);
+      const t2 = e.examEndISO ? formatTimePretty(e.examEndISO, tz) : "—";
+      const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
+      const name = safe(e.courseName) || "—";
+      const code = safe(e.courseCode) || "";
+      return `
+        <tr>
+          <th>${code || "Course"}</th>
+          <td>
+            <div style="font-weight:900">${name}</div>
+            <div style="margin-top:2px;color:#6b7280;font-weight:800;font-size:12px">${d} • <b>${time}</b></div>
+          </td>
+        </tr>`;
+    }).join("");
 
-    const locationStr = revealed ? safeText(next.location || "-") : "Hidden until release time";
-    const seatStr = revealed ? safeText(next.seat || "-") : "Hidden until release time";
+    const moreRow = exams.length > 8
+      ? `<tr><th>More</th><td><b>+${exams.length-8}</b> more exams</td></tr>`
+      : "";
 
-    const copyPayload = [
-      `${ui.labels.name}: ${name || "-"}`,
-      `${ui.labels.semester}: ${semester || "-"}`,
-      `${ui.labels.year}: ${academicYear || "-"}`,
-      `---`,
-      `${ui.labels.nextExam}: ${next.courseName || "-"} (${next.courseCode || "-"})`,
-      `${ui.labels.date}: ${dateStr}`,
-      `${ui.labels.time}: ${timeStr}`,
-      `${ui.labels.location}: ${revealed ? locationStr : "Hidden"}`,
-      `${ui.labels.seat}: ${revealed ? seatStr : "Hidden"}`
-    ].join("\n");
-
-    html += `
+    return `
+      <div class="divider"></div>
+      <div class="nextExamTitle">Upcoming Exams</div>
       <div class="examCard">
         <div class="examHead">
-          <div class="examCourse">${html_lib.escape(next.courseName) || "-"}</div>
-          <div class="examCode">${html_lib.escape(next.courseCode) || "-"}</div>
+          <div class="examCourse">Upcoming exams</div>
+          <div class="examCode">${exams.length}</div>
         </div>
-        <table class="examTable" role="presentation" aria-hidden="true">
-          <tr><th>${ui.labels.date}</th><td class="ar">${html_lib.escape(dateStr)}</td></tr>
-          <tr><th>${ui.labels.time}</th><td>${html_lib.escape(timeStr)}</td></tr>
-          <tr><th>${ui.labels.location}</th><td class="ar">${html_lib.escape(locationStr)}</td></tr>
-          <tr><th>${ui.labels.seat}</th><td>${html_lib.escape(seatStr)}</td></tr>
+        <table class="examTable">
+          ${rows}
+          ${moreRow}
         </table>
-        <div class="actionsRow">
-          <button class="btnSecondary" id="copyBtn" type="button">${ui.labels.copy}</button>
+        <div style="padding:10px 12px; font-size:12px; color:#6b7280; font-weight:800">
+          Location & seat will appear only for the next exam within ${Number((CONFIG?.revealDetailsWindowHours ?? CONFIG?.releaseWindowHours ?? CONFIG?.revealWindowHours ?? CONFIG?.rules?.revealWindowHours) ?? DEFAULT_SHOW_WINDOW_HOURS)} hours.
         </div>
-        <div class="miniNote">Shows: <b>Next exam only</b> + Upcoming list. Location/seat are hidden until the release window.</div>
-      </div>
-    `;
+      </div>`;
+  }
 
-    // Upcoming list
-    html += `<div class="upcomingTitle">${ui.labels.upcoming}</div>`;
+  async function openPaper(){
+    const id = normalizeDigits(idInput.value).trim();
+    if(!id || openBtn.disabled) return;
 
-    if (!upcoming.length) {
-      html += `<div class="upItem"><div class="upMeta">—</div></div>`;
-    } else {
-      html += `<div class="upcomingList">`;
-      for (const e of upcoming) {
-        const s = e.start;
-        const ee = e.end || (s ? new Date(s.getTime() + 60*60*1000) : null);
-        const dStr = s ? fmtArabicDate(s) : "TBA";
-        const tStr = (s && ee) ? `${fmtTimeAMPM(s)} – ${fmtTimeAMPM(ee)}` : "TBA";
+    stopCountdown();
+    showSkeleton();
 
-        // Hide location/seat always in upcoming (anti-cheating), unless exam is within reveal window and it's the next exam (already shown above).
-        html += `
-          <div class="upItem">
-            <div class="upHead">
-              <div class="upName">${html_lib.escape(e.courseName) || "-"}</div>
-              <div class="upPill">${html_lib.escape(e.courseCode) || "-"}</div>
+    try{
+      const student = await fetchJSON(`${DB_DIR}/${id}.json`);
+      const tz = (CONFIG?.timezone ?? CONFIG?.timeZone ?? "Africa/Cairo");
+      const showHours = Number((CONFIG?.revealDetailsWindowHours ?? CONFIG?.releaseWindowHours ?? CONFIG?.revealWindowHours ?? CONFIG?.rules?.revealWindowHours) ?? DEFAULT_SHOW_WINDOW_HOURS);
+
+      // New schema: exams[] contains ALL exams. Backward compatible with nextExam.
+      const rawExams = Array.isArray(student?.exams) ? student.exams
+                    : (student?.nextExam ? [student.nextExam] : []);
+
+      const nowForPick = await getServerNow();
+      const upcoming = rawExams
+        .filter(e => e && e.examStartISO && !isNaN(new Date(e.examStartISO).getTime()))
+        .map(e => ({...e, __ts: new Date(e.examStartISO).getTime()}))
+        .filter(e => e.__ts > nowForPick.getTime())
+        .sort((a,b)=>a.__ts - b.__ts);
+
+      const exam = upcoming.length ? upcoming[0] : null;
+      const upcomingRest = upcoming.slice(1);
+
+      const name = safe(student?.name);
+      const sem  = safe(student?.semester);
+      const year = safe(student?.academicYear);
+
+      if(!exam){
+        resultEl.hidden = false;
+        resultEl.innerHTML = `
+          <div class="paper">
+            <div class="paperHeader">
+              <div class="paperTitle">Student Info</div>
+              <div class="pill">ID: ${safe(student?.id || id)}</div>
             </div>
-            <div class="upMeta"><b>${ui.labels.date}:</b> <span class="ar">${html_lib.escape(dStr)}</span></div>
-            <div class="upMeta2"><b>${ui.labels.time}:</b> ${html_lib.escape(tStr)}</div>
-          </div>
-        `;
+            <div class="paperBody">
+              <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+              <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+              <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
+              <div class="divider"></div>
+              <div class="nextExamTitle">Next Exam</div>
+              <div class="okBox">✅ No upcoming exams.</div>
+            </div>
+          </div>`;
+        setToast("", "");
+        return;
       }
-      html += `</div>`;
-    }
 
-    result.innerHTML = html;
-    result.hidden = false;
+      const startISO = safe(exam.examStartISO);
+      const endISO   = safe(exam.examEndISO);
+      const date = formatDatePretty(startISO, tz);
+      const t1 = formatTimePretty(startISO, tz);
+      const t2 = formatTimePretty(endISO, tz);
+      const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
 
-    // Copy handler
-    const copyBtn = result.querySelector("#copyBtn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(copyPayload);
-          showToast("Copied ✅", "ok");
-        } catch {
-          // Fallback
-          const ta = document.createElement("textarea");
-          ta.value = copyPayload;
-          ta.style.position = "fixed";
-          ta.style.left = "-9999px";
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          showToast("Copied ✅", "ok");
-        }
-      });
+      /* showHours already computed above */
+      const now = nowForPick;
+      const startDt = new Date(startISO);
+      const revealAt = isNaN(startDt.getTime()) ? null : new Date(startDt.getTime() - showHours*3600*1000);
+      const canReveal = !!(revealAt && now >= revealAt);
+
+      const locVal = canReveal ? safe(exam.location) : "••••";
+      const seatVal = canReveal ? safe(exam.seat) : "•••";
+
+      let counterHTML = "";
+      if(revealAt && !canReveal){
+        const diff = revealAt.getTime() - now.getTime();
+        counterHTML = `
+          <div class="countdownBox warn">
+            ⏳ Location & seat will appear in <b id="cdVal">${msToHMS(diff)}</b>
+          </div>`;
+        stopCountdown();
+        countdownTimer = setInterval(async ()=>{
+          const n = await getServerNow();
+          const d = revealAt.getTime() - n.getTime();
+          const el = document.getElementById("cdVal");
+          if(!el) return;
+          if(d <= 0){
+            stopCountdown();
+            openPaper();
+            return;
+          }
+          el.textContent = msToHMS(d);
+        }, 1000);
+      }else if(revealAt && canReveal){
+        counterHTML = `<div class="countdownBox ok">✅ Location & seat are available now.</div>`;
+      }
+
+      const courseCode = safe(exam.courseCode);
+      const courseName = safe(exam.courseName);
+
+      resultEl.hidden = false;
+      resultEl.innerHTML = `
+        <div class="paper">
+          <div class="paperHeader">
+            <div class="paperTitle">Student Info</div>
+            <div class="pill">ID: ${safe(student?.id || id)}</div>
+          </div>
+          <div class="paperBody">
+            <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+            <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+            <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
+
+            <div class="divider"></div>
+            <div class="nextExamTitle">Next Exam</div>
+            ${counterHTML}
+
+            <div class="examCard">
+              <div class="examHead">
+                <div class="examCourse">${courseName || "—"}</div>
+                <div class="examCode">${courseCode || ""}</div>
+              </div>
+              <table class="examTable">
+                <tr><th>Date</th><td>${date}</td></tr>
+                <tr><th>Time</th><td><b>${time}</b></td></tr>
+                <tr><th>Location</th><td>${locVal || "—"}</td></tr>
+                <tr><th>Seat</th><td>${seatVal || "—"}</td></tr>
+              </table>
+              <div class="actionsRow">
+                <button class="btnSecondary" type="button" id="copyBtn">Copy details</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+      const copyBtn = document.getElementById("copyBtn");
+      if(copyBtn){
+        copyBtn.onclick = async ()=>{
+          const lines = [
+            `Name: ${name}`,
+            `ID: ${safe(student?.id || id)}`,
+            sem ? `Semester: ${sem}` : null,
+            year ? `Academic Year: ${year}` : null,
+            "",
+            "Next Exam:",
+            `Course: ${courseName} (${courseCode})`,
+            `Date: ${date}`,
+            `Time: ${time}`,
+            `Location: ${locVal}`,
+            `Seat: ${seatVal}`
+          ].filter(Boolean).join("\n");
+
+          try{ await navigator.clipboard.writeText(lines); setToast("Copied.", "ok"); }
+          catch(_){ setToast("Copy failed.", "err"); }
+        };
+      }
+
+      setToast("", "");
+    }catch(_){
+      stopCountdown();
+      resultEl.hidden = true;
+      setIcon("bad");
+      openBtn.disabled = true;
+      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
     }
   }
 
-  async function lookupStudent() {
-    const sid = normalizeId(studentIdEl.value);
-    studentIdEl.value = sid;
+  async function init(){
+    await loadConfig();
 
-    if (!sid || sid.length < 5) {
-      showToast("Enter a valid Student ID", "warn");
-      return;
-    }
+    openBtn.disabled = true;
+    setIcon("idle");
+    setToast("", "");
 
-    setLoading(true);
-    showToast("Loading…");
+    idInput.addEventListener("input", ()=>{
+      const id = normalizeDigits(idInput.value).trim();
+      stopCountdown();
+      resultEl.hidden = true;
 
-    try {
-      const cfg = await loadConfig();
-      const studentUrl = new URL(`${sid}.json`, dbBase);
-      const data = await tryFetchJson(studentUrl.toString());
+      if(!id){
+        setIcon("idle");
+        openBtn.disabled = true;
+        setToast("", "");
+        return;
+      }
 
-      // Basic validation
-      if (!data || typeof data !== "object") throw new Error("Invalid JSON");
+      if(!/^\d+$/.test(id)){
+        setIcon("err");
+        openBtn.disabled = true;
+        setToast(CONFIG?.messages?.invalid || "❌ Please enter numbers only.", "err");
+        return;
+      }
 
-      renderStudent(data, cfg);
-      showToast("Loaded ✅", "ok");
-    } catch (err) {
-      console.error(err);
-      result.hidden = true;
+      debouncedCheck(id);
+    });
 
-      const msg = (String(err?.message || "").includes("HTTP 404"))
-        ? "Student ID not found."
-        : "Database unavailable. Please try again later.";
-      showToast(msg, "bad");
-    } finally {
-      setLoading(false);
-    }
+    idInput.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") openPaper();
+    });
+
+    openBtn.addEventListener("click", openPaper);
   }
 
-  function updateInputUI() {
-    const sid = normalizeId(studentIdEl.value);
-    studentIdEl.value = sid;
-
-    const ok = sid.length >= 5;
-    openBtn.disabled = !ok;
-    idIcon.classList.toggle("ok", ok);
-    idIcon.classList.toggle("warn", !ok);
-  }
-
-  // ====== EVENTS ======
-  studentIdEl.addEventListener("input", updateInputUI);
-  studentIdEl.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (!openBtn.disabled) lookupStudent();
-    }
-  });
-
-  openBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    lookupStudent();
-  });
-
-  // initial
-  updateInputUI();
+  init();
 })();
 </script>
+
 </body>
 </html>

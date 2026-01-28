@@ -3,5 +3,12 @@
   "name": "مهداه محروس امين رجب",
   "semester": "Final - Fall",
   "academicYear": "2025/2026",
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "AHS111",
+    "courseName": "General Chemistry",
+    "examStartISO": "2026-01-28T22:35:00+02:00",
+    "examEndISO": "2026-01-28T21:35:00+02:00",
+    "location": "Classroom (207) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "18"
+  }
 }

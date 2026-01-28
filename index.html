@@ -1,815 +1,683 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Exam Info</title>
-  <style>
-    :root{
-      --bg1:#0b3d63;
-      --bg2:#0a2f4c;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --text:#0f172a;
-      --accent:#0b4b78;
-      --accent2:#2d7fbf;
-      --line:rgba(15,23,42,.10);
-      --shadow: 0 22px 70px rgba(0,0,0,.22);
-      --radius: 28px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,.09), transparent 55%),
-        radial-gradient(900px 600px at 85% 20%, rgba(120,170,220,.18), transparent 60%),
-        radial-gradient(900px 700px at 60% 90%, rgba(231,74,74,.10), transparent 55%),
-        linear-gradient(165deg, var(--bg1), var(--bg2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
-    .wrap{
-      width:min(980px, 100%);
-      display:flex;
-      justify-content:center;
-    }
-    .card{
-      width:min(860px, 100%);
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .topbar{
-      position:relative;
-      padding:22px 26px;
-      background:
-        linear-gradient(180deg, rgba(232,244,255,.95), rgba(255,255,255,.92));
-      border-bottom:1px solid rgba(120,170,220,.22);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      min-height:84px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-    .logo{
-      height:48px;
-      width:auto;
-      max-width:320px;
-      object-fit:contain;
-      display:block;
-    }
-    /* Premium pill */
-    .student-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:14px 20px;
-      border-radius:999px;
-      background: linear-gradient(180deg, rgba(232,244,255,0.95) 0%, rgba(241,248,255,0.95) 100%);
-      border: 2px solid rgba(120,170,220,0.35);
-      box-shadow:
-        0 10px 24px rgba(0,0,0,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.70);
-      user-select:none;
-      white-space:nowrap;
-      flex:0 0 auto;
-    }
-    .student-pill .dot{
-      width:16px;height:16px;border-radius:50%;
-      background:#e74a4a;
-      box-shadow:
-        0 0 0 6px rgba(231,74,74,0.14),
-        0 3px 10px rgba(231,74,74,0.35);
-      flex:0 0 auto;
-    }
-    .student-pill-title{
-      font-weight:900;
-      letter-spacing:.2px;
-      font-size: clamp(16px, 2vw, 24px);
-      line-height:1;
-      color: var(--accent);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.55);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
-    }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Student Exam Info</title>
+<style>
+  :root{
+    --bg1:#062a4a;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --primary:#0b6bd6;
+    --primary2:#0a5fc0;
+    --ok:#16a34a;
+    --err:#dc2626;
+    --warn:#f59e0b;
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+    --radius:22px;
+    --radius2:16px;
+    --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  }
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:var(--font);
+    background: radial-gradient(1200px 700px at 30% 10%, #0e3b67 0%, var(--bg1) 55%, #031b30 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px 16px;
+    color:#111827;
+  }
+  .wrap{
+    width:min(860px, 100%);
+    display:flex;
+    justify-content:center;
+  }
+  .card{
+    width:min(540px, 100%);
+    background:linear-gradient(#fff, #fff);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  .topbar{
+    background:linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid rgba(17,24,39,.06);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+  }
+  .logo{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(135deg, #e8f2ff, #ffffff);
+    border:1px solid rgba(2, 42, 74, .12);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:#0b4b86;
+  }
+  .brandText{
+    line-height:1.05;
+    min-width:0;
+  }
+  .brandText .u{font-size:14px;font-weight:800;color:#0b4b86;letter-spacing:.2px}
+  .brandText .f{font-size:11px;color:#0b4b86;opacity:.85}
+  .pillTop{
+    margin-left:auto;
+    background:#eaf4ff;
+    border:1px solid rgba(11,107,214,.22);
+    color:#0b4b86;
+    padding:8px 12px;
+    border-radius:999px;
+    font-weight:700;
+    display:flex; align-items:center; gap:8px;
+    white-space:nowrap;
+  }
+  .dot{width:10px;height:10px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.15)}
+  .body{
+    padding:18px 18px 16px;
+  }
+  h1{
+    margin:2px 0 6px;
+    font-size:34px;
+    letter-spacing:.2px;
+  }
+  .sub{color:var(--muted); margin:0 0 14px; font-size:14px}
+  .row{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .inputWrap{
+    flex:1;
+    position:relative;
+  }
+  input{
+    width:100%;
+    font-size:28px;
+    padding:16px 62px 16px 18px;
+    border-radius:18px;
+    border:1px solid rgba(2,42,74,.15);
+    outline:none;
+    background:#fff;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+  }
+  input:focus{border-color:rgba(11,107,214,.45); box-shadow:0 0 0 4px rgba(11,107,214,.12)}
+  .icon{
+    position:absolute;
+    right:10px; top:50%;
+    transform:translateY(-50%);
+    width:44px;height:44px;
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; font-weight:900;
+    background:#f3f4f6;
+    color:#6b7280;
+    border:1px solid rgba(17,24,39,.08);
+    user-select:none;
+  }
+  .icon.ok{background:rgba(22,163,74,.10); color:var(--ok); border-color:rgba(22,163,74,.25)}
+  .icon.err{background:rgba(220,38,38,.10); color:var(--err); border-color:rgba(220,38,38,.25)}
+  .icon.bad{background:rgba(245,158,11,.12); color:#b45309; border-color:rgba(245,158,11,.35)}
+  .btn{
+    width:100%;
+    margin-top:14px;
+    font-size:18px;
+    padding:16px 18px;
+    border-radius:18px;
+    border:none;
+    background:linear-gradient(180deg, var(--primary) 0%, var(--primary2) 100%);
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    filter:saturate(.6);
+  }
+  .toast{
+    margin-top:12px;
+    padding:12px 14px;
+    border-radius:14px;
+    display:none;
+    border:1px solid rgba(17,24,39,.08);
+    background:#f8fafc;
+    color:#0f172a;
+    font-size:14px;
+  }
+  .toast.ok{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.22)}
+  .toast.err{background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.22)}
+  .toast.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.25)}
+  .disclaimer{
+    margin-top:14px;
+    color:#374151;
+    font-size:14px;
+    line-height:1.6;
+    padding:14px 14px;
+    border-radius:16px;
+    background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border:1px solid rgba(17,24,39,.06);
+  }
+  .foot{
+    margin-top:14px;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:#6b7280;
+  }
+  .result{
+    margin-top:14px;
+  }
+  .paper{
+    border-radius:18px;
+    border:1px solid rgba(17,24,39,.08);
+    background:linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    overflow:hidden;
+  }
+  .paperHeader{
+    padding:14px 14px;
+    display:flex;align-items:center;gap:10px;
+    background:linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+    border-bottom:1px solid rgba(17,24,39,.06);
+  }
+  .paperTitle{font-weight:900; color:#0b4b86}
+  .pill{
+    margin-left:auto;
+    padding:8px 10px;
+    border-radius:999px;
+    font-weight:800;
+    background:#eaf4ff;
+    border:1px solid rgba(11,107,214,.20);
+    color:#0b4b86;
+  }
+  .paperBody{padding:14px 14px 16px}
+  .field{padding:10px 12px; border-radius:14px; border:1px solid rgba(17,24,39,.07); background:#fff; margin-bottom:10px}
+  .label{font-size:12px; color:#6b7280; font-weight:700; letter-spacing:.2px; text-transform:none}
+  .value{font-size:18px; font-weight:800; margin-top:4px}
+  .rtl{direction:rtl; text-align:right}
+  .divider{height:1px; background:rgba(17,24,39,.08); margin:14px 0}
+  .nextExamTitle{font-size:18px;font-weight:900;margin-bottom:10px}
+  .okBox{
+    padding:12px 12px;
+    border-radius:14px;
+    background:rgba(22,163,74,.10);
+    border:1px solid rgba(22,163,74,.22);
+    font-weight:800;
+    color:#14532d;
+  }
+  .countdownBox{
+    padding:12px 12px;
+    border-radius:14px;
+    border:1px solid rgba(17,24,39,.08);
+    font-weight:800;
+    margin-bottom:10px;
+    background:#f8fafc;
+  }
+  .countdownBox.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); color:#92400e}
+  .countdownBox.ok{background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.22); color:#14532d}
+  .examCard{
+    border-radius:16px;
+    border:1px solid rgba(17,24,39,.08);
+    background:#fff;
+    overflow:hidden;
+  }
+  .examHead{
+    padding:12px 12px;
+    display:flex; gap:10px; align-items:baseline;
+    background:linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    border-bottom:1px solid rgba(17,24,39,.06);
+  }
+  .examCourse{font-weight:900; font-size:16px; flex:1}
+  .examCode{font-weight:900; font-size:12px; color:#0b4b86; background:#eaf4ff; border:1px solid rgba(11,107,214,.2); padding:6px 8px; border-radius:999px}
+  .examTable{width:100%; border-collapse:collapse}
+  .examTable th, .examTable td{
+    padding:10px 12px;
+    border-bottom:1px solid rgba(17,24,39,.06);
+    text-align:left;
+    font-size:14px;
+  }
+  .examTable th{width:32%; color:#6b7280; font-weight:800}
+  .actionsRow{padding:12px 12px}
+  .btnSecondary{
+    width:100%;
+    padding:12px 12px;
+    border-radius:14px;
+    border:1px solid rgba(17,24,39,.10);
+    background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    font-weight:900;
+    cursor:pointer;
+  }
+  .skeletonCard{
+    border-radius:18px;
+    border:1px solid rgba(17,24,39,.08);
+    background:#fff;
+    padding:14px;
+  }
+  .skeletonLine{
+    height:14px;
+    border-radius:999px;
+    background:linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 45%, #f3f4f6 100%);
+    background-size:200% 100%;
+    animation:shimmer 1.2s infinite linear;
+    margin:10px 0;
+  }
+  @keyframes shimmer{0%{background-position:0% 0%}100%{background-position:200% 0%}}
+  @media (max-width:420px){
+    h1{font-size:30px}
+    input{font-size:24px}
+  }
 
-    .content{
-      padding:26px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px 28px;
-    }
+/* --- Logo fix (no theme changes) --- */
 
-    @media (max-width: 860px){
-      .content{grid-template-columns:1fr; padding:22px;}
-      .logo{max-width:240px;}
-      .topbar{padding:18px 18px;}
-    }
+.header-logo, .logo, .brand-logo, #logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 
-    h1{
-      margin: 2px 0 6px;
-      font-size: clamp(28px, 4.2vw, 52px);
-      letter-spacing:-.8px;
-    }
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size: 15px;
-    }
+.header-logo img, .logo img, .brand-logo img, img#logo, #logoWrap img {
+  max-width: 100%;
+  height: 54px;           /* safe header height */
+  object-fit: contain;    /* prevent stretching */
+  object-position: left center;
+}
+@media (max-width: 480px){
+  .header-logo img, .logo img, .brand-logo img, img#logo, #logoWrap img { height: 46px; }
+}
 
-    .searchBox{
-      background: rgba(240,248,255,.65);
-      border:1px solid rgba(120,170,220,.25);
-      border-radius: 18px;
-      padding:16px;
-    }
-
-    .row{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .inputWrap{
-      position:relative;
-      flex:1;
-    }
-    input{
-      width:100%;
-      height:62px;
-      border-radius: 18px;
-      border:1px solid rgba(15,23,42,.14);
-      padding: 0 62px 0 18px;
-      font-size: 24px;
-      outline:none;
-      background:#fff;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
-    }
-    input::placeholder{color:#9aa3af}
-    .statusIcon{
-      position:absolute;
-      right:10px;
-      top:50%;
-      transform:translateY(-50%);
-      width:44px;
-      height:44px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(15,23,42,.10);
-      background: #f3f4f6;
-      color:#6b7280;
-      font-weight:900;
-      user-select:none;
-    }
-    .statusIcon.ok{
-      background: rgba(22,163,74,.12);
-      border-color: rgba(22,163,74,.35);
-      color: rgb(22,163,74);
-    }
-    .statusIcon.bad{
-      background: rgba(239,68,68,.12);
-      border-color: rgba(239,68,68,.35);
-      color: rgb(239,68,68);
-    }
-
-    .btn{
-      width:100%;
-      height:62px;
-      border-radius: 18px;
-      border:none;
-      font-size: 20px;
-      font-weight:800;
-      cursor:pointer;
-      background: linear-gradient(180deg, rgba(13,110,253,.95), rgba(11,75,120,.98));
-      color:white;
-      box-shadow: 0 18px 40px rgba(11,75,120,.22);
-      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
-    }
-    .btn:active{transform: translateY(1px)}
-    .btn[disabled]{
-      opacity:.45;
-      cursor:not-allowed;
-      filter:saturate(.6);
-    }
-
-    .alert{
-      margin-top:12px;
-      border-radius: 14px;
-      padding:12px 12px;
-      border:1px solid rgba(15,23,42,.10);
-      font-size: 14px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .alert .aicon{font-size:18px; line-height:1.2}
-    .alert.ok{
-      background: rgba(22,163,74,.10);
-      border-color: rgba(22,163,74,.25);
-      color: rgb(10,88,42);
-    }
-    .alert.bad{
-      background: rgba(239,68,68,.08);
-      border-color: rgba(239,68,68,.22);
-      color: rgb(127,29,29);
-    }
-    .alert.info{
-      background: rgba(2,132,199,.08);
-      border-color: rgba(2,132,199,.18);
-      color: rgb(11,75,120);
-    }
-
-    .right{
-      background: rgba(248,250,252,.9);
-      border:1px solid rgba(15,23,42,.08);
-      border-radius: 18px;
-      padding:16px;
-      min-height: 260px;
-    }
-    .sectionTitle{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin:0 0 12px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing:-.2px;
-    }
-    .badge{
-      font-weight:800;
-      font-size: 13px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(2,132,199,.10);
-      border:1px solid rgba(2,132,199,.20);
-      color: var(--accent);
-      white-space:nowrap;
-    }
-    .kv{
-      border-top:1px solid rgba(15,23,42,.08);
-      padding:12px 2px;
-      display:grid;
-      grid-template-columns: 120px 1fr;
-      gap:10px;
-      align-items:center;
-      font-size:15px;
-    }
-    .k{color:var(--muted); font-weight:700}
-    .v{font-weight:800}
-    .v.ar{direction:rtl; text-align:right}
-    .courseHeader{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      margin-top: 2px;
-    }
-    .courseName{
-      margin:0;
-      font-size:22px;
-      font-weight:900;
-      letter-spacing:-.3px;
-    }
-    .courseCode{
-      font-weight:900;
-      font-size:13px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(11,75,120,.07);
-      border:1px solid rgba(11,75,120,.15);
-      color: var(--accent);
-      white-space:nowrap;
-    }
-
-    .copyBtn{
-      margin-top: 14px;
-      width:100%;
-      height:52px;
-      border-radius: 16px;
-      border:1px solid rgba(11,75,120,.18);
-      background: #fff;
-      font-weight:900;
-      color: var(--accent);
-      cursor:pointer;
-      transition: transform .12s ease;
-    }
-    .copyBtn:active{transform: translateY(1px)}
-    .fineprint{
-      padding: 0 26px 22px;
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      color: rgba(255,255,255,.0);
-    }
-    .footerRow{
-      padding: 14px 26px 18px;
-      border-top:1px solid rgba(15,23,42,.06);
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      color: var(--muted);
-      font-size: 13px;
-      flex-wrap:wrap;
-    }
-    .noteBox{
-      margin-top:12px;
-      border-radius: 16px;
-      padding: 12px 14px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.85);
-      direction: rtl;
-      text-align:right;
-      color:#111827;
-      font-size: 14px;
-      line-height:1.55;
-    }
-    .mutedSmall{color:var(--muted)}
-    .hidden{display:none !important}
-  </style>
+</style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card" role="application" aria-label="Student Exam Info">
+    <div class="card">
       <div class="topbar">
         <div class="brand">
-          <img id="logo" class="logo" src="./logo.png" alt="Delta University logo" />
+          <div class="logo"><img id="brandLogo" src="logo.png" alt="Delta University logo" onerror="this.style.display='none'; this.parentElement.classList.add('logoFallback'); this.parentElement.textContent='DU';"></div>
+          <div class="brandText">
+            <div class="u">DELTA UNIVERSITY</div>
+            <div class="f">Faculty of Applied Health Sciences Technology</div>
+          </div>
         </div>
-
-        <div class="student-pill" aria-label="Student Exam Info">
-          <span class="dot"></span>
-          <span class="student-pill-title">Student Exam Info</span>
-        </div>
+        <div class="pillTop"><span class="dot"></span> Student Exam Info</div>
       </div>
 
-      <div class="content">
-        <!-- Left: Search -->
-        <div>
-          <h1>Student ID</h1>
-          <p class="sub">Enter your ID to view your next exam details.</p>
+      <div class="body">
+        <h1>Student ID</h1>
+        <p class="sub">Enter your ID to view your next exam details.</p>
 
-          <div class="searchBox">
-            <div class="row">
-              <div class="inputWrap">
-                <input id="studentId" inputmode="numeric" autocomplete="off" placeholder="e.g. 9211005" maxlength="12" />
-                <div id="statusIcon" class="statusIcon" aria-hidden="true">—</div>
-              </div>
-            </div>
-
-            <button id="openBtn" class="btn" disabled>Open</button>
-
-            <div id="msg" class="alert info hidden">
-              <div class="aicon">ℹ️</div>
-              <div class="atext"></div>
-            </div>
-
-            <div class="noteBox">
-              <strong>تنبيه:</strong>
-              هذه الصفحة لخدمة الطلاب فقط. الطالب مُلتزم بالمواعيد وأماكن الامتحان المُعلنة رسميًا من مكتب وكيل وعميد الكلية،
-              وأي اختلاف يُعتد به بالإعلان الرسمي.
-            </div>
-
+        <div class="row">
+          <div class="inputWrap">
+            <input id="studentId" inputmode="numeric" autocomplete="off" placeholder="e.g. 9211005" />
+            <div id="idIcon" class="icon" aria-label="idle">—</div>
           </div>
         </div>
 
-        <!-- Right: Details -->
-        <div class="right" id="detailsPane" aria-live="polite">
-          <div class="sectionTitle">
-            <h2>Student Info</h2>
-            <div class="badge" id="idBadge">ID: —</div>
-          </div>
+        <button id="openBtn" class="btn" disabled>Open</button>
 
-          <div id="studentInfoBlock" class="hidden">
-            <div class="kv">
-              <div class="k">Name</div>
-              <div class="v ar" id="nameV">—</div>
-            </div>
-            <div class="kv">
-              <div class="k">Semester</div>
-              <div class="v" id="semV">—</div>
-            </div>
-            <div class="kv">
-              <div class="k">Academic Year</div>
-              <div class="v" id="yearV">—</div>
-            </div>
+        <div id="toast" class="toast"></div>
 
-            <div style="height:10px"></div>
-
-            <div class="sectionTitle">
-              <h2>Next Exam</h2>
-              <div class="badge" id="nextStatus">INFO</div>
-            </div>
-
-            <div id="examAlert" class="alert info">
-              <div class="aicon" id="examAlertIcon">ℹ️</div>
-              <div class="atext" id="examAlertText">Enter an ID, then click Open.</div>
-            </div>
-
-            <div id="examBlock" class="hidden">
-              <div class="courseHeader">
-                <p class="courseName" id="courseName">—</p>
-                <span class="courseCode" id="courseCode">—</span>
-              </div>
-
-              <div class="kv">
-                <div class="k">Date</div>
-                <div class="v ar" id="dateV">—</div>
-              </div>
-              <div class="kv">
-                <div class="k">Time</div>
-                <div class="v" id="timeV">—</div>
-              </div>
-              <div class="kv">
-                <div class="k">Location</div>
-                <div class="v" id="locV">—</div>
-              </div>
-              <div class="kv">
-                <div class="k">Seat</div>
-                <div class="v" id="seatV">—</div>
-              </div>
-
-              <button id="copyBtn" class="copyBtn">Copy details</button>
-            </div>
-
-            <div id="noExamBlock" class="hidden"></div>
-          </div>
-
-          <div id="emptyState" class="mutedSmall">
-            Type an ID on the left. When it is valid, the Open button will activate.
-          </div>
+        <div class="disclaimer">
+          <b>تنبيه:</b> هذه الصفحة لخدمة الطلاب فقط. الطالب مُلزم بالمواعيد وأماكن الامتحان المُعلنة رسميًا من مكتب وكيل وعميد الكلية، وأي اختلاف يُعتد به بالإعلان الرسمي.
         </div>
-      </div>
 
-      <div class="footerRow">
-        <div><span class="mutedSmall">Tip:</span> Press Enter</div>
-        <div id="bottomHint"><span class="mutedSmall">Shows:</span> <strong>Next exam only</strong></div>
+        <div class="foot">
+          <div id="hintLine">Tip: Press Enter</div>
+          <div>Shows: <b>Next exam only</b></div>
+        </div>
+
+        <div id="result" class="result" hidden></div>
       </div>
     </div>
   </div>
 
 <script>
 (() => {
-  // ===== Config (no need to edit) =====
-  const DEFAULTS = {
-    // where student json files live relative to this index file on GitHub pages
-    studentDbPath: "./Json%20database/",   // supports space in folder name (URL encoded)
-    configPath: "./config.json",
-    releaseWindowHours: 16,
-    showCountdown: true
-  };
+  "use strict";
 
-  const els = {
-    id: document.getElementById("studentId"),
-    open: document.getElementById("openBtn"),
-    icon: document.getElementById("statusIcon"),
-    msg: document.getElementById("msg"),
-    msgText: document.querySelector("#msg .atext"),
-    idBadge: document.getElementById("idBadge"),
-    studentInfoBlock: document.getElementById("studentInfoBlock"),
-    empty: document.getElementById("emptyState"),
+  const DB_DIR = "Json database";
+  const DEFAULT_SHOW_WINDOW_HOURS = 16;
+  const CACHE_BUST = Date.now();
 
-    nameV: document.getElementById("nameV"),
-    semV: document.getElementById("semV"),
-    yearV: document.getElementById("yearV"),
+  const idInput   = document.getElementById("studentId");
+  const openBtn   = document.getElementById("openBtn");
+  const iconBox   = document.getElementById("idIcon");
+  const toastEl   = document.getElementById("toast");
+  const resultEl  = document.getElementById("result");
 
-    nextStatus: document.getElementById("nextStatus"),
-    examAlert: document.getElementById("examAlert"),
-    examAlertIcon: document.getElementById("examAlertIcon"),
-    examAlertText: document.getElementById("examAlertText"),
+  let CONFIG = null;
+  const existsCache = new Map();
+  let checkTimer = null;
+  let checkSeq = 0;
+  let countdownTimer = null;
 
-    examBlock: document.getElementById("examBlock"),
-    courseName: document.getElementById("courseName"),
-    courseCode: document.getElementById("courseCode"),
-    dateV: document.getElementById("dateV"),
-    timeV: document.getElementById("timeV"),
-    locV: document.getElementById("locV"),
-    seatV: document.getElementById("seatV"),
-    copyBtn: document.getElementById("copyBtn"),
+  const safe = (v) => (v === null || v === undefined) ? "" : String(v);
+  const encPath = (p) => encodeURI(p).replace(/#/g, "%23");
+  const withBust = (u) => encPath(u) + (u.includes("?") ? "&" : "?") + "v=" + CACHE_BUST;
 
-    logo: document.getElementById("logo"),
-    bottomHint: document.getElementById("bottomHint")
-  };
-
-  let cfg = {...DEFAULTS};
-  let currentStudent = null;
-  let validLoaded = false;
-
-  function safeTrimDigits(s){
-    return (s||"").toString().replace(/[^\d]/g,"").slice(0,12);
+  function setIcon(state){
+    iconBox.classList.remove("ok","err","bad");
+    if(state === "ok") iconBox.classList.add("ok");
+    if(state === "err") iconBox.classList.add("err");
+    if(state === "bad") iconBox.classList.add("bad");
+    iconBox.textContent = (state === "ok") ? "✓" : (state === "err") ? "✕" : (state === "bad") ? "!" : "—";
+    iconBox.setAttribute("aria-label", state);
   }
 
-  function setMsg(type, text){
-    els.msg.classList.remove("hidden","ok","bad","info");
-    els.msg.classList.add(type);
-    els.msgText.textContent = text;
-  }
-  function hideMsg(){
-    els.msg.classList.add("hidden");
+  function setToast(msg, kind){
+    toastEl.classList.remove("ok","err","warn");
+    if(kind) toastEl.classList.add(kind);
+    toastEl.textContent = msg || "";
+    toastEl.style.display = msg ? "block" : "none";
   }
 
-  function setStatus(state){
-    // state: "idle" | "bad" | "ok"
-    els.icon.classList.remove("ok","bad");
-    if(state === "ok"){ els.icon.classList.add("ok"); els.icon.textContent = "✓"; }
-    else if(state === "bad"){ els.icon.classList.add("bad"); els.icon.textContent = "✕"; }
-    else { els.icon.textContent = "—"; }
+  function normalizeDigits(s){
+    const ar = "٠١٢٣٤٥٦٧٨٩";
+    return safe(s).replace(/[٠-٩]/g, d => String(ar.indexOf(d)));
   }
 
-  function enableOpen(on){
-    els.open.disabled = !on;
+  function stopCountdown(){
+    if(countdownTimer){ clearInterval(countdownTimer); countdownTimer = null; }
   }
 
-  function parseISO(iso){
-    const d = new Date(iso);
-    return isNaN(d.getTime()) ? null : d;
+  function showSkeleton(){
+    resultEl.hidden = false;
+    resultEl.innerHTML = `
+      <div class="skeletonCard" aria-busy="true">
+        <div class="skeletonLine" style="width:45%"></div>
+        <div class="skeletonLine" style="width:70%"></div>
+        <div class="skeletonLine" style="width:60%"></div>
+        <div class="skeletonLine" style="width:92%"></div>
+        <div class="skeletonLine" style="width:88%"></div>
+        <div class="skeletonLine" style="width:76%"></div>
+      </div>`;
   }
 
-  function fmtArabicDate(d){
-    // Arabic date only
-    return new Intl.DateTimeFormat("ar-EG", {
-      weekday:"long", year:"numeric", month:"long", day:"numeric"
-    }).format(d);
-  }
-
-  function fmtTimeAMPM(d){
-    // Time with AM/PM (English)
-    return new Intl.DateTimeFormat("en-US", {
-      hour:"numeric", minute:"2-digit", hour12:true
-    }).format(d);
-  }
-
-  function diffHours(a,b){
-    return (a.getTime() - b.getTime()) / 36e5;
-  }
-
-  function examAvailabilityText(hoursLeft){
-    if(hoursLeft <= 0) return "Location & seat are available now.";
-    const h = Math.ceil(hoursLeft);
-    return `Location & seat will appear in about ${h} hour${h===1?"":"s"}.`;
-  }
-
-  function setExamAlert(kind, icon, text){
-    els.examAlert.classList.remove("ok","bad","info");
-    els.examAlert.classList.add(kind);
-    els.examAlertIcon.textContent = icon;
-    els.examAlertText.textContent = text;
-    els.examAlert.classList.remove("hidden");
-  }
-
-  function resetRightPane(){
-    els.idBadge.textContent = "ID: —";
-    els.studentInfoBlock.classList.add("hidden");
-    els.empty.classList.remove("hidden");
-
-    els.examBlock.classList.add("hidden");
-    setExamAlert("info","ℹ️","Enter an ID, then click Open.");
-    els.nextStatus.textContent = "INFO";
+  async function fetchJSON(url){
+    const r = await fetch(withBust(url), { method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    return await r.json();
   }
 
   async function loadConfig(){
-    try{
-      const res = await fetch(cfg.configPath, {cache:"no-store"});
-      if(!res.ok) throw new Error("config fetch failed");
-      const j = await res.json();
-
-      // Optional overrides (but app works even if not present)
-      if(typeof j.releaseWindowHours === "number") cfg.releaseWindowHours = j.releaseWindowHours;
-      if(typeof j.studentDbPath === "string") cfg.studentDbPath = j.studentDbPath;
-      if(typeof j.logoSrc === "string") els.logo.src = j.logoSrc;
-
-      // keep a small hint
-      if(cfg.releaseWindowHours && Number.isFinite(cfg.releaseWindowHours)){
-        els.bottomHint.innerHTML = `<span class="mutedSmall">Shows:</span> <strong>Next exam only</strong> · <span class="mutedSmall">Location window:</span> <strong>${cfg.releaseWindowHours}h</strong>`;
-      }
-      return true;
-    }catch(e){
-      // still usable; only student fetch may fail if path wrong
-      return false;
+    try{ CONFIG = await fetchJSON(`${DB_DIR}/config.json`); return true; }
+    catch(_){
+      try{ CONFIG = await fetchJSON(`config.json`); return true; }
+      catch(__){ CONFIG = null; return false; }
     }
   }
 
-  async function fetchStudent(id){
-    const url = `${cfg.studentDbPath}${encodeURIComponent(id)}.json`;
-    const res = await fetch(url, {cache:"no-store"});
-    if(!res.ok) return null;
-    try{
-      return await res.json();
-    }catch(_){
-      return null;
+  async function getServerNow(){
+    const candidates = [`${DB_DIR}/config.json`, location.href];
+    for(const u of candidates){
+      try{
+        const res = await fetch(withBust(u), { method:"GET", cache:"no-store" });
+        const dh = res.headers.get("date");
+        if(dh){
+          const dt = new Date(dh);
+          if(!isNaN(dt.getTime())) return dt;
+        }
+      }catch(_){}
     }
+    return new Date();
   }
 
-  function paintStudent(data){
-    currentStudent = data;
-    els.empty.classList.add("hidden");
-    els.studentInfoBlock.classList.remove("hidden");
-    els.idBadge.textContent = `ID: ${data?.id || "—"}`;
-    els.nameV.textContent = data?.name || "—";
-    els.semV.textContent = data?.semester || "—";
-    els.yearV.textContent = data?.academicYear || "—";
+  function formatDatePretty(iso){
+    const d = new Date(iso);
+    if(isNaN(d.getTime())) return "—";
+    return d.toLocaleDateString("ar-EG", { weekday:"short", year:"numeric", month:"short", day:"2-digit" });
+  }
+  function formatTimePretty(iso){
+    const d = new Date(iso);
+    if(isNaN(d.getTime())) return "—";
+    return d.toLocaleTimeString(undefined, { hour:"numeric", minute:"2-digit" });
+  }
+  function msToHMS(ms){
+    const s = Math.max(0, Math.floor(ms/1000));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const sec = s%60;
+    const pad = (n)=>String(n).padStart(2,"0");
+    return h>0 ? `${h}h ${pad(m)}m ${pad(sec)}s` : `${m}m ${pad(sec)}s`;
+  }
 
-    // Next Exam
-    const exam = data?.nextExam || null;
-    if(!exam){
-      els.examBlock.classList.add("hidden");
-      els.nextStatus.textContent = "INFO";
-      setExamAlert("info","ℹ️","No upcoming exams.");
-      return;
-    }
+  function debouncedCheck(id){
+    if(checkTimer) clearTimeout(checkTimer);
+    checkTimer = setTimeout(() => checkIdExists(id), 250);
+  }
 
-    const start = parseISO(exam.examStartISO);
-    const end = parseISO(exam.examEndISO);
+  async function checkIdExists(id){
+    const seq = ++checkSeq;
 
-    els.courseName.textContent = exam.courseName || "—";
-    els.courseCode.textContent = exam.courseCode || "—";
-
-    if(start){
-      els.dateV.textContent = fmtArabicDate(start);
-      if(end){
-        els.timeV.textContent = `${fmtTimeAMPM(start)} – ${fmtTimeAMPM(end)}`;
+    if(existsCache.has(id)){
+      const ok = existsCache.get(id);
+      if(ok){
+        setIcon("ok"); openBtn.disabled = false; setToast("Ready. Click Open.", "ok");
       }else{
-        els.timeV.textContent = `${fmtTimeAMPM(start)}`;
+        setIcon("err"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
       }
-    }else{
-      els.dateV.textContent = "—";
-      els.timeV.textContent = "—";
-    }
-
-    // Availability window for location & seat
-    const now = new Date();
-    let allow = true;
-    let hoursLeft = 0;
-
-    if(start && cfg.releaseWindowHours && Number.isFinite(cfg.releaseWindowHours)){
-      hoursLeft = diffHours(start, now) - cfg.releaseWindowHours;
-      allow = (hoursLeft <= 0);
-    }
-
-    const hasLocation = !!(exam.location && String(exam.location).trim().length);
-    const hasSeat = exam.seat !== undefined && exam.seat !== null && String(exam.seat).trim().length;
-
-    if(allow && hasLocation && hasSeat){
-      els.locV.textContent = exam.location;
-      els.seatV.textContent = String(exam.seat);
-      els.nextStatus.textContent = "OK";
-      setExamAlert("ok","✅","Location & seat are available now.");
-    }else if(!allow){
-      // hide location/seat until window
-      els.locV.textContent = "—";
-      els.seatV.textContent = "—";
-      els.nextStatus.textContent = "INFO";
-      setExamAlert("info","⏳", examAvailabilityText(hoursLeft));
-    }else{
-      // window reached but data missing
-      els.locV.textContent = hasLocation ? exam.location : "—";
-      els.seatV.textContent = hasSeat ? String(exam.seat) : "—";
-      els.nextStatus.textContent = "INFO";
-      setExamAlert("info","ℹ️","No location/seat info available yet.");
-    }
-
-    els.examBlock.classList.remove("hidden");
-  }
-
-  function setValidState(isValid, reason){
-    validLoaded = isValid;
-    if(isValid){
-      setStatus("ok");
-      enableOpen(true);
-      hideMsg();
-    }else{
-      setStatus("bad");
-      enableOpen(false);
-      if(reason) setMsg("bad", reason);
-      else hideMsg();
-    }
-  }
-
-  // Debounce utility (no syntax errors, defined before use)
-  function debounce(fn, wait){
-    let t = null;
-    return (...args) => {
-      clearTimeout(t);
-      t = setTimeout(() => fn(...args), wait);
-    };
-  }
-
-  const previewCheck = debounce(async () => {
-    const id = safeTrimDigits(els.id.value);
-    els.id.value = id;
-
-    resetRightPane();
-
-    if(!id || id.length < 6){
-      setStatus("idle");
-      enableOpen(false);
-      hideMsg();
       return;
     }
 
-    // Try a lightweight fetch to validate the ID without opening
+    setIcon("idle"); openBtn.disabled = true;
+    setToast("Checking ID…", "");
+
     try{
-      const data = await fetchStudent(id);
-      if(!data){
-        setValidState(false, "Student ID not found.");
-        return;
+      const res = await fetch(withBust(`${DB_DIR}/${id}.json`), { method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }});
+      if(seq !== checkSeq) return;
+
+      if(res.status === 200){
+        existsCache.set(id, true);
+        setIcon("ok"); openBtn.disabled = false;
+        setToast("Ready. Click Open.", "ok");
+      }else if(res.status === 404){
+        existsCache.set(id, false);
+        setIcon("err"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
+      }else{
+        setIcon("bad"); openBtn.disabled = true;
+        setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
       }
-      currentStudent = data;
-      setValidState(true);
-      // small hint in right pane
-      els.idBadge.textContent = `ID: ${id}`;
-      els.empty.classList.add("hidden");
-      els.studentInfoBlock.classList.remove("hidden");
-      els.nameV.textContent = data?.name || "—";
-      els.semV.textContent = data?.semester || "—";
-      els.yearV.textContent = data?.academicYear || "—";
-      els.examBlock.classList.add("hidden");
-      els.nextStatus.textContent = "INFO";
-      setExamAlert("info","✅","Ready. Click Open.");
-    }catch(e){
-      setValidState(false, "Database unavailable. Please try again later.");
-    }
-  }, 450);
-
-  els.id.addEventListener("input", previewCheck);
-  els.id.addEventListener("keydown", (e) => {
-    if(e.key === "Enter"){
-      e.preventDefault();
-      if(!els.open.disabled) els.open.click();
-    }
-  });
-
-  els.open.addEventListener("click", async () => {
-    const id = safeTrimDigits(els.id.value);
-    if(!id) return;
-
-    enableOpen(false);
-    setStatus("idle");
-    setMsg("info","Loading...");
-
-    try{
-      const data = await fetchStudent(id);
-      if(!data){
-        setValidState(false, "Student ID not found.");
-        resetRightPane();
-        return;
-      }
-      hideMsg();
-      setStatus("ok");
-      enableOpen(true);
-      paintStudent(data);
-    }catch(e){
-      setValidState(false, "Database unavailable. Please try again later.");
-      resetRightPane();
-    }
-  });
-
-  els.copyBtn.addEventListener("click", async () => {
-    if(!currentStudent?.nextExam) return;
-    const e = currentStudent.nextExam;
-    const start = parseISO(e.examStartISO);
-    const end = parseISO(e.examEndISO);
-    const lines = [
-      `ID: ${currentStudent.id || ""}`,
-      `Name: ${currentStudent.name || ""}`,
-      `Course: ${e.courseName || ""} (${e.courseCode || ""})`,
-      start ? `Date: ${fmtArabicDate(start)}` : "",
-      (start && end) ? `Time: ${fmtTimeAMPM(start)} – ${fmtTimeAMPM(end)}` : "",
-      `Location: ${e.location || "—"}`,
-      `Seat: ${e.seat ?? "—"}`
-    ].filter(Boolean).join("\n");
-
-    try{
-      await navigator.clipboard.writeText(lines);
-      setExamAlert("ok","✅","Copied.");
-      setTimeout(() => {
-        // restore previous state message
-        paintStudent(currentStudent);
-      }, 900);
     }catch(_){
-      setExamAlert("info","ℹ️","Copy not supported on this browser.");
+      if(seq !== checkSeq) return;
+      setIcon("bad"); openBtn.disabled = true;
+      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
     }
-  });
+  }
 
-  // Init
-  resetRightPane();
-  loadConfig(); // best effort; page still works without it
+  async function openPaper(){
+    const id = normalizeDigits(idInput.value).trim();
+    if(!id || openBtn.disabled) return;
 
+    stopCountdown();
+    showSkeleton();
+
+    try{
+      const student = await fetchJSON(`${DB_DIR}/${id}.json`);
+      const exam = student?.nextExam || null;
+
+      const name = safe(student?.name);
+      const sem  = safe(student?.semester);
+      const year = safe(student?.academicYear);
+
+      if(!exam){
+        resultEl.hidden = false;
+        resultEl.innerHTML = `
+          <div class="paper">
+            <div class="paperHeader">
+              <div class="paperTitle">Student Info</div>
+              <div class="pill">ID: ${safe(student?.id || id)}</div>
+            </div>
+            <div class="paperBody">
+              <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+              <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+              <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
+              <div class="divider"></div>
+              <div class="nextExamTitle">Next Exam</div>
+              <div class="okBox">✅ No upcoming exams.</div>
+            </div>
+          </div>`;
+        setToast("", "");
+        return;
+      }
+
+      const startISO = safe(exam.examStartISO);
+      const endISO   = safe(exam.examEndISO);
+      const date = formatDatePretty(startISO);
+      const t1 = formatTimePretty(startISO);
+      const t2 = formatTimePretty(endISO);
+      const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
+
+      const showHours = Number(CONFIG?.rules?.revealWindowHours ?? DEFAULT_SHOW_WINDOW_HOURS);
+      const now = await getServerNow();
+      const startDt = new Date(startISO);
+      const revealAt = isNaN(startDt.getTime()) ? null : new Date(startDt.getTime() - showHours*3600*1000);
+      const canReveal = !!(revealAt && now >= revealAt);
+
+      const locVal = canReveal ? safe(exam.location) : "••••";
+      const seatVal = canReveal ? safe(exam.seat) : "•••";
+
+      let counterHTML = "";
+      if(revealAt && !canReveal){
+        const diff = revealAt.getTime() - now.getTime();
+        counterHTML = `
+          <div class="countdownBox warn">
+            ⏳ Location & seat will appear in <b id="cdVal">${msToHMS(diff)}</b>
+          </div>`;
+        stopCountdown();
+        countdownTimer = setInterval(async ()=>{
+          const n = await getServerNow();
+          const d = revealAt.getTime() - n.getTime();
+          const el = document.getElementById("cdVal");
+          if(!el) return;
+          if(d <= 0){
+            stopCountdown();
+            openPaper();
+            return;
+          }
+          el.textContent = msToHMS(d);
+        }, 1000);
+      }else if(revealAt && canReveal){
+        counterHTML = `<div class="countdownBox ok">✅ Location & seat are available now.</div>`;
+      }
+
+      const courseCode = safe(exam.courseCode);
+      const courseName = safe(exam.courseName);
+
+      resultEl.hidden = false;
+      resultEl.innerHTML = `
+        <div class="paper">
+          <div class="paperHeader">
+            <div class="paperTitle">Student Info</div>
+            <div class="pill">ID: ${safe(student?.id || id)}</div>
+          </div>
+          <div class="paperBody">
+            <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
+            <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
+            <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
+
+            <div class="divider"></div>
+            <div class="nextExamTitle">Next Exam</div>
+            ${counterHTML}
+
+            <div class="examCard">
+              <div class="examHead">
+                <div class="examCourse">${courseName || "—"}</div>
+                <div class="examCode">${courseCode || ""}</div>
+              </div>
+              <table class="examTable">
+                <tr><th>Date</th><td>${date}</td></tr>
+                <tr><th>Time</th><td><b>${time}</b></td></tr>
+                <tr><th>Location</th><td>${locVal || "—"}</td></tr>
+                <tr><th>Seat</th><td>${seatVal || "—"}</td></tr>
+              </table>
+              <div class="actionsRow">
+                <button class="btnSecondary" type="button" id="copyBtn">Copy details</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+      const copyBtn = document.getElementById("copyBtn");
+      if(copyBtn){
+        copyBtn.onclick = async ()=>{
+          const lines = [
+            `Name: ${name}`,
+            `ID: ${safe(student?.id || id)}`,
+            sem ? `Semester: ${sem}` : null,
+            year ? `Academic Year: ${year}` : null,
+            "",
+            "Next Exam:",
+            `Course: ${courseName} (${courseCode})`,
+            `Date: ${date}`,
+            `Time: ${time}`,
+            `Location: ${locVal}`,
+            `Seat: ${seatVal}`
+          ].filter(Boolean).join("\n");
+
+          try{ await navigator.clipboard.writeText(lines); setToast("Copied.", "ok"); }
+          catch(_){ setToast("Copy failed.", "err"); }
+        };
+      }
+
+      setToast("", "");
+    }catch(_){
+      stopCountdown();
+      resultEl.hidden = true;
+      setIcon("bad");
+      openBtn.disabled = true;
+      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
+    }
+  }
+
+  async function init(){
+    await loadConfig();
+
+    openBtn.disabled = true;
+    setIcon("idle");
+    setToast("", "");
+
+    idInput.addEventListener("input", ()=>{
+      const id = normalizeDigits(idInput.value).trim();
+      stopCountdown();
+      resultEl.hidden = true;
+
+      if(!id){
+        setIcon("idle");
+        openBtn.disabled = true;
+        setToast("", "");
+        return;
+      }
+
+      if(!/^\d+$/.test(id)){
+        setIcon("err");
+        openBtn.disabled = true;
+        setToast(CONFIG?.messages?.invalid || "❌ Please enter numbers only.", "err");
+        return;
+      }
+
+      debouncedCheck(id);
+    });
+
+    idInput.addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") openPaper();
+    });
+
+    openBtn.addEventListener("click", openPaper);
+  }
+
+  init();
 })();
 </script>
+
 </body>
 </html>

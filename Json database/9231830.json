@@ -7,36 +7,36 @@
     {
       "courseCode": "AHS114",
       "courseName": "Physiology for health science Technologists",
-      "examStartISO": "2026-01-29T21:26:00+02:00",
-      "examEndISO": "2026-01-29T21:26:00+02:00",
-      "detailsAvailable": false,
-      "countdownHours": 23.82,
-      "location": null,
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "AHS111",
-      "courseName": "General Chemistry",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "examStartISO": "2026-01-29T21:00:00+02:00",
+      "examEndISO": "2026-01-29T23:00:00+02:00",
+      "detailsAvailable": true,
+      "countdownHours": 5.35,
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "97",
       "room": null,
       "building": null
     },
     {
       "courseCode": "AHS113",
       "courseName": "Anatomy for health science Technologists",
-      "examStartISO": null,
-      "examEndISO": null,
+      "examStartISO": "2026-01-30T11:00:00+02:00",
+      "examEndISO": "2026-01-30T12:00:00+02:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "countdownHours": 19.35,
+      "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "53",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-03-05T15:00:00+02:00",
+      "examEndISO": "2026-03-05T16:05:00+02:00",
+      "detailsAvailable": false,
+      "countdownHours": 839.35,
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "601",
       "room": null,
       "building": null
     },
@@ -47,7 +47,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -56,13 +56,13 @@
   "nextExam": {
     "courseCode": "AHS114",
     "courseName": "Physiology for health science Technologists",
-    "examStartISO": "2026-01-29T21:26:00+02:00",
-    "examEndISO": "2026-01-29T21:26:00+02:00",
-    "location": null,
-    "seat": null,
+    "examStartISO": "2026-01-29T21:00:00+02:00",
+    "examEndISO": "2026-01-29T23:00:00+02:00",
+    "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "97",
     "room": null,
     "building": null,
-    "detailsAvailable": false,
-    "countdownHours": 23.82
+    "detailsAvailable": true,
+    "countdownHours": 5.35
   }
 }

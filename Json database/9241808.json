@@ -7,12 +7,12 @@
     {
       "courseCode": "AHS112",
       "courseName": "General Biology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "examStartISO": "2026-02-05T22:00:00+02:00",
+      "examEndISO": "2026-02-05T12:00:00+02:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "countdownHours": 174.32,
+      "location": "Classroom (206) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "1020",
       "room": null,
       "building": null
     },
@@ -23,7 +23,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -35,7 +35,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -47,7 +47,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -59,11 +59,22 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "AHS112",
+    "courseName": "General Biology",
+    "examStartISO": "2026-02-05T22:00:00+02:00",
+    "examEndISO": "2026-02-05T12:00:00+02:00",
+    "location": "Classroom (206) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "1020",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 174.32
+  }
 }

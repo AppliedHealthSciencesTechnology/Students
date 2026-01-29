@@ -7,12 +7,12 @@
     {
       "courseCode": "AHS113",
       "courseName": "Anatomy for health science Technologists",
-      "examStartISO": null,
-      "examEndISO": null,
+      "examStartISO": "2026-01-30T11:00:00+02:00",
+      "examEndISO": "2026-01-30T12:00:00+02:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "countdownHours": 19.33,
+      "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "198",
       "room": null,
       "building": null
     },
@@ -23,7 +23,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -35,7 +35,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -47,11 +47,22 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "AHS113",
+    "courseName": "Anatomy for health science Technologists",
+    "examStartISO": "2026-01-30T11:00:00+02:00",
+    "examEndISO": "2026-01-30T12:00:00+02:00",
+    "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "198",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 19.33
+  }
 }

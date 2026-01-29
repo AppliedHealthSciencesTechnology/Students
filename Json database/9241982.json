@@ -7,12 +7,12 @@
     {
       "courseCode": "AHS 123",
       "courseName": "Histology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "examStartISO": "2026-03-05T15:00:00+02:00",
+      "examEndISO": "2026-03-05T16:05:00+02:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "countdownHours": 839.31,
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "17",
       "room": null,
       "building": null
     },
@@ -23,7 +23,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -35,7 +35,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -47,7 +47,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -59,11 +59,22 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "AHS 123",
+    "courseName": "Histology",
+    "examStartISO": "2026-03-05T15:00:00+02:00",
+    "examEndISO": "2026-03-05T16:05:00+02:00",
+    "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "17",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 839.31
+  }
 }

@@ -7,12 +7,12 @@
     {
       "courseCode": "AHS115",
       "courseName": "Physics",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": null,
-      "seat": null,
+      "examStartISO": "2026-01-29T19:00:00+02:00",
+      "examEndISO": "2026-01-29T21:00:00+02:00",
+      "detailsAvailable": true,
+      "countdownHours": 3.36,
+      "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "207",
       "room": null,
       "building": null
     },
@@ -23,7 +23,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -35,7 +35,7 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
@@ -47,11 +47,22 @@
       "examEndISO": null,
       "detailsAvailable": false,
       "countdownHours": null,
-      "location": null,
+      "location": "TBA",
       "seat": null,
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "AHS115",
+    "courseName": "Physics",
+    "examStartISO": "2026-01-29T19:00:00+02:00",
+    "examEndISO": "2026-01-29T21:00:00+02:00",
+    "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "207",
+    "room": null,
+    "building": null,
+    "detailsAvailable": true,
+    "countdownHours": 3.36
+  }
 }

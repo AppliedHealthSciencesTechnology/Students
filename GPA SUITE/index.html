@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>GPA Suite</title>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="header">
+<div class="topbar">
+<div class="brand">
+<div>
+<div class="brand-title">GPA Suite</div>
+</div>
+</div>
+<div class="nav">
+<a class="pill" href="#/dashboard" id="navHome">الرئيسية</a>
+<a class="pill" href="#/tools/gpa2grade" id="navGpa2Grade">معرفة التقدير</a>
+<a class="pill" href="#/tools/improve" id="navRaise">تحسين التقدير</a>
+<a class="pill" href="#/policy" id="navPolicy">سلم النقاط</a>
+<button class="pill" id="toggleLang">EN</button>
+</div>
+</div>
+</div>
+<div class="container">
+<div id="app"></div>
+</div>
+<script src="app.js"></script>
+
+<div aria-modal="true" class="modal hidden" id="gpaModal" role="dialog">
+<div class="modal-backdrop" data-modal="close"></div>
+<div class="modal-card" role="document">
+<div class="modal-head">
+<div class="modal-title" id="gpaModalTitle">Result</div>
+<button aria-label="Close" class="iconbtn" id="gpaModalClose">✕</button>
+</div>
+<div class="modal-body" id="gpaModalBody"></div>
+<div class="modal-foot" id="gpaModalFoot"></div>
+</div>
+</div>
+<div class="printArea" id="printArea"></div>
+</body>
+</html>

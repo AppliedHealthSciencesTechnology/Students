@@ -294,6 +294,30 @@
   .header-logo img, .logo img, .brand-logo img, img#logo, #logoWrap img { height: 46px; }
 }
 
+/* --- GPA Suite badge (non-intrusive) --- */
+.gpaSuiteBadge{
+  position:fixed;
+  top:calc(12px + env(safe-area-inset-top));
+  right:calc(12px + env(safe-area-inset-right));
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-family:var(--font);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.2px;
+  color:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  pointer-events:none;
+  backdrop-filter: blur(6px);
+}
+.gpaSuiteBadge svg{width:12px;height:12px;display:block;opacity:.9}
+html[dir="rtl"] .gpaSuiteBadge{right:auto; left:calc(12px + env(safe-area-inset-left));}
+
 </style>
 </head>
 <body>
@@ -337,6 +361,14 @@
         <div id="result" class="result" hidden></div>
       </div>
     </div>
+  </div>
+
+  <div class="gpaSuiteBadge" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 3l10 5-10 5L2 8l10-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M6 11v5c0 1 3 3 6 3s6-2 6-3v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span>GPA Suite</span>
   </div>
 
 <script>

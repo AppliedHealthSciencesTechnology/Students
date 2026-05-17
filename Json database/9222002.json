@@ -1,36 +1,48 @@
 {
   "id": "9222002",
   "name": "يارا عادل محمد ابراهيم الصاوى",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "ECC311",
-      "courseName": "Airway Management & Ventilation",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "ECC324",
+      "courseName": "Patient Monitoring and Assessments 2",
+      "examStartISO": "2026-05-21T09:30:00+03:00",
+      "examEndISO": "2026-05-21T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 112.16,
+      "location": "HALL (4) Building 8",
+      "seat": "5",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "ECC312",
-      "courseName": "Emergency Practice-1",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "ECC425",
+      "courseName": "Anesthesia Equipment",
+      "examStartISO": "2026-06-02T09:30:00+03:00",
+      "examEndISO": "2026-06-02T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 400.16,
+      "location": "HALL (5) Building 8",
+      "seat": "44",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "ECC411",
-      "courseName": "Intensive Care Practice 2",
+      "courseCode": "ECC424",
+      "courseName": "Clinical Anesthesia",
+      "examStartISO": "2026-06-11T11:45:00+03:00",
+      "examEndISO": "2026-06-11T13:45:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 618.41,
+      "location": "HALL (3) Building 8",
+      "seat": "44",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "ECC423",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -41,5 +53,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "ECC324",
+    "courseName": "Patient Monitoring and Assessments 2",
+    "examStartISO": "2026-05-21T09:30:00+03:00",
+    "examEndISO": "2026-05-21T11:30:00+03:00",
+    "location": "HALL (4) Building 8",
+    "seat": "5",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 112.16
+  }
 }

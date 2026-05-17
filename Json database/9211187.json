@@ -1,36 +1,48 @@
 {
   "id": "9211187",
-  "name": "شكرى عبدالحميد شكرى عبدالرازق",
-  "semester": "Final - Fall",
+  "name": "شكرى عبد الحميد شكرى عبد الرازق",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "MLA312",
-      "courseName": "Laboratory Parasitology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA422",
+      "courseName": "Body Fluids and Urine Analysis",
+      "examStartISO": "2026-05-19T09:30:00+03:00",
+      "examEndISO": "2026-05-19T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 64.17,
+      "location": "HALL (5) Building 8",
+      "seat": "3",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA411",
-      "courseName": "Laboratory Instrumentation and Methodologies (2)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA312E",
+      "courseName": "Health Education",
+      "examStartISO": "2026-06-06T09:30:00+03:00",
+      "examEndISO": "2026-06-06T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 496.17,
+      "location": "HALL (3) Building 8",
+      "seat": "2",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA413",
-      "courseName": "Immunology and Serology",
+      "courseCode": "MLA323",
+      "courseName": "Virology &Mycology",
+      "examStartISO": "2026-06-08T11:45:00+03:00",
+      "examEndISO": "2026-06-08T13:45:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 546.42,
+      "location": "HALL (5) Building 8",
+      "seat": "2",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "MLA424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -41,5 +53,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "MLA422",
+    "courseName": "Body Fluids and Urine Analysis",
+    "examStartISO": "2026-05-19T09:30:00+03:00",
+    "examEndISO": "2026-05-19T11:30:00+03:00",
+    "location": "HALL (5) Building 8",
+    "seat": "3",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 64.17
+  }
 }

@@ -1,48 +1,48 @@
 {
   "id": "9211056",
   "name": "محمود رمضان خليل عبد الغنى",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "GEN101",
-      "courseName": "English Language II",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "courseCode": "RAD423",
+      "courseName": "Ultrasonic and Doppler Examination Technique",
+      "examStartISO": "2026-05-16T11:45:00+03:00",
+      "examEndISO": "2026-05-16T13:45:00+03:00",
+      "detailsAvailable": true,
+      "countdownHours": -5.58,
+      "location": "HALL (3) Building 8",
+      "seat": "1",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "RAD411",
-      "courseName": "Radiotherapy Technique",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "RAD224",
+      "courseName": "Advanced Pathology",
+      "examStartISO": "2026-05-19T11:45:00+03:00",
+      "examEndISO": "2026-05-19T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 66.42,
+      "location": "HALL (3) Building 8",
+      "seat": "1",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "RAD413",
-      "courseName": "CT Examination Technique",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "RAD323",
+      "courseName": "Quality Management in Medical Imaging",
+      "examStartISO": "2026-06-09T09:30:00+03:00",
+      "examEndISO": "2026-06-09T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 568.17,
+      "location": "HALL (3) Building 8",
+      "seat": "1",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "RAD421E",
-      "courseName": "Lab Safety Precautions",
+      "courseCode": "RAD424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -53,5 +53,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "RAD224",
+    "courseName": "Advanced Pathology",
+    "examStartISO": "2026-05-19T11:45:00+03:00",
+    "examEndISO": "2026-05-19T13:45:00+03:00",
+    "location": "HALL (3) Building 8",
+    "seat": "1",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 66.42
+  }
 }

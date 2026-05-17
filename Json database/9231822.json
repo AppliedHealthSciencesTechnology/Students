@@ -1,48 +1,48 @@
 {
   "id": "9231822",
   "name": "جمانه سيد احمد فرج الزيط",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "MLA313",
-      "courseName": "Field Training for Medical Laboratory technologists 1",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "courseCode": "MLA421",
+      "courseName": "Field Training for medical laboratory technologists 2",
+      "examStartISO": "2026-05-16T14:00:00+03:00",
+      "examEndISO": "2026-05-16T16:00:00+03:00",
+      "detailsAvailable": true,
+      "countdownHours": -3.35,
+      "location": "HALL (3) Building 8",
+      "seat": "80",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA411",
-      "courseName": "Laboratory Instrumentation and Methodologies (2)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-06-04T14:00:00+03:00",
+      "examEndISO": "2026-06-04T14:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 452.65,
+      "location": "Computer lab 9 (307) (كلية الذكاء الاصطناعي)",
+      "seat": "4",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA412",
-      "courseName": "Quality Management in Medical Laboratories",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA423",
+      "courseName": "Blood Banking",
+      "examStartISO": "2026-06-11T11:45:00+03:00",
+      "examEndISO": "2026-06-11T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 618.4,
+      "location": "HALL (4) Building 8",
+      "seat": "74",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA413",
-      "courseName": "Immunology and Serology",
+      "courseCode": "MLA424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -53,5 +53,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "GEN201",
+    "courseName": "Technical Report Writing I",
+    "examStartISO": "2026-06-04T14:00:00+03:00",
+    "examEndISO": "2026-06-04T14:45:00+03:00",
+    "location": "Computer lab 9 (307) (كلية الذكاء الاصطناعي)",
+    "seat": "4",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 452.65
+  }
 }

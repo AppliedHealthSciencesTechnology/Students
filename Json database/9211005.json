@@ -1,21 +1,32 @@
 {
   "id": "9211005",
-  "name": "ايه على محمود محمد ابوعلى",
-  "semester": "Final - Fall",
+  "name": "آيه على محمود محمد ابوعلى",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "DNT412",
-      "courseName": "Applied Partial Removable Prosthodontics (1)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT422",
+      "courseName": "Applied Partial Removable Prosthodontics (2)",
+      "examStartISO": "2026-05-20T11:45:00+03:00",
+      "examEndISO": "2026-05-20T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 90.42,
+      "location": "HALL (5) Building 8",
+      "seat": "1",
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "DNT422",
+    "courseName": "Applied Partial Removable Prosthodontics (2)",
+    "examStartISO": "2026-05-20T11:45:00+03:00",
+    "examEndISO": "2026-05-20T13:45:00+03:00",
+    "location": "HALL (5) Building 8",
+    "seat": "1",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 90.42
+  }
 }

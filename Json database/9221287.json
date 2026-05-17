@@ -1,48 +1,48 @@
 {
   "id": "9221287",
   "name": "منه الله شاكر جمعة عطا الله الشربينى",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "DNT312",
-      "courseName": "Esthetic Prosthodontics Technology (1)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT411",
+      "courseName": "CAD CAM in Prosthodontics : Digitization",
+      "examStartISO": "2026-05-17T11:45:00+03:00",
+      "examEndISO": "2026-05-17T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 18.42,
+      "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "18",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "DNT313",
-      "courseName": "Dental Implants Technology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-05-18T11:45:00+03:00",
+      "examEndISO": "2026-05-18T12:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 42.42,
+      "location": "Computer Lab. (1) (211) Energy Engineering",
+      "seat": "9",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "DNT414",
-      "courseName": "Applied Fixed Prosthodontics (1)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT221",
+      "courseName": "Removable Complete Prosthodontics Technology (1)",
+      "examStartISO": "2026-05-23T09:30:00+03:00",
+      "examEndISO": "2026-05-23T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 160.17,
+      "location": "HALL (3) Building 8",
+      "seat": "6",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "GEN302",
-      "courseName": "General Risk Management",
+      "courseCode": "DNT424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -53,5 +53,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "DNT411",
+    "courseName": "CAD CAM in Prosthodontics : Digitization",
+    "examStartISO": "2026-05-17T11:45:00+03:00",
+    "examEndISO": "2026-05-17T13:45:00+03:00",
+    "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "18",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 18.42
+  }
 }

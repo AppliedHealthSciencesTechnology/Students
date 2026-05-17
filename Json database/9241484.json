@@ -1,68 +1,68 @@
 {
   "id": "9241484",
   "name": "مي ضياء لطفي الشربيني احمد",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "AHS113",
-      "courseName": "Anatomy for health science Technologists",
-      "examStartISO": "2026-01-30T11:00:00+02:00",
-      "examEndISO": "2026-01-30T12:00:00+02:00",
-      "detailsAvailable": false,
-      "countdownHours": 19.33,
-      "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
-      "seat": "198",
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT211",
-      "courseName": "Head & Neck Anatomy",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT213",
-      "courseName": "Dental Materials",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
       "courseCode": "DNT214",
       "courseName": "Fundamentals Of Technology of Dental Prostheses Manufacture",
-      "examStartISO": null,
-      "examEndISO": null,
+      "examStartISO": "2026-05-23T09:30:00+03:00",
+      "examEndISO": "2026-05-23T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 160.13,
+      "location": "HALL (6) Building 8",
+      "seat": "27",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS 123",
+      "courseName": "Histology",
+      "examStartISO": "2026-05-30T09:30:00+03:00",
+      "examEndISO": "2026-05-30T11:30:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 328.13,
+      "location": "Computer Lab2 (102) (كلية الطب البشري)",
+      "seat": "9",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS121",
+      "courseName": "Basic Microbiology",
+      "examStartISO": "2026-06-07T14:00:00+03:00",
+      "examEndISO": "2026-06-07T16:00:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 524.63,
+      "location": "HALL (1) Building 8",
+      "seat": "38",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS125",
+      "courseName": "Bio statistics",
+      "examStartISO": "2026-06-17T09:30:00+03:00",
+      "examEndISO": "2026-06-17T11:30:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 760.13,
+      "location": "Lab (101) Business",
+      "seat": "14",
       "room": null,
       "building": null
     }
   ],
   "nextExam": {
-    "courseCode": "AHS113",
-    "courseName": "Anatomy for health science Technologists",
-    "examStartISO": "2026-01-30T11:00:00+02:00",
-    "examEndISO": "2026-01-30T12:00:00+02:00",
-    "location": "HALL 6 Building 8 (312) (كلية تكنولوجيا العلوم الصحية التطبيقية)",
-    "seat": "198",
+    "courseCode": "DNT214",
+    "courseName": "Fundamentals Of Technology of Dental Prostheses Manufacture",
+    "examStartISO": "2026-05-23T09:30:00+03:00",
+    "examEndISO": "2026-05-23T11:30:00+03:00",
+    "location": "HALL (6) Building 8",
+    "seat": "27",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 19.33
+    "countdownHours": 160.13
   }
 }

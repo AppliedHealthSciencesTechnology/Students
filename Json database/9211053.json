@@ -1,0 +1,80 @@
+{
+  "id": "9211053",
+  "name": "محمد السيد محمد البدراوى",
+  "semester": "Final - Spring",
+  "academicYear": "2025/2026",
+  "exams": [
+    {
+      "courseCode": "GEN002",
+      "courseName": "English Language I",
+      "examStartISO": "2026-05-16T14:00:00+03:00",
+      "examEndISO": "2026-05-16T14:45:00+03:00",
+      "detailsAvailable": true,
+      "countdownHours": -3.33,
+      "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
+      "seat": "1",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS127",
+      "courseName": "Health Informatics",
+      "examStartISO": "2026-06-03T11:45:00+03:00",
+      "examEndISO": "2026-06-03T13:45:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 426.42,
+      "location": "Lab (108) Business",
+      "seat": "1",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "GEN003",
+      "courseName": "Psychology and Organization Behavior",
+      "examStartISO": "2026-06-06T14:00:00+03:00",
+      "examEndISO": "2026-06-06T14:45:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 500.67,
+      "location": "Computer Lab2 (102) (كلية الطب البشري)",
+      "seat": "1",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-06-08T09:30:00+03:00",
+      "examEndISO": "2026-06-08T11:30:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 544.17,
+      "location": "HALL (3) Building 8",
+      "seat": "1",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "AHS125",
+      "courseName": "Bio statistics",
+      "examStartISO": "2026-06-17T09:30:00+03:00",
+      "examEndISO": "2026-06-17T11:30:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 760.17,
+      "location": "Lab (108) Business",
+      "seat": "1",
+      "room": null,
+      "building": null
+    }
+  ],
+  "nextExam": {
+    "courseCode": "AHS127",
+    "courseName": "Health Informatics",
+    "examStartISO": "2026-06-03T11:45:00+03:00",
+    "examEndISO": "2026-06-03T13:45:00+03:00",
+    "location": "Lab (108) Business",
+    "seat": "1",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 426.42
+  }
+}

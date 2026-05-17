@@ -1,45 +1,32 @@
 {
   "id": "9212001",
   "name": "عمر يوسف احمد يوسف البربرى",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "DNT421",
-      "courseName": "CAD/CAM: Manufacturing",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT422",
+      "courseName": "Applied Partial Removable Prosthodontics (2)",
+      "examStartISO": "2026-05-20T11:45:00+03:00",
+      "examEndISO": "2026-05-20T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT423",
-      "courseName": "Applied Fixed Prosthodontics (2)",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT424",
-      "courseName": "Graduation Project",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 90.42,
+      "location": "HALL (5) Building 8",
+      "seat": "8",
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "DNT422",
+    "courseName": "Applied Partial Removable Prosthodontics (2)",
+    "examStartISO": "2026-05-20T11:45:00+03:00",
+    "examEndISO": "2026-05-20T13:45:00+03:00",
+    "location": "HALL (5) Building 8",
+    "seat": "8",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 90.42
+  }
 }

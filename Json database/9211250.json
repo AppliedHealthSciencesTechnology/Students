@@ -1,21 +1,44 @@
 {
   "id": "9211250",
   "name": "محمد وليد رياض الموافى",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "DNT312",
-      "courseName": "Esthetic Prosthodontics Technology (1)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT411",
+      "courseName": "CAD CAM in Prosthodontics : Digitization",
+      "examStartISO": "2026-05-17T11:45:00+03:00",
+      "examEndISO": "2026-05-17T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 18.42,
+      "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "5",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "DNT421",
+      "courseName": "CAD/CAM: Manufacturing",
+      "examStartISO": "2026-05-25T14:00:00+03:00",
+      "examEndISO": "2026-05-25T16:00:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 212.67,
+      "location": "HALL (6) Building 8",
+      "seat": "3",
       "room": null,
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "DNT411",
+    "courseName": "CAD CAM in Prosthodontics : Digitization",
+    "examStartISO": "2026-05-17T11:45:00+03:00",
+    "examEndISO": "2026-05-17T13:45:00+03:00",
+    "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "5",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 18.42
+  }
 }

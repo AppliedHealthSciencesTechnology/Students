@@ -5,7 +5,7 @@
   "databaseFolder": "Json database",
   "studentJsonPathTemplate": "Json database/{id}.json",
   "version": 1,
-  "generatedAtISO": "2026-01-29T15:28:42.449541+02:00",
+  "generatedAtISO": "2026-05-16T16:55:06.414595+03:00",
   "releaseWindowHours": 16,
   "closeAtExamStart": true,
   "messages": {

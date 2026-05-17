@@ -1,72 +1,36 @@
 {
   "id": "9221353",
   "name": "مرام السيد مصباح السيد عصر",
-  "semester": "Final - Fall",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "DNT215",
-      "courseName": "Dental Morphology & Occlusion Technology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT411",
+      "courseName": "CAD CAM in Prosthodontics : Digitization",
+      "examStartISO": "2026-05-17T11:45:00+03:00",
+      "examEndISO": "2026-05-17T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 18.41,
+      "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "20",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "DNT312",
-      "courseName": "Esthetic Prosthodontics Technology (1)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "DNT422",
+      "courseName": "Applied Partial Removable Prosthodontics (2)",
+      "examStartISO": "2026-05-20T11:45:00+03:00",
+      "examEndISO": "2026-05-20T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 90.41,
+      "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "10",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "DNT321E",
-      "courseName": "Advanced Removable Prosthodontics",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT412",
-      "courseName": "Applied Partial Removable Prosthodontics (1)",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "DNT423",
-      "courseName": "Applied Fixed Prosthodontics (2)",
-      "examStartISO": null,
-      "examEndISO": null,
-      "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
-      "room": null,
-      "building": null
-    },
-    {
-      "courseCode": "GEN302",
-      "courseName": "General Risk Management",
+      "courseCode": "DNT424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -77,5 +41,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "DNT411",
+    "courseName": "CAD CAM in Prosthodontics : Digitization",
+    "examStartISO": "2026-05-17T11:45:00+03:00",
+    "examEndISO": "2026-05-17T13:45:00+03:00",
+    "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+    "seat": "20",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 18.41
+  }
 }

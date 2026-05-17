@@ -1,48 +1,60 @@
 {
   "id": "9231827",
-  "name": "محمد سيد عبد الواسع ابراهيم",
-  "semester": "Final - Fall",
+  "name": "محمد سيد عبدالواسع ابراهيم",
+  "semester": "Final - Spring",
   "academicYear": "2025/2026",
   "exams": [
     {
-      "courseCode": "MLA411",
-      "courseName": "Laboratory Instrumentation and Methodologies (2)",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA422",
+      "courseName": "Body Fluids and Urine Analysis",
+      "examStartISO": "2026-05-19T09:30:00+03:00",
+      "examEndISO": "2026-05-19T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 64.15,
+      "location": "HALL (5) Building 8",
+      "seat": "85",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA412",
-      "courseName": "Quality Management in Medical Laboratories",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA321",
+      "courseName": "Hematology (2)",
+      "examStartISO": "2026-05-31T09:30:00+03:00",
+      "examEndISO": "2026-05-31T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 352.15,
+      "location": "HALL (5) Building 8",
+      "seat": "62",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA413",
-      "courseName": "Immunology and Serology",
-      "examStartISO": null,
-      "examEndISO": null,
+      "courseCode": "MLA323",
+      "courseName": "Virology &Mycology",
+      "examStartISO": "2026-06-08T11:45:00+03:00",
+      "examEndISO": "2026-06-08T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": null,
-      "location": "TBA",
-      "seat": null,
+      "countdownHours": 546.4,
+      "location": "HALL (5) Building 8",
+      "seat": "58",
       "room": null,
       "building": null
     },
     {
-      "courseCode": "MLA414",
-      "courseName": "Research Methodology",
+      "courseCode": "MLA423",
+      "courseName": "Blood Banking",
+      "examStartISO": "2026-06-11T11:45:00+03:00",
+      "examEndISO": "2026-06-11T13:45:00+03:00",
+      "detailsAvailable": false,
+      "countdownHours": 618.4,
+      "location": "HALL (4) Building 8",
+      "seat": "75",
+      "room": null,
+      "building": null
+    },
+    {
+      "courseCode": "MLA424",
+      "courseName": "Graduation Project",
       "examStartISO": null,
       "examEndISO": null,
       "detailsAvailable": false,
@@ -53,5 +65,16 @@
       "building": null
     }
   ],
-  "nextExam": null
+  "nextExam": {
+    "courseCode": "MLA422",
+    "courseName": "Body Fluids and Urine Analysis",
+    "examStartISO": "2026-05-19T09:30:00+03:00",
+    "examEndISO": "2026-05-19T11:30:00+03:00",
+    "location": "HALL (5) Building 8",
+    "seat": "85",
+    "room": null,
+    "building": null,
+    "detailsAvailable": false,
+    "countdownHours": 64.15
+  }
 }

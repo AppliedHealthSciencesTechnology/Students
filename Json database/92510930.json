@@ -2,31 +2,20 @@
   "id": "92510930",
   "name": "محمد عمرو عطية السعيد عطيه",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "AHS124",
       "courseName": "Pharmacology for health science Technologists",
-      "examStartISO": "2026-05-17T09:30:00+03:00",
-      "examEndISO": "2026-05-17T11:30:00+03:00",
-      "detailsAvailable": false,
-      "countdownHours": 16.1,
-      "location": "Physics Lab (214-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "examStartISO": "2026-07-17T09:30:00+03:00",
+      "examEndISO": "2026-07-17T11:30:00+03:00",
+      "detailsAvailable": true,
+      "countdownHours": -32.68,
+      "location": "Lab. (214) AHST",
       "seat": "7",
       "room": null,
       "building": null
     }
   ],
-  "nextExam": {
-    "courseCode": "AHS124",
-    "courseName": "Pharmacology for health science Technologists",
-    "examStartISO": "2026-05-17T09:30:00+03:00",
-    "examEndISO": "2026-05-17T11:30:00+03:00",
-    "location": "Physics Lab (214-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
-    "seat": "7",
-    "room": null,
-    "building": null,
-    "detailsAvailable": false,
-    "countdownHours": 16.1
-  }
+  "nextExam": null
 }

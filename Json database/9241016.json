@@ -2,29 +2,29 @@
   "id": "9241016",
   "name": "امال هاني زغلول السعيد حجازي",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "ECC221",
       "courseName": "Respiratory Emergencies",
-      "examStartISO": "2026-05-23T09:30:00+03:00",
-      "examEndISO": "2026-05-23T11:30:00+03:00",
+      "examStartISO": "2026-07-23T09:30:00+03:00",
+      "examEndISO": "2026-07-23T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 160.15,
-      "location": "HALL (5) Building 8",
-      "seat": "8",
+      "countdownHours": 111.35,
+      "location": "Hall (5) Building 8",
+      "seat": "12",
       "room": null,
       "building": null
     },
     {
       "courseCode": "ECC223",
       "courseName": "Emergency in Medicine 2",
-      "examStartISO": "2026-06-09T11:45:00+03:00",
-      "examEndISO": "2026-06-09T13:45:00+03:00",
+      "examStartISO": "2026-08-09T11:45:00+03:00",
+      "examEndISO": "2026-08-09T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 570.4,
-      "location": "HALL (3) Building 8",
-      "seat": "3",
+      "countdownHours": 521.6,
+      "location": "Hall (3) Building 8",
+      "seat": "19",
       "room": null,
       "building": null
     }
@@ -32,13 +32,13 @@
   "nextExam": {
     "courseCode": "ECC221",
     "courseName": "Respiratory Emergencies",
-    "examStartISO": "2026-05-23T09:30:00+03:00",
-    "examEndISO": "2026-05-23T11:30:00+03:00",
-    "location": "HALL (5) Building 8",
-    "seat": "8",
+    "examStartISO": "2026-07-23T09:30:00+03:00",
+    "examEndISO": "2026-07-23T11:30:00+03:00",
+    "location": "Hall (5) Building 8",
+    "seat": "12",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 160.15
+    "countdownHours": 111.35
   }
 }

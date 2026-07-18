@@ -2,41 +2,41 @@
   "id": "9211119",
   "name": "رنيم احمد السيد مصطفى سلام",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "DNT422",
       "courseName": "Applied Partial Removable Prosthodontics (2)",
-      "examStartISO": "2026-05-20T11:45:00+03:00",
-      "examEndISO": "2026-05-20T13:45:00+03:00",
+      "examStartISO": "2026-07-20T11:45:00+03:00",
+      "examEndISO": "2026-07-20T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 90.42,
-      "location": "HALL (5) Building 8",
-      "seat": "3",
+      "countdownHours": 41.62,
+      "location": "Hall (5) Building 8",
+      "seat": "36",
       "room": null,
       "building": null
     },
     {
       "courseCode": "DNT221",
       "courseName": "Removable Complete Prosthodontics Technology (1)",
-      "examStartISO": "2026-05-23T09:30:00+03:00",
-      "examEndISO": "2026-05-23T11:30:00+03:00",
+      "examStartISO": "2026-07-23T09:30:00+03:00",
+      "examEndISO": "2026-07-23T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 160.17,
-      "location": "HALL (3) Building 8",
-      "seat": "1",
+      "countdownHours": 111.37,
+      "location": "Hall (3) Building 8",
+      "seat": "54",
       "room": null,
       "building": null
     },
     {
       "courseCode": "DNT324",
       "courseName": "Dental Radiology",
-      "examStartISO": "2026-05-24T09:30:00+03:00",
-      "examEndISO": "2026-05-24T11:30:00+03:00",
+      "examStartISO": "2026-07-24T09:30:00+03:00",
+      "examEndISO": "2026-07-24T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 184.17,
-      "location": "HALL (5) Building 8",
-      "seat": "1",
+      "countdownHours": 135.37,
+      "location": "Hall (5) Building 8",
+      "seat": "61",
       "room": null,
       "building": null
     }
@@ -44,13 +44,13 @@
   "nextExam": {
     "courseCode": "DNT422",
     "courseName": "Applied Partial Removable Prosthodontics (2)",
-    "examStartISO": "2026-05-20T11:45:00+03:00",
-    "examEndISO": "2026-05-20T13:45:00+03:00",
-    "location": "HALL (5) Building 8",
-    "seat": "3",
+    "examStartISO": "2026-07-20T11:45:00+03:00",
+    "examEndISO": "2026-07-20T13:45:00+03:00",
+    "location": "Hall (5) Building 8",
+    "seat": "36",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 90.42
+    "countdownHours": 41.62
   }
 }

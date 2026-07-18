@@ -2,28 +2,28 @@
   "id": "9211124",
   "name": "شهد شريف عوض محمد",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "DNT221",
       "courseName": "Removable Complete Prosthodontics Technology (1)",
-      "examStartISO": "2026-05-23T09:30:00+03:00",
-      "examEndISO": "2026-05-23T11:30:00+03:00",
+      "examStartISO": "2026-07-23T09:30:00+03:00",
+      "examEndISO": "2026-07-23T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 160.17,
-      "location": "HALL (3) Building 8",
-      "seat": "2",
+      "countdownHours": 111.37,
+      "location": "Hall (3) Building 8",
+      "seat": "26",
       "room": null,
       "building": null
     },
     {
       "courseCode": "DNT413",
       "courseName": "Oral Pathology",
-      "examStartISO": "2026-06-02T09:30:00+03:00",
-      "examEndISO": "2026-06-02T11:30:00+03:00",
+      "examStartISO": "2026-08-02T09:30:00+03:00",
+      "examEndISO": "2026-08-02T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 400.17,
-      "location": "HALL (5) Building 8",
+      "countdownHours": 351.37,
+      "location": "Hall (5) Building 8",
       "seat": "1",
       "room": null,
       "building": null
@@ -32,13 +32,13 @@
   "nextExam": {
     "courseCode": "DNT221",
     "courseName": "Removable Complete Prosthodontics Technology (1)",
-    "examStartISO": "2026-05-23T09:30:00+03:00",
-    "examEndISO": "2026-05-23T11:30:00+03:00",
-    "location": "HALL (3) Building 8",
-    "seat": "2",
+    "examStartISO": "2026-07-23T09:30:00+03:00",
+    "examEndISO": "2026-07-23T11:30:00+03:00",
+    "location": "Hall (3) Building 8",
+    "seat": "26",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 160.17
+    "countdownHours": 111.37
   }
 }

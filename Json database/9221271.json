@@ -2,17 +2,17 @@
   "id": "9221271",
   "name": "محمد محمود نبيه موسى منصور",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "RAD423",
       "courseName": "Ultrasonic and Doppler Examination Technique",
-      "examStartISO": "2026-05-16T11:45:00+03:00",
-      "examEndISO": "2026-05-16T13:45:00+03:00",
+      "examStartISO": "2026-07-16T11:45:00+03:00",
+      "examEndISO": "2026-07-16T13:45:00+03:00",
       "detailsAvailable": true,
-      "countdownHours": -5.58,
-      "location": "HALL (4) Building 8",
-      "seat": "45",
+      "countdownHours": -54.39,
+      "location": "Hall (4) Building 8",
+      "seat": "31",
       "room": null,
       "building": null
     },

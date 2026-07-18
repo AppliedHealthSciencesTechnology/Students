@@ -2,40 +2,40 @@
   "id": "9231468",
   "name": "منار علي طه سعفان",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "GEN002",
       "courseName": "English Language I",
-      "examStartISO": "2026-05-16T14:00:00+03:00",
-      "examEndISO": "2026-05-16T14:45:00+03:00",
+      "examStartISO": "2026-07-16T14:00:00+03:00",
+      "examEndISO": "2026-07-16T14:45:00+03:00",
       "detailsAvailable": true,
-      "countdownHours": -3.35,
+      "countdownHours": -52.15,
       "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
-      "seat": "12",
+      "seat": "17",
       "room": null,
       "building": null
     },
     {
       "courseCode": "MLA322",
       "courseName": "Clinical Chemistry 2",
-      "examStartISO": "2026-05-23T11:45:00+03:00",
-      "examEndISO": "2026-05-23T13:45:00+03:00",
+      "examStartISO": "2026-07-23T11:45:00+03:00",
+      "examEndISO": "2026-07-23T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 162.4,
-      "location": "HALL (3) Building 8",
-      "seat": "72",
+      "countdownHours": 113.6,
+      "location": "Hall (3) Building 8",
+      "seat": "46",
       "room": null,
       "building": null
     },
     {
       "courseCode": "MLA411",
       "courseName": "Laboratory Instrumentation and Methodologies (2)",
-      "examStartISO": "2026-06-03T09:30:00+03:00",
-      "examEndISO": "2026-06-03T11:30:00+03:00",
+      "examStartISO": "2026-08-03T09:30:00+03:00",
+      "examEndISO": "2026-08-03T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 424.15,
-      "location": "HALL (4) Building 8",
+      "countdownHours": 375.35,
+      "location": "Hall (4) Building 8",
       "seat": "5",
       "room": null,
       "building": null
@@ -43,12 +43,12 @@
     {
       "courseCode": "MLA323",
       "courseName": "Virology &Mycology",
-      "examStartISO": "2026-06-08T11:45:00+03:00",
-      "examEndISO": "2026-06-08T13:45:00+03:00",
+      "examStartISO": "2026-08-08T11:45:00+03:00",
+      "examEndISO": "2026-08-08T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 546.4,
-      "location": "HALL (5) Building 8",
-      "seat": "56",
+      "countdownHours": 497.6,
+      "location": "Hall (5) Building 8",
+      "seat": "14",
       "room": null,
       "building": null
     }
@@ -56,13 +56,13 @@
   "nextExam": {
     "courseCode": "MLA322",
     "courseName": "Clinical Chemistry 2",
-    "examStartISO": "2026-05-23T11:45:00+03:00",
-    "examEndISO": "2026-05-23T13:45:00+03:00",
-    "location": "HALL (3) Building 8",
-    "seat": "72",
+    "examStartISO": "2026-07-23T11:45:00+03:00",
+    "examEndISO": "2026-07-23T13:45:00+03:00",
+    "location": "Hall (3) Building 8",
+    "seat": "46",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 162.4
+    "countdownHours": 113.6
   }
 }

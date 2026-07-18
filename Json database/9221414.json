@@ -2,29 +2,29 @@
   "id": "9221414",
   "name": "انجى ابراهيم سادات مصطفى الشافعى",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "MLA421",
       "courseName": "Field Training for medical laboratory technologists 2",
-      "examStartISO": "2026-05-16T14:00:00+03:00",
-      "examEndISO": "2026-05-16T16:00:00+03:00",
+      "examStartISO": "2026-07-16T14:00:00+03:00",
+      "examEndISO": "2026-07-16T16:00:00+03:00",
       "detailsAvailable": true,
-      "countdownHours": -3.34,
-      "location": "HALL (3) Building 8",
-      "seat": "73",
+      "countdownHours": -52.14,
+      "location": "Hall (5) Building 8",
+      "seat": "30",
       "room": null,
       "building": null
     },
     {
       "courseCode": "MLA422",
       "courseName": "Body Fluids and Urine Analysis",
-      "examStartISO": "2026-05-19T09:30:00+03:00",
-      "examEndISO": "2026-05-19T11:30:00+03:00",
-      "detailsAvailable": false,
-      "countdownHours": 64.16,
-      "location": "HALL (5) Building 8",
-      "seat": "75",
+      "examStartISO": "2026-07-19T09:30:00+03:00",
+      "examEndISO": "2026-07-19T11:30:00+03:00",
+      "detailsAvailable": true,
+      "countdownHours": 15.36,
+      "location": "Hall (5) Building 8",
+      "seat": "45",
       "room": null,
       "building": null
     },
@@ -44,13 +44,13 @@
   "nextExam": {
     "courseCode": "MLA422",
     "courseName": "Body Fluids and Urine Analysis",
-    "examStartISO": "2026-05-19T09:30:00+03:00",
-    "examEndISO": "2026-05-19T11:30:00+03:00",
-    "location": "HALL (5) Building 8",
-    "seat": "75",
+    "examStartISO": "2026-07-19T09:30:00+03:00",
+    "examEndISO": "2026-07-19T11:30:00+03:00",
+    "location": "Hall (5) Building 8",
+    "seat": "45",
     "room": null,
     "building": null,
-    "detailsAvailable": false,
-    "countdownHours": 64.16
+    "detailsAvailable": true,
+    "countdownHours": 15.36
   }
 }

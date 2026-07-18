@@ -2,28 +2,28 @@
   "id": "92510449",
   "name": "رانيا رضا محمد كامل بدر",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "AHS122",
       "courseName": "Biochemistry",
-      "examStartISO": "2026-05-25T09:30:00+03:00",
-      "examEndISO": "2026-05-25T11:30:00+03:00",
+      "examStartISO": "2026-07-25T09:30:00+03:00",
+      "examEndISO": "2026-07-25T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 208.11,
+      "countdownHours": 159.33,
       "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
-      "seat": "29",
+      "seat": "35",
       "room": null,
       "building": null
     },
     {
       "courseCode": "AHS 123",
       "courseName": "Histology",
-      "examStartISO": "2026-05-30T09:30:00+03:00",
-      "examEndISO": "2026-05-30T11:30:00+03:00",
+      "examStartISO": "2026-07-30T09:30:00+03:00",
+      "examEndISO": "2026-07-30T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 328.11,
-      "location": "Computer lab 6 (421) (كلية الذكاء الاصطناعي)",
+      "countdownHours": 279.33,
+      "location": "Lab (6) Intelligence",
       "seat": "30",
       "room": null,
       "building": null
@@ -31,24 +31,24 @@
     {
       "courseCode": "AHS121",
       "courseName": "Basic Microbiology",
-      "examStartISO": "2026-06-07T14:00:00+03:00",
-      "examEndISO": "2026-06-07T16:00:00+03:00",
+      "examStartISO": "2026-08-07T14:00:00+03:00",
+      "examEndISO": "2026-08-07T16:00:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 524.61,
-      "location": "HALL (5) Building 8",
-      "seat": "44",
+      "countdownHours": 475.83,
+      "location": "Hall (5) Building 8",
+      "seat": "96",
       "room": null,
       "building": null
     },
     {
       "courseCode": "AHS125",
       "courseName": "Bio statistics",
-      "examStartISO": "2026-06-17T09:30:00+03:00",
-      "examEndISO": "2026-06-17T11:30:00+03:00",
+      "examStartISO": "2026-08-17T09:30:00+03:00",
+      "examEndISO": "2026-08-17T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 760.11,
+      "countdownHours": 711.33,
       "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
-      "seat": "34",
+      "seat": "46",
       "room": null,
       "building": null
     }
@@ -56,13 +56,13 @@
   "nextExam": {
     "courseCode": "AHS122",
     "courseName": "Biochemistry",
-    "examStartISO": "2026-05-25T09:30:00+03:00",
-    "examEndISO": "2026-05-25T11:30:00+03:00",
+    "examStartISO": "2026-07-25T09:30:00+03:00",
+    "examEndISO": "2026-07-25T11:30:00+03:00",
     "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
-    "seat": "29",
+    "seat": "35",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 208.11
+    "countdownHours": 159.33
   }
 }

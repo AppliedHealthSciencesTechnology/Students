@@ -2,41 +2,41 @@
   "id": "9232001",
   "name": "سهيله عبدالعزيز فهمى محمد عيسوى",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "MLA224",
       "courseName": "Automation in Clinical Laboratories",
-      "examStartISO": "2026-05-19T11:45:00+03:00",
-      "examEndISO": "2026-05-19T13:45:00+03:00",
+      "examStartISO": "2026-07-19T11:45:00+03:00",
+      "examEndISO": "2026-07-19T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 66.4,
-      "location": "Classroom 9 (422,423) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
-      "seat": "5",
+      "countdownHours": 17.6,
+      "location": "Classroom (422) (9) AHST",
+      "seat": "2",
       "room": null,
       "building": null
     },
     {
       "courseCode": "MLA322",
       "courseName": "Clinical Chemistry 2",
-      "examStartISO": "2026-05-23T11:45:00+03:00",
-      "examEndISO": "2026-05-23T13:45:00+03:00",
+      "examStartISO": "2026-07-23T11:45:00+03:00",
+      "examEndISO": "2026-07-23T13:45:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 162.4,
-      "location": "HALL (3) Building 8",
-      "seat": "75",
+      "countdownHours": 113.6,
+      "location": "Hall (3) Building 8",
+      "seat": "14",
       "room": null,
       "building": null
     },
     {
       "courseCode": "MLA223",
       "courseName": "Applied Microbiology",
-      "examStartISO": "2026-06-15T09:30:00+03:00",
-      "examEndISO": "2026-06-15T11:30:00+03:00",
+      "examStartISO": "2026-08-15T09:30:00+03:00",
+      "examEndISO": "2026-08-15T11:30:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 712.15,
-      "location": "HALL (3) Building 8",
-      "seat": "17",
+      "countdownHours": 663.35,
+      "location": "Hall (3) Building 8",
+      "seat": "5",
       "room": null,
       "building": null
     }
@@ -44,13 +44,13 @@
   "nextExam": {
     "courseCode": "MLA224",
     "courseName": "Automation in Clinical Laboratories",
-    "examStartISO": "2026-05-19T11:45:00+03:00",
-    "examEndISO": "2026-05-19T13:45:00+03:00",
-    "location": "Classroom 9 (422,423) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
-    "seat": "5",
+    "examStartISO": "2026-07-19T11:45:00+03:00",
+    "examEndISO": "2026-07-19T13:45:00+03:00",
+    "location": "Classroom (422) (9) AHST",
+    "seat": "2",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 66.4
+    "countdownHours": 17.6
   }
 }

@@ -2,17 +2,17 @@
   "id": "92510962",
   "name": "ياسمين عادل مصطفى عبدالحافظ العمراوى",
   "semester": "Final - Spring",
-  "academicYear": "2025/2026",
+  "academicYear": "2026/2027",
   "exams": [
     {
       "courseCode": "AHS126",
       "courseName": "Ethical and Legal Issues in Health Profession",
-      "examStartISO": "2026-05-20T09:30:00+03:00",
-      "examEndISO": "2026-05-20T11:30:00+03:00",
+      "examStartISO": "2026-07-19T14:00:00+03:00",
+      "examEndISO": "2026-07-19T16:00:00+03:00",
       "detailsAvailable": false,
-      "countdownHours": 88.1,
-      "location": "HALL 5 (كلية العلاج الطبيعي)",
-      "seat": "71",
+      "countdownHours": 19.82,
+      "location": "Hall (5) Physical therapy",
+      "seat": "41",
       "room": null,
       "building": null
     }
@@ -20,13 +20,13 @@
   "nextExam": {
     "courseCode": "AHS126",
     "courseName": "Ethical and Legal Issues in Health Profession",
-    "examStartISO": "2026-05-20T09:30:00+03:00",
-    "examEndISO": "2026-05-20T11:30:00+03:00",
-    "location": "HALL 5 (كلية العلاج الطبيعي)",
-    "seat": "71",
+    "examStartISO": "2026-07-19T14:00:00+03:00",
+    "examEndISO": "2026-07-19T16:00:00+03:00",
+    "location": "Hall (5) Physical therapy",
+    "seat": "41",
     "room": null,
     "building": null,
     "detailsAvailable": false,
-    "countdownHours": 88.1
+    "countdownHours": 19.82
   }
 }

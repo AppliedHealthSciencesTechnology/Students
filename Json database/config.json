@@ -1,18 +1,20 @@
 {
   "enabled": true,
   "timezone": "Africa/Cairo",
-  "revealDetailsWindowHours": 16,
+  "revealDetailsWindowHours": 200,
   "databaseFolder": "Json database",
   "studentJsonPathTemplate": "Json database/{id}.json",
-  "version": 1,
-  "generatedAtISO": "2026-07-18T17:51:31.205801+03:00",
-  "releaseWindowHours": 16,
-  "closeAtExamStart": true,
+  "version": 2,
+  "generatedAtISO": "2026-09-08T00:08:00+03:00",
+  "releaseWindowHours": 200,
+  "closeAtExamStart": false,
   "messages": {
     "notFound": "❌ Student ID not found.",
     "noUpcoming": "✅ No upcoming exams.",
-    "tooEarly": "⏳ Seat & location will appear 16 hours before your exam.",
-    "tooLate": "⛔ Exam started. Access closed.",
-    "ok": "✅ Available now."
+    "tooEarly": "⏳ Seat & location will appear 200 hours before the earliest exam of that day.",
+    "tooLate": "⛔ Exam access is closed.",
+    "ok": "✅ Available now.",
+    "dbUnavailable": "❌ Database unavailable. Please try again later.",
+    "invalid": "❌ Please enter numbers only."
   }
 }

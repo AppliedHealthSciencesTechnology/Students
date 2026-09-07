@@ -321,6 +321,22 @@
 .gpaSuiteBadge svg{width:12px;height:12px;display:block;opacity:.9}
 html[dir="rtl"] .gpaSuiteBadge{right:auto; left:calc(12px + env(safe-area-inset-left));}
 
+  @media (max-width:600px){
+    body{padding:14px 10px;align-items:flex-start;padding-top:max(14px, env(safe-area-inset-top));}
+    .card{border-radius:20px;}
+    .topbar{padding:12px;gap:8px;flex-wrap:wrap;}
+    .brand{flex:1 1 250px;}
+    .pillTop{margin-left:0;font-size:11px;padding:7px 9px;}
+    .body{padding:15px 13px 14px;}
+    h1{font-size:29px;}
+    input{font-size:23px;padding:14px 58px 14px 15px;}
+    .paperBody{padding:12px;}
+    .examHead{align-items:center;}
+    .examTable th,.examTable td{padding:9px 10px;font-size:13px;}
+    .examTable th{width:30%;}
+    .gpaSuiteBadge{top:auto;bottom:calc(10px + env(safe-area-inset-bottom));font-size:11px;}
+  }
+
 </style>
 </head>
 <body>
@@ -339,7 +355,7 @@ html[dir="rtl"] .gpaSuiteBadge{right:auto; left:calc(12px + env(safe-area-inset-
 
       <div class="body">
         <h1>Student ID</h1>
-        <p class="sub">Enter your ID to view your next exam details.</p>
+        <p class="sub">Enter your ID to view your upcoming exam details.</p>
 
         <div class="row">
           <div class="inputWrap">
@@ -358,7 +374,7 @@ html[dir="rtl"] .gpaSuiteBadge{right:auto; left:calc(12px + env(safe-area-inset-
 
         <div class="foot">
           <div id="hintLine">Tip: Press Enter</div>
-          <div>Shows: <b>Next exam only</b></div>
+          <div>Shows: <b>Upcoming exams</b></div>
         </div>
 
         <div id="result" class="result" hidden></div>
@@ -378,23 +394,20 @@ html[dir="rtl"] .gpaSuiteBadge{right:auto; left:calc(12px + env(safe-area-inset-
 (() => {
   "use strict";
 
-
-// GPA Suite badge navigation (non-intrusive; does not affect portal logic)
-// Default href supports GitHub Pages + offline. This tiny logic only adjusts the path
-// if this portal is served from inside the "Student Portal (JSON)" folder.
-const gpaSuiteLink = document.getElementById("gpaSuiteLink");
-if (gpaSuiteLink) {
-  const p = decodeURIComponent(window.location.pathname || "");
-  const targetHref = p.includes("Student Portal (JSON)")
-    ? "../GPA%20SUITE/index.html"
-    : "./GPA%20SUITE/index.html";
-  gpaSuiteLink.setAttribute("href", targetHref);
-}
-
+  // GPA Suite badge navigation. The Publication/JSON package is self-contained,
+  // so the normal path is local; the legacy folder check is kept for old uploads.
+  const gpaSuiteLink = document.getElementById("gpaSuiteLink");
+  if (gpaSuiteLink) {
+    const p = decodeURIComponent(window.location.pathname || "");
+    const targetHref = p.includes("Student Portal (JSON)")
+      ? "../GPA%20SUITE/index.html"
+      : "./GPA%20SUITE/index.html";
+    gpaSuiteLink.setAttribute("href", targetHref);
+  }
 
   const DB_DIR = "Json database";
   const DEFAULT_SHOW_WINDOW_HOURS = 16;
-  const CACHE_BUST = Date.now();
+  const CACHE_BUST = Math.random().toString(36).slice(2);
 
   const idInput   = document.getElementById("studentId");
   const openBtn   = document.getElementById("openBtn");
@@ -407,8 +420,16 @@ if (gpaSuiteLink) {
   let checkTimer = null;
   let checkSeq = 0;
   let countdownTimer = null;
+  let clockSyncTimer = null;
+  let currentStudent = null;
+  let currentId = "";
+
+  // Trusted server clock: server Date header + monotonic performance.now().
+  // There is deliberately no Date.now()/device-clock fallback for reveal decisions.
+  const SERVER_CLOCK = { trusted:false, serverEpochMs:0, perfBaseMs:0 };
 
   const safe = (v) => (v === null || v === undefined) ? "" : String(v);
+  const esc = (v) => safe(v).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   const encPath = (p) => encodeURI(p).replace(/#/g, "%23");
   const withBust = (u) => encPath(u) + (u.includes("?") ? "&" : "?") + "v=" + CACHE_BUST;
 
@@ -456,28 +477,72 @@ if (gpaSuiteLink) {
     return await r.json();
   }
 
-  async function loadConfig(){
-    try{ CONFIG = await fetchJSON(`${DB_DIR}/config.json`); return true; }
-    catch(_){
-      try{ CONFIG = await fetchJSON(`config.json`); return true; }
-      catch(__){ CONFIG = null; return false; }
-    }
+  function acceptServerDateHeader(res){
+    const dh = res && res.headers ? res.headers.get("date") : null;
+    if(!dh){ SERVER_CLOCK.trusted = false; return false; }
+    const parsed = new Date(dh).getTime();
+    if(!Number.isFinite(parsed)){ SERVER_CLOCK.trusted = false; return false; }
+    SERVER_CLOCK.serverEpochMs = parsed;
+    SERVER_CLOCK.perfBaseMs = performance.now();
+    SERVER_CLOCK.trusted = true;
+    return true;
   }
 
-  async function getServerNow(){
+  function trustedNowMs(){
+    if(!SERVER_CLOCK.trusted) return null;
+    return SERVER_CLOCK.serverEpochMs + (performance.now() - SERVER_CLOCK.perfBaseMs);
+  }
+
+  async function loadConfig(){
+    const candidates = [`${DB_DIR}/config.json`, `config.json`];
+    for(const u of candidates){
+      try{
+        const res = await fetch(withBust(u), { method:"GET", cache:"no-store", headers:{"Accept":"application/json"} });
+        if(!res.ok) continue;
+        CONFIG = await res.json();
+        // Prefer the Date header from the config response. If this host strips
+        // Date on JSON objects, immediately try another successful resource.
+        if(!acceptServerDateHeader(res)){
+          await syncServerClock();
+        }
+        return true;
+      }catch(_){ }
+    }
+    CONFIG = null;
+    SERVER_CLOCK.trusted = false;
+    return false;
+  }
+
+  async function syncServerClock(){
     const candidates = [`${DB_DIR}/config.json`, location.href];
     for(const u of candidates){
       try{
         const res = await fetch(withBust(u), { method:"GET", cache:"no-store" });
-        const dh = res.headers.get("date");
-        if(dh){
-          const dt = new Date(dh);
-          if(!isNaN(dt.getTime())) return dt;
+        // A 4xx/5xx response is not a successful clock synchronization even if
+        // an intermediary happens to attach its own Date header.
+        if(res.ok && acceptServerDateHeader(res)){
+          if(currentStudent) renderStudent(currentStudent, currentId);
+          return true;
         }
-      }catch(_){}
+      }catch(_){ }
     }
-    return new Date();
+    SERVER_CLOCK.trusted = false;
+    // Fail closed: any currently-visible place/seat is hidden immediately.
+    if(currentStudent) renderStudent(currentStudent, currentId);
+    return false;
   }
+
+  function startClockSync(){
+    if(clockSyncTimer) clearInterval(clockSyncTimer);
+    clockSyncTimer = setInterval(syncServerClock, 60000);
+  }
+
+  function revealHours(){
+    const n = Number((CONFIG?.revealDetailsWindowHours ?? CONFIG?.releaseWindowHours ?? CONFIG?.revealWindowHours ?? CONFIG?.rules?.revealWindowHours) ?? DEFAULT_SHOW_WINDOW_HOURS);
+    return Number.isFinite(n) && n >= 1 ? n : DEFAULT_SHOW_WINDOW_HOURS;
+  }
+
+  function closeAtExamStart(){ return CONFIG?.closeAtExamStart === true; }
 
   function formatDatePretty(iso, tz){
     const d = new Date(iso);
@@ -498,74 +563,76 @@ if (gpaSuiteLink) {
     return h>0 ? `${h}h ${pad(m)}m ${pad(sec)}s` : `${m}m ${pad(sec)}s`;
   }
 
-  function debouncedCheck(id){
-    if(checkTimer) clearTimeout(checkTimer);
-    checkTimer = setTimeout(() => checkIdExists(id), 250);
+  function dayKey(iso){
+    const s = safe(iso).trim();
+    return s.length >= 10 ? s.slice(0,10) : "";
   }
 
-  async function checkIdExists(id){
-    const seq = ++checkSeq;
-
-    if(existsCache.has(id)){
-      const ok = existsCache.get(id);
-      if(ok){
-        setIcon("ok"); openBtn.disabled = false; setToast("Ready. Click Open.", "ok");
-      }else{
-        setIcon("err"); openBtn.disabled = true;
-        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
-      }
-      return;
+  function buildDayRevealMap(exams, showHours){
+    const earliest = new Map();
+    for(const e of exams){
+      const k = dayKey(e.examStartISO);
+      const ts = new Date(e.examStartISO).getTime();
+      if(!k || !Number.isFinite(ts)) continue;
+      if(!earliest.has(k) || ts < earliest.get(k)) earliest.set(k, ts);
     }
-
-    setIcon("idle"); openBtn.disabled = true;
-    setToast("Checking ID…", "");
-
-    try{
-      const res = await fetch(withBust(`${DB_DIR}/${id}.json`), { method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }});
-      if(seq !== checkSeq) return;
-
-      if(res.status === 200){
-        existsCache.set(id, true);
-        setIcon("ok"); openBtn.disabled = false;
-        setToast("Ready. Click Open.", "ok");
-      }else if(res.status === 404){
-        existsCache.set(id, false);
-        setIcon("err"); openBtn.disabled = true;
-        setToast(CONFIG?.messages?.notFound || "❌ Student ID not found.", "err");
-      }else{
-        setIcon("bad"); openBtn.disabled = true;
-        setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
-      }
-    }catch(_){
-      if(seq !== checkSeq) return;
-      setIcon("bad"); openBtn.disabled = true;
-      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
-    }
+    const out = new Map();
+    for(const [k, ts] of earliest.entries()) out.set(k, ts - showHours*3600*1000);
+    return out;
   }
 
-  
-  function renderUpcomingHTML(exams, tz){
+  function isDayOpen(exam, dayRevealMap, nowMs){
+    if(nowMs === null) return false;
+    const gate = dayRevealMap.get(dayKey(exam.examStartISO));
+    return Number.isFinite(gate) && nowMs >= gate;
+  }
+
+  function examExpiryMs(exam){
+    const start = new Date(exam.examStartISO).getTime();
+    if(!Number.isFinite(start)) return null;
+    if(closeAtExamStart()) return start;
+    const end = new Date(exam.examEndISO).getTime();
+    return (Number.isFinite(end) && end >= start) ? end : start;
+  }
+
+  function splitExams(rawExams){
+    const scheduled = [], unscheduled = [];
+    for(const e0 of (rawExams || [])){
+      if(!e0) continue;
+      const e = {...e0};
+      const ts = new Date(e.examStartISO).getTime();
+      if(e.examStartISO && Number.isFinite(ts)){
+        e.__ts = ts;
+        scheduled.push(e);
+      }else{
+        unscheduled.push(e);
+      }
+    }
+    scheduled.sort((a,b)=>a.__ts-b.__ts || safe(a.courseCode).localeCompare(safe(b.courseCode)));
+    unscheduled.sort((a,b)=>safe(a.courseCode).localeCompare(safe(b.courseCode)));
+    return {scheduled, unscheduled};
+  }
+
+  function renderUpcomingHTML(exams, tz, dayRevealMap, nowMs){
     if(!exams || !exams.length) return "";
-    const rows = exams.slice(0, 8).map((e)=>{
+    const rows = exams.map((e)=>{
       const d = formatDatePretty(e.examStartISO, tz);
       const t1 = formatTimePretty(e.examStartISO, tz);
       const t2 = e.examEndISO ? formatTimePretty(e.examEndISO, tz) : "—";
       const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
-      const name = safe(e.courseName) || "—";
-      const code = safe(e.courseCode) || "";
+      const open = isDayOpen(e, dayRevealMap, nowMs);
+      const location = open ? (safe(e.location) || "—") : "••••";
+      const seat = open ? (safe(e.seat) || "—") : "•••";
       return `
         <tr>
-          <th>${code || "Course"}</th>
+          <th>${esc(e.courseCode) || "Course"}</th>
           <td>
-            <div style="font-weight:900">${name}</div>
+            <div style="font-weight:900">${esc(e.courseName) || "—"}</div>
             <div style="margin-top:2px;color:#6b7280;font-weight:800;font-size:12px">${d} • <b>${time}</b></div>
+            <div style="margin-top:5px;color:#475569;font-weight:800;font-size:12px">Location: ${esc(location)} &nbsp; • &nbsp; Seat: ${esc(seat)}</div>
           </td>
         </tr>`;
     }).join("");
-
-    const moreRow = exams.length > 8
-      ? `<tr><th>More</th><td><b>+${exams.length-8}</b> more exams</td></tr>`
-      : "";
 
     return `
       <div class="divider"></div>
@@ -575,210 +642,178 @@ if (gpaSuiteLink) {
           <div class="examCourse">Upcoming exams</div>
           <div class="examCode">${exams.length}</div>
         </div>
-        <table class="examTable">
-          ${rows}
-          ${moreRow}
-        </table>
-        <div style="padding:10px 12px; font-size:12px; color:#6b7280; font-weight:800">
-          Location & seat will appear only for the next exam within ${Number((CONFIG?.revealDetailsWindowHours ?? CONFIG?.releaseWindowHours ?? CONFIG?.revealWindowHours ?? CONFIG?.rules?.revealWindowHours) ?? DEFAULT_SHOW_WINDOW_HOURS)} hours.
+        <table class="examTable">${rows}</table>
+        <div style="padding:10px 12px;font-size:12px;color:#6b7280;font-weight:800">
+          Location & seat are revealed for all exams of the same day based on that day's earliest exam.
         </div>
       </div>`;
   }
 
-  async function openPaper(){
-    const id = normalizeDigits(idInput.value).trim();
-    if(!id || openBtn.disabled) return;
+  function renderUnscheduledHTML(exams){
+    if(!exams || !exams.length) return "";
+    const rows = exams.map(e => `
+      <tr>
+        <th>${esc(e.courseCode) || "Course"}</th>
+        <td><div style="font-weight:900">${esc(e.courseName) || "—"}</div><div style="margin-top:3px;color:#92400e;font-weight:800;font-size:12px">Not scheduled yet</div></td>
+      </tr>`).join("");
+    return `
+      <div class="divider"></div>
+      <div class="nextExamTitle">Not scheduled yet</div>
+      <div class="examCard">
+        <div class="examHead"><div class="examCourse">Waiting for date & time</div><div class="examCode">${exams.length}</div></div>
+        <table class="examTable">${rows}</table>
+      </div>`;
+  }
 
+  function studentHeader(student, id){
+    const name = safe(student?.name), sem=safe(student?.semester), year=safe(student?.academicYear), examType=safe(student?.examType);
+    const examMeta = sem
+      ? `<div class="field"><div class="label">Semester</div><div class="value">${esc(sem)}</div></div>`
+      : (examType ? `<div class="field"><div class="label">Exam</div><div class="value">${esc(examType)}</div></div>` : "");
+    return `
+      <div class="paperHeader"><div class="paperTitle">Student Info</div><div class="pill">ID: ${esc(student?.id || id)}</div></div>
+      <div class="paperBody">
+        <div class="field"><div class="label">Name</div><div class="value rtl">${esc(name) || "—"}</div></div>
+        ${examMeta}
+        <div class="field"><div class="label">Academic Year</div><div class="value">${esc(year) || "—"}</div></div>`;
+  }
+
+  function renderStudent(student, id){
     stopCountdown();
-    showSkeleton();
+    currentStudent = student;
+    currentId = id;
 
-    try{
-      const student = await fetchJSON(`${DB_DIR}/${id}.json`);
-      const tz = (CONFIG?.timezone ?? CONFIG?.timeZone ?? "Africa/Cairo");
-      const showHours = Number((CONFIG?.revealDetailsWindowHours ?? CONFIG?.releaseWindowHours ?? CONFIG?.revealWindowHours ?? CONFIG?.rules?.revealWindowHours) ?? DEFAULT_SHOW_WINDOW_HOURS);
+    const tz = (CONFIG?.timezone ?? CONFIG?.timeZone ?? "Africa/Cairo");
+    const showHours = revealHours();
+    const rawExams = Array.isArray(student?.exams) ? student.exams : (student?.nextExam ? [student.nextExam] : []);
+    const {scheduled, unscheduled} = splitExams(rawExams);
+    const nowMs = trustedNowMs();
+    const visible = nowMs === null ? scheduled : scheduled.filter(e => {
+      const exp = examExpiryMs(e);
+      return exp === null ? true : exp > nowMs;
+    });
+    const dayRevealMap = buildDayRevealMap(scheduled, showHours);
+    const exam = visible.length ? visible[0] : null;
+    const upcomingRest = visible.slice(1);
 
-      // New schema: exams[] contains ALL exams. Backward compatible with nextExam.
-      const rawExams = Array.isArray(student?.exams) ? student.exams
-                    : (student?.nextExam ? [student.nextExam] : []);
+    resultEl.hidden = false;
 
-      const nowForPick = await getServerNow();
-      const upcoming = rawExams
-        .filter(e => e && e.examStartISO && !isNaN(new Date(e.examStartISO).getTime()))
-        .map(e => ({...e, __ts: new Date(e.examStartISO).getTime()}))
-        .filter(e => e.__ts > nowForPick.getTime())
-        .sort((a,b)=>a.__ts - b.__ts);
-
-      const exam = upcoming.length ? upcoming[0] : null;
-      const upcomingRest = upcoming.slice(1);
-
-      const name = safe(student?.name);
-      const sem  = safe(student?.semester);
-      const year = safe(student?.academicYear);
-
-      if(!exam){
-        resultEl.hidden = false;
-        resultEl.innerHTML = `
-          <div class="paper">
-            <div class="paperHeader">
-              <div class="paperTitle">Student Info</div>
-              <div class="pill">ID: ${safe(student?.id || id)}</div>
-            </div>
-            <div class="paperBody">
-              <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
-              <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
-              <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
-              <div class="divider"></div>
-              <div class="nextExamTitle">Next Exam</div>
-              <div class="okBox">✅ No upcoming exams.</div>
-            </div>
-          </div>`;
-        setToast("", "");
-        return;
-      }
-
-      const startISO = safe(exam.examStartISO);
-      const endISO   = safe(exam.examEndISO);
-      const date = formatDatePretty(startISO, tz);
-      const t1 = formatTimePretty(startISO, tz);
-      const t2 = formatTimePretty(endISO, tz);
-      const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
-
-      /* showHours already computed above */
-      const now = nowForPick;
-      const startDt = new Date(startISO);
-      const revealAt = isNaN(startDt.getTime()) ? null : new Date(startDt.getTime() - showHours*3600*1000);
-      const canReveal = !!(revealAt && now >= revealAt);
-
-      const locVal = canReveal ? safe(exam.location) : "••••";
-      const seatVal = canReveal ? safe(exam.seat) : "•••";
-
-      let counterHTML = "";
-      if(revealAt && !canReveal){
-        const diff = revealAt.getTime() - now.getTime();
-        counterHTML = `
-          <div class="countdownBox warn">
-            ⏳ Location & seat will appear in <b id="cdVal">${msToHMS(diff)}</b>
-          </div>`;
-        stopCountdown();
-        countdownTimer = setInterval(async ()=>{
-          const n = await getServerNow();
-          const d = revealAt.getTime() - n.getTime();
-          const el = document.getElementById("cdVal");
-          if(!el) return;
-          if(d <= 0){
-            stopCountdown();
-            openPaper();
-            return;
-          }
-          el.textContent = msToHMS(d);
-        }, 1000);
-      }else if(revealAt && canReveal){
-        counterHTML = `<div class="countdownBox ok">✅ Location & seat are available now.</div>`;
-      }
-
-      const courseCode = safe(exam.courseCode);
-      const courseName = safe(exam.courseName);
-
-      resultEl.hidden = false;
-      resultEl.innerHTML = `
-        <div class="paper">
-          <div class="paperHeader">
-            <div class="paperTitle">Student Info</div>
-            <div class="pill">ID: ${safe(student?.id || id)}</div>
-          </div>
-          <div class="paperBody">
-            <div class="field"><div class="label">Name</div><div class="value rtl">${name || "—"}</div></div>
-            <div class="field"><div class="label">Semester</div><div class="value">${sem || "—"}</div></div>
-            <div class="field"><div class="label">Academic Year</div><div class="value">${year || "—"}</div></div>
-
-            <div class="divider"></div>
-            <div class="nextExamTitle">Next Exam</div>
-            ${counterHTML}
-
-            <div class="examCard">
-              <div class="examHead">
-                <div class="examCourse">${courseName || "—"}</div>
-                <div class="examCode">${courseCode || ""}</div>
-              </div>
-              <table class="examTable">
-                <tr><th>Date</th><td>${date}</td></tr>
-                <tr><th>Time</th><td><b>${time}</b></td></tr>
-                <tr><th>Location</th><td>${locVal || "—"}</td></tr>
-                <tr><th>Seat</th><td>${seatVal || "—"}</td></tr>
-              </table>
-              <div class="actionsRow">
-                <button class="btnSecondary" type="button" id="copyBtn">Copy details</button>
-              </div>
-            </div>
-          </div>
-        </div>`;
-
-      const copyBtn = document.getElementById("copyBtn");
-      if(copyBtn){
-        copyBtn.onclick = async ()=>{
-          const lines = [
-            `Name: ${name}`,
-            `ID: ${safe(student?.id || id)}`,
-            sem ? `Semester: ${sem}` : null,
-            year ? `Academic Year: ${year}` : null,
-            "",
-            "Next Exam:",
-            `Course: ${courseName} (${courseCode})`,
-            `Date: ${date}`,
-            `Time: ${time}`,
-            `Location: ${locVal}`,
-            `Seat: ${seatVal}`
-          ].filter(Boolean).join("\n");
-
-          try{ await navigator.clipboard.writeText(lines); setToast("Copied.", "ok"); }
-          catch(_){ setToast("Copy failed.", "err"); }
-        };
-      }
-
+    if(!exam){
+      const clockWarn = SERVER_CLOCK.trusted ? "" : `<div class="countdownBox warn">⚠️ Time verification is temporarily unavailable. Location & seat remain hidden.</div>`;
+      resultEl.innerHTML = `<div class="paper">${studentHeader(student,id)}
+        <div class="divider"></div><div class="nextExamTitle">Upcoming</div>
+        ${clockWarn}<div class="okBox">✅ No upcoming scheduled exams.</div>
+        ${renderUnscheduledHTML(unscheduled)}
+      </div></div>`;
       setToast("", "");
+      return;
+    }
+
+    const startISO = safe(exam.examStartISO), endISO=safe(exam.examEndISO);
+    const date = formatDatePretty(startISO, tz);
+    const t1 = formatTimePretty(startISO, tz), t2=formatTimePretty(endISO, tz);
+    const time = (t1 !== "—" && t2 !== "—") ? `${t1} – ${t2}` : t1;
+    const gateMs = dayRevealMap.get(dayKey(startISO));
+    const canReveal = isDayOpen(exam, dayRevealMap, nowMs);
+    const locVal = canReveal ? (safe(exam.location) || "—") : "••••";
+    const seatVal = canReveal ? (safe(exam.seat) || "—") : "•••";
+
+    let counterHTML = "";
+    if(nowMs === null){
+      counterHTML = `<div class="countdownBox warn">⚠️ Time verification is temporarily unavailable. Course and schedule stay visible; location & seat remain hidden.</div>`;
+    }else if(Number.isFinite(gateMs) && !canReveal){
+      counterHTML = `<div class="countdownBox warn">⏳ Location & seat for all exams on this day will appear in <b id="cdVal">${msToHMS(gateMs-nowMs)}</b></div>`;
+    }else if(canReveal){
+      counterHTML = `<div class="countdownBox ok">✅ Location & seat are available for all exams on this day.</div>`;
+    }
+
+    const courseCode=safe(exam.courseCode), courseName=safe(exam.courseName);
+    resultEl.innerHTML = `<div class="paper">${studentHeader(student,id)}
+      <div class="divider"></div><div class="nextExamTitle">Upcoming</div>${counterHTML}
+      <div class="examCard">
+        <div class="examHead"><div class="examCourse">${esc(courseName) || "—"}</div><div class="examCode">${esc(courseCode)}</div></div>
+        <table class="examTable">
+          <tr><th>Date</th><td>${date}</td></tr>
+          <tr><th>Time</th><td><b>${time}</b></td></tr>
+          <tr><th>Location</th><td>${esc(locVal)}</td></tr>
+          <tr><th>Seat</th><td>${esc(seatVal)}</td></tr>
+        </table>
+        <div class="actionsRow"><button class="btnSecondary" type="button" id="copyBtn">Copy details</button></div>
+      </div>
+      ${renderUpcomingHTML(upcomingRest, tz, dayRevealMap, nowMs)}
+      ${renderUnscheduledHTML(unscheduled)}
+    </div></div>`;
+
+    if(Number.isFinite(gateMs) && nowMs !== null && !canReveal){
+      countdownTimer = setInterval(()=>{
+        const n = trustedNowMs();
+        if(n === null){ renderStudent(currentStudent,currentId); return; }
+        const d = gateMs - n;
+        const el = document.getElementById("cdVal");
+        if(d <= 0){ renderStudent(currentStudent,currentId); return; }
+        if(el) el.textContent = msToHMS(d);
+      },1000);
+    }
+
+    const copyBtn=document.getElementById("copyBtn");
+    if(copyBtn){
+      copyBtn.onclick=async()=>{
+        const lines=[`Name: ${safe(student?.name)}`,`ID: ${safe(student?.id||id)}`,student?.semester?`Semester: ${student.semester}`:(student?.examType?`Exam: ${student.examType}`:null),student?.academicYear?`Academic Year: ${student.academicYear}`:null,"","Upcoming Exam:",`Course: ${courseName} (${courseCode})`,`Date: ${date}`,`Time: ${time}`,`Location: ${locVal}`,`Seat: ${seatVal}`].filter(Boolean).join("\n");
+        try{ await navigator.clipboard.writeText(lines); setToast("Copied.","ok"); }catch(_){ setToast("Copy failed.","err"); }
+      };
+    }
+    setToast("","");
+  }
+
+  function debouncedCheck(id){
+    if(checkTimer) clearTimeout(checkTimer);
+    checkTimer=setTimeout(()=>checkIdExists(id),250);
+  }
+
+  async function checkIdExists(id){
+    const seq=++checkSeq;
+    if(existsCache.has(id)){
+      const ok=existsCache.get(id);
+      if(ok){setIcon("ok");openBtn.disabled=false;setToast("Ready. Click Open.","ok");}
+      else{setIcon("err");openBtn.disabled=true;setToast(CONFIG?.messages?.notFound||"❌ Student ID not found.","err");}
+      return;
+    }
+    setIcon("idle");openBtn.disabled=true;setToast("Checking ID…","");
+    try{
+      const res=await fetch(withBust(`${DB_DIR}/${id}.json`),{method:"GET",cache:"no-store",headers:{"Accept":"application/json"}});
+      if(seq!==checkSeq)return;
+      if(res.status===200){existsCache.set(id,true);setIcon("ok");openBtn.disabled=false;setToast("Ready. Click Open.","ok");}
+      else if(res.status===404){existsCache.set(id,false);setIcon("err");openBtn.disabled=true;setToast(CONFIG?.messages?.notFound||"❌ Student ID not found.","err");}
+      else{setIcon("bad");openBtn.disabled=true;setToast(CONFIG?.messages?.dbUnavailable||"❌ Database unavailable. Please try again later.","err");}
+    }catch(_){if(seq!==checkSeq)return;setIcon("bad");openBtn.disabled=true;setToast(CONFIG?.messages?.dbUnavailable||"❌ Database unavailable. Please try again later.","err");}
+  }
+
+  async function openPaper(){
+    const id=normalizeDigits(idInput.value).trim();
+    if(!id||openBtn.disabled)return;
+    stopCountdown();showSkeleton();
+    try{
+      const student=await fetchJSON(`${DB_DIR}/${id}.json`);
+      renderStudent(student,id);
     }catch(_){
-      stopCountdown();
-      resultEl.hidden = true;
-      setIcon("bad");
-      openBtn.disabled = true;
-      setToast(CONFIG?.messages?.dbUnavailable || "❌ Database unavailable. Please try again later.", "err");
+      stopCountdown();currentStudent=null;currentId="";resultEl.hidden=true;setIcon("bad");openBtn.disabled=true;
+      setToast(CONFIG?.messages?.dbUnavailable||"❌ Database unavailable. Please try again later.","err");
     }
   }
 
   async function init(){
     await loadConfig();
-
-    openBtn.disabled = true;
-    setIcon("idle");
-    setToast("", "");
-
-    idInput.addEventListener("input", ()=>{
-      const id = normalizeDigits(idInput.value).trim();
-      stopCountdown();
-      resultEl.hidden = true;
-
-      if(!id){
-        setIcon("idle");
-        openBtn.disabled = true;
-        setToast("", "");
-        return;
-      }
-
-      if(!/^\d+$/.test(id)){
-        setIcon("err");
-        openBtn.disabled = true;
-        setToast(CONFIG?.messages?.invalid || "❌ Please enter numbers only.", "err");
-        return;
-      }
-
+    startClockSync();
+    openBtn.disabled=true;setIcon("idle");setToast("","");
+    idInput.addEventListener("input",()=>{
+      const id=normalizeDigits(idInput.value).trim();
+      stopCountdown();currentStudent=null;currentId="";resultEl.hidden=true;
+      if(!id){setIcon("idle");openBtn.disabled=true;setToast("","");return;}
+      if(!/^\d+$/.test(id)){setIcon("err");openBtn.disabled=true;setToast(CONFIG?.messages?.invalid||"❌ Please enter numbers only.","err");return;}
       debouncedCheck(id);
     });
-
-    idInput.addEventListener("keydown", (e)=>{
-      if(e.key === "Enter") openPaper();
-    });
-
-    openBtn.addEventListener("click", openPaper);
+    idInput.addEventListener("keydown",e=>{if(e.key==="Enter")openPaper();});
+    openBtn.addEventListener("click",openPaper);
   }
 
   init();

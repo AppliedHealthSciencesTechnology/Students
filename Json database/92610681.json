@@ -1,0 +1,25 @@
+{
+  "id": "92610681",
+  "name": "نيرة رأفت رأفت شحاتة الطويل",
+  "examType": "Placement Test",
+  "semester": "",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00E – BAS00B",
+      "courseName": "Placement Test (Basics of English – Basics of Biology)",
+      "examStartISO": "2026-09-15T10:00:00+03:00",
+      "examEndISO": "2026-09-15T10:45:00+03:00",
+      "location": "معمل 008 الدور الارضى (كلية الصيدلة)",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

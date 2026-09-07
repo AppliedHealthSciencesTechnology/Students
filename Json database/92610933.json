@@ -1,0 +1,25 @@
+{
+  "id": "92610933",
+  "name": "مريم اسماعيل محمد عبد العال احمد",
+  "examType": "Placement Test",
+  "semester": "",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00E – BAS00B",
+      "courseName": "Placement Test (Basics of English – Basics of Biology)",
+      "examStartISO": "2026-09-15T10:45:00+03:00",
+      "examEndISO": "2026-09-15T11:30:00+03:00",
+      "location": "Computer Lab7 (108) (كلية الطب البشري)",
+      "seat": "7",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "id": "92611702",
-  "name": "عفاف مسعود عبدالحميد عبد النبي جبريل",
+  "id": "92610773",
+  "name": "جنى محمد الحسيني إبراهيم علي",
   "examType": "Placement Test",
   "semester": "",
   "academicYear": "2026/2027",
@@ -11,10 +11,10 @@
     {
       "courseCode": "BAS00E – BAS00B",
       "courseName": "Placement Test (Basics of English – Basics of Biology)",
-      "examStartISO": "2026-09-15T10:45:00+03:00",
-      "examEndISO": "2026-09-15T11:30:00+03:00",
-      "location": "معمل 008 الدور الارضى (كلية الصيدلة)",
-      "seat": "22",
+      "examStartISO": "2026-09-15T11:00:00+03:00",
+      "examEndISO": "2026-09-15T11:50:00+03:00",
+      "location": "Lab 439 (كلية الهندسة)",
+      "seat": "5",
       "room": null,
       "building": null,
       "isDebarred": false,

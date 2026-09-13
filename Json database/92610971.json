@@ -1,0 +1,25 @@
+{
+  "id": "92610971",
+  "name": "اسماء عبدالعزيز محمود وهبه نواره",
+  "examType": "Placement Test",
+  "semester": "",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00E – BAS00B",
+      "courseName": "Placement Test (Basics of English – Basics of Biology)",
+      "examStartISO": "2026-09-15T10:50:00+03:00",
+      "examEndISO": "2026-09-15T11:40:00+03:00",
+      "location": "Computer Lab9 (115) (كلية الطب البشري)",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

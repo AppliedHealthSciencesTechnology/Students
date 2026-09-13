@@ -1,0 +1,25 @@
+{
+  "id": "92610932",
+  "name": "ملك عبد الحميد هجرس عبد الحميد مفتاح",
+  "examType": "Placement Test",
+  "semester": "",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00E – BAS00B",
+      "courseName": "Placement Test (Basics of English – Basics of Biology)",
+      "examStartISO": "2026-09-15T10:50:00+03:00",
+      "examEndISO": "2026-09-15T11:40:00+03:00",
+      "location": "Computer Lab 6 (107) (كلية الطب البشري)",
+      "seat": "15",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

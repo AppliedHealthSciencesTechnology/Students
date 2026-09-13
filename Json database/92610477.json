@@ -1,0 +1,25 @@
+{
+  "id": "92610477",
+  "name": "جنه السيد محمد عبدالرحمن هانم",
+  "examType": "Placement Test",
+  "semester": "",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00E – BAS00B",
+      "courseName": "Placement Test (Basics of English – Basics of Biology)",
+      "examStartISO": "2026-09-15T10:00:00+03:00",
+      "examEndISO": "2026-09-15T10:50:00+03:00",
+      "location": "Computer Lab 5 (420) (كلية الذكاء الاصطناعي)",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

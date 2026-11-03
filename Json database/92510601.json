@@ -1,0 +1,64 @@
+{
+  "id": "92510601",
+  "name": "عبدالرحمن احمد السيد السيد خليل",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-11-10T11:15:00+02:00",
+      "examEndISO": "2026-11-10T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "16",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "BAS00B",
+      "courseName": "Basics of Biology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "7",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS115",
+      "courseName": "Physics",
+      "examStartISO": "2026-11-12T11:15:00+02:00",
+      "examEndISO": "2026-11-12T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "15",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN402",
+      "courseName": "Creativity and Critical Thinking",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

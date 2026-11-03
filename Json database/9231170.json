@@ -1,0 +1,77 @@
+{
+  "id": "9231170",
+  "name": "يارا محمد متولى محمد على يس",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT321E",
+      "courseName": "Advanced Removable Prosthodontics",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Chemistry Lab. (319-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "17",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT412",
+      "courseName": "Applied Partial Removable Prosthodontics (1)",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "12",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT411",
+      "courseName": "CAD CAM in Prosthodontics : Digitization",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Hall 8",
+      "seat": "34",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT414",
+      "courseName": "Applied Fixed Prosthodontics (1)",
+      "examStartISO": "2026-11-11T11:15:00+02:00",
+      "examEndISO": "2026-11-11T12:00:00+02:00",
+      "location": "Classroom (307) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT413",
+      "courseName": "Oral Pathology",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Classroom (304) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

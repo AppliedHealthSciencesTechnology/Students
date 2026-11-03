@@ -1,0 +1,77 @@
+{
+  "id": "92411000",
+  "name": "جني نبيل يوسف محمد احمد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA311",
+      "courseName": "Forensic Chemistry and Analytical Toxicology",
+      "examStartISO": "2026-11-07T09:15:00+02:00",
+      "examEndISO": "2026-11-07T10:00:00+02:00",
+      "location": "Skill Lab. 2 (417) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "17",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA312",
+      "courseName": "Laboratory Parasitology",
+      "examStartISO": "2026-11-09T12:15:00+02:00",
+      "examEndISO": "2026-11-09T13:00:00+02:00",
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA314",
+      "courseName": "Laboratory Instrumentation and Methodologies (1)",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA311E",
+      "courseName": "Cytogenetic Practical",
+      "examStartISO": "2026-11-12T12:15:00+02:00",
+      "examEndISO": "2026-11-12T13:00:00+02:00",
+      "location": "Chemistry Lab. (319-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "15",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA313",
+      "courseName": "Field Training for Medical Laboratory technologists 1",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

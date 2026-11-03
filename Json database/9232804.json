@@ -1,0 +1,64 @@
+{
+  "id": "9232804",
+  "name": "منه محمد فاروق عبده محمد جميل",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD214",
+      "courseName": "Instrumentation and Electrical Measurement",
+      "examStartISO": "2026-11-08T11:15:00+02:00",
+      "examEndISO": "2026-11-08T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD411",
+      "courseName": "Radiotherapy Technique",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Classroom (304) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "20",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD311",
+      "courseName": "Vascular Imaging Technique",
+      "examStartISO": "2026-11-09T14:15:00+02:00",
+      "examEndISO": "2026-11-09T15:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "26",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab 2",
+      "seat": "12",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "92521704",
+  "name": "شيماء جمال حامد عبدالمعبود مصطفى",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "AHS114",
+      "courseName": "Physiology for health science Technologists",
+      "examStartISO": "2026-11-07T11:15:00+02:00",
+      "examEndISO": "2026-11-07T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "38",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD212",
+      "courseName": "Introduction to Radiologic Technology",
+      "examStartISO": "2026-11-09T15:15:00+02:00",
+      "examEndISO": "2026-11-09T16:00:00+02:00",
+      "location": "Simulator lab. (313-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "28",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab9",
+      "seat": "35",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Simulator lab. (313-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "28",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-11-12T15:15:00+02:00",
+      "examEndISO": "2026-11-12T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab4",
+      "seat": "30",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN001",
+      "courseName": "Introduction to Information and Communication Technology",
+      "examStartISO": "2026-11-17T12:15:00+02:00",
+      "examEndISO": "2026-11-17T13:00:00+02:00",
+      "location": "الإدارة-108",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

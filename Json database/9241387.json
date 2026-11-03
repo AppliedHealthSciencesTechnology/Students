@@ -1,0 +1,64 @@
+{
+  "id": "9241387",
+  "name": "كاميليا زين الدين ابو زيد محمد حمزه",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA212",
+      "courseName": "Pathology for Health Science Technologists",
+      "examStartISO": "2026-11-09T13:15:00+02:00",
+      "examEndISO": "2026-11-09T14:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA214",
+      "courseName": "Laboratory Safety and Infection Control",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Hall 5",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN402",
+      "courseName": "Creativity and Critical Thinking",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA313",
+      "courseName": "Field Training for Medical Laboratory technologists 1",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

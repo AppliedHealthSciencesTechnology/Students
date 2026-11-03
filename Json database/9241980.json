@@ -1,0 +1,90 @@
+{
+  "id": "9241980",
+  "name": "مريم متولي محمد القط",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD215",
+      "courseName": "Mathematics",
+      "examStartISO": "2026-11-07T09:15:00+02:00",
+      "examEndISO": "2026-11-07T10:00:00+02:00",
+      "location": "Hall 5",
+      "seat": "83",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD313",
+      "courseName": "Radiological Pathology",
+      "examStartISO": "2026-11-08T12:15:00+02:00",
+      "examEndISO": "2026-11-08T13:00:00+02:00",
+      "location": "Hall 4",
+      "seat": "59",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD311",
+      "courseName": "Vascular Imaging Technique",
+      "examStartISO": "2026-11-09T14:15:00+02:00",
+      "examEndISO": "2026-11-09T15:00:00+02:00",
+      "location": "الصيدلة-lab1",
+      "seat": "25",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD314",
+      "courseName": "Obstetric and Pelvic Sonography Technique",
+      "examStartISO": "2026-11-10T14:15:00+02:00",
+      "examEndISO": "2026-11-10T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab9",
+      "seat": "23",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab9",
+      "seat": "24",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "87",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

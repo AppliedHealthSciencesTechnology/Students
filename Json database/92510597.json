@@ -1,0 +1,64 @@
+{
+  "id": "92510597",
+  "name": "محمد فايز المحمدي محمد جبر",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "BAS00B",
+      "courseName": "Basics of Biology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "6",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS127",
+      "courseName": "Health Informatics",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN401",
+      "courseName": "Marketing skills",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN403",
+      "courseName": "Introduction to Economics",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

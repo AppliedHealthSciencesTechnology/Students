@@ -1,0 +1,38 @@
+{
+  "id": "9211143",
+  "name": "محمد حسام الدين بدير ابراهيم سليم",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA414",
+      "courseName": "Research Methodology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Classroom (207) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA424",
+      "courseName": "Graduation Project",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

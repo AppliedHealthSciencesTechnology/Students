@@ -1,0 +1,51 @@
+{
+  "id": "9221036",
+  "name": "روان محمد كمال محمود محمد طه",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT311",
+      "courseName": "Fixed Prosthodontics Technology (1)",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT413",
+      "courseName": "Oral Pathology",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Classroom (207) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT421",
+      "courseName": "CAD/CAM: Manufacturing",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

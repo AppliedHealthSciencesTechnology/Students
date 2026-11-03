@@ -1,0 +1,103 @@
+{
+  "id": "9211223",
+  "name": "سميحه عطوه عطوه زكى السيد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD215",
+      "courseName": "Mathematics",
+      "examStartISO": "2026-11-07T09:15:00+02:00",
+      "examEndISO": "2026-11-07T10:00:00+02:00",
+      "location": "Hall 5",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD411",
+      "courseName": "Radiotherapy Technique",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-11-15T15:15:00+02:00",
+      "examEndISO": "2026-11-15T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab10",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN402",
+      "courseName": "Creativity and Critical Thinking",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD314E",
+      "courseName": "Applied research methods",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD421",
+      "courseName": "Medical Imaging Informatics",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD424",
+      "courseName": "Graduation Project",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

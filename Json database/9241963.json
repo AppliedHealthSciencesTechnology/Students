@@ -1,0 +1,77 @@
+{
+  "id": "9241963",
+  "name": "رنا محمد صابر عطية",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA211",
+      "courseName": "Basics of Molecular Biology",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "15",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA314",
+      "courseName": "Laboratory Instrumentation and Methodologies (1)",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "13",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-11-12T15:15:00+02:00",
+      "examEndISO": "2026-11-12T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab4",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN001",
+      "courseName": "Introduction to Information and Communication Technology",
+      "examStartISO": "2026-11-17T12:15:00+02:00",
+      "examEndISO": "2026-11-17T13:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA313",
+      "courseName": "Field Training for Medical Laboratory technologists 1",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "9231165",
+  "name": "ندى محمد محمد محمود الجبالي",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD311",
+      "courseName": "Vascular Imaging Technique",
+      "examStartISO": "2026-11-09T14:15:00+02:00",
+      "examEndISO": "2026-11-09T15:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "12",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD314",
+      "courseName": "Obstetric and Pelvic Sonography Technique",
+      "examStartISO": "2026-11-10T14:15:00+02:00",
+      "examEndISO": "2026-11-10T15:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "21",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-11-15T15:15:00+02:00",
+      "examEndISO": "2026-11-15T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab10",
+      "seat": "30",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN401",
+      "courseName": "Marketing skills",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN403",
+      "courseName": "Introduction to Economics",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

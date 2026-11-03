@@ -1,0 +1,64 @@
+{
+  "id": "9241148",
+  "name": "اسلام حماده النجار ابراهيم السيد طالب",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT314",
+      "courseName": "Dental Impression Materials Practices",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "41",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT313",
+      "courseName": "Dental Implants Technology",
+      "examStartISO": "2026-11-09T12:15:00+02:00",
+      "examEndISO": "2026-11-09T13:00:00+02:00",
+      "location": "Hall 2",
+      "seat": "47",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-11-10T11:15:00+02:00",
+      "examEndISO": "2026-11-10T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "3",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT312",
+      "courseName": "Esthetic Prosthodontics Technology (1)",
+      "examStartISO": "2026-11-12T12:15:00+02:00",
+      "examEndISO": "2026-11-12T13:00:00+02:00",
+      "location": "Hall 5",
+      "seat": "45",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

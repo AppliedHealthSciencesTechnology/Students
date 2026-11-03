@@ -1,0 +1,90 @@
+{
+  "id": "9241619",
+  "name": "يوسف ممدوح رمضان حسين",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD311",
+      "courseName": "Vascular Imaging Technique",
+      "examStartISO": "2026-11-09T14:15:00+02:00",
+      "examEndISO": "2026-11-09T15:00:00+02:00",
+      "location": "الهندسة-439",
+      "seat": "23",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab8",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD312",
+      "courseName": "Clinical Practice (1)",
+      "examStartISO": "2026-11-12T12:15:00+02:00",
+      "examEndISO": "2026-11-12T13:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "77",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "59",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-11-12T15:15:00+02:00",
+      "examEndISO": "2026-11-12T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab4",
+      "seat": "13",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN401",
+      "courseName": "Marketing skills",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

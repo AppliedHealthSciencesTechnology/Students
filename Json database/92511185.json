@@ -1,0 +1,77 @@
+{
+  "id": "92511185",
+  "name": "حنان المنجي المنجي عبد الباسط المنجي",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD215",
+      "courseName": "Mathematics",
+      "examStartISO": "2026-11-07T09:15:00+02:00",
+      "examEndISO": "2026-11-07T10:00:00+02:00",
+      "location": "Microbiology lab. (318) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD214",
+      "courseName": "Instrumentation and Electrical Measurement",
+      "examStartISO": "2026-11-08T11:15:00+02:00",
+      "examEndISO": "2026-11-08T12:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "21",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD212",
+      "courseName": "Introduction to Radiologic Technology",
+      "examStartISO": "2026-11-09T15:15:00+02:00",
+      "examEndISO": "2026-11-09T16:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "12",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD211",
+      "courseName": "Radiological Imaging and Processing Techniques 1",
+      "examStartISO": "2026-11-10T15:15:00+02:00",
+      "examEndISO": "2026-11-10T16:00:00+02:00",
+      "location": "Classroom (305) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "1",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Classroom (306) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "14",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

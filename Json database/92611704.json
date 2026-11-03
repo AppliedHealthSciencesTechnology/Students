@@ -1,0 +1,64 @@
+{
+  "id": "92611704",
+  "name": "امال السيد فكرى عبد الله عبد الرحمن",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "AHS114",
+      "courseName": "Physiology for health science Technologists",
+      "examStartISO": "2026-11-07T11:15:00+02:00",
+      "examEndISO": "2026-11-07T12:00:00+02:00",
+      "location": "Skill Lab. 2 (417) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "22",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA211",
+      "courseName": "Basics of Molecular Biology",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "الصيدلة-lab 2",
+      "seat": "23",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA213",
+      "courseName": "Organic Chemistry",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Classroom (306) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "22",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-11-10T11:15:00+02:00",
+      "examEndISO": "2026-11-10T12:00:00+02:00",
+      "location": "Skill Lab. 2 (417) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "22",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

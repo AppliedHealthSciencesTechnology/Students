@@ -1,0 +1,90 @@
+{
+  "id": "9241465",
+  "name": "مى مدحت عبدالسميع القناوى خشان",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT314",
+      "courseName": "Dental Impression Materials Practices",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "Hall 2",
+      "seat": "11",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT311",
+      "courseName": "Fixed Prosthodontics Technology (1)",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Fixed Prosthodontics Lab. (301-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT412",
+      "courseName": "Applied Partial Removable Prosthodontics (1)",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Classroom 8 (420,421) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "20",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT313",
+      "courseName": "Dental Implants Technology",
+      "examStartISO": "2026-11-09T12:15:00+02:00",
+      "examEndISO": "2026-11-09T13:00:00+02:00",
+      "location": "Hall 3",
+      "seat": "12",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT312",
+      "courseName": "Esthetic Prosthodontics Technology (1)",
+      "examStartISO": "2026-11-12T12:15:00+02:00",
+      "examEndISO": "2026-11-12T13:00:00+02:00",
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN402",
+      "courseName": "Creativity and Critical Thinking",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

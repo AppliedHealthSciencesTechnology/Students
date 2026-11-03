@@ -1,0 +1,90 @@
+{
+  "id": "9231081",
+  "name": "شهد ماهر عمر محمد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "ECC413",
+      "courseName": "Special Considerations in Emergencies& Critical Care",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "15",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC414",
+      "courseName": "Medication Administration",
+      "examStartISO": "2026-11-09T11:15:00+02:00",
+      "examEndISO": "2026-11-09T12:00:00+02:00",
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "14",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC412E",
+      "courseName": "Hemorrhage and Shock",
+      "examStartISO": "2026-11-10T12:15:00+02:00",
+      "examEndISO": "2026-11-10T13:00:00+02:00",
+      "location": "الهندسة-116",
+      "seat": "13",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC412",
+      "courseName": "Emergency Pharmacology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Classroom (206) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "3",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC411",
+      "courseName": "Intensive Care Practice 2",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Classroom 9 (422,423) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "2",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-11-15T15:15:00+02:00",
+      "examEndISO": "2026-11-15T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab10",
+      "seat": "22",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

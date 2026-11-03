@@ -1,0 +1,77 @@
+{
+  "id": "9231082",
+  "name": "انسام وليد حمد لبيب احمد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT412",
+      "courseName": "Applied Partial Removable Prosthodontics (1)",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Biochemistry Lab (418,419) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT411",
+      "courseName": "CAD CAM in Prosthodontics : Digitization",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Hall 8",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT414",
+      "courseName": "Applied Fixed Prosthodontics (1)",
+      "examStartISO": "2026-11-11T11:15:00+02:00",
+      "examEndISO": "2026-11-11T12:00:00+02:00",
+      "location": "Classroom (306) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "7",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT413",
+      "courseName": "Oral Pathology",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Classroom (207) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN402",
+      "courseName": "Creativity and Critical Thinking",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

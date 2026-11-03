@@ -1,0 +1,51 @@
+{
+  "id": "92510905",
+  "name": "حنان السيد سليمان السيد سليمان",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT214",
+      "courseName": "Fundamentals Of Technology of Dental Prostheses Manufacture",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Fixed Prosthodontics Lab. (301-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT215",
+      "courseName": "Dental Morphology & Occlusion Technology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Fixed Prosthodontics Lab. (301-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "11",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT213",
+      "courseName": "Dental Materials",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Classroom (306) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

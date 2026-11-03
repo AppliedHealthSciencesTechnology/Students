@@ -1,0 +1,64 @@
+{
+  "id": "92510364",
+  "name": "نورهان تامر رجب رزق ابراهيم",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "AHS112",
+      "courseName": "General Biology",
+      "examStartISO": "2026-11-11T11:15:00+02:00",
+      "examEndISO": "2026-11-11T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "8",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS115",
+      "courseName": "Physics",
+      "examStartISO": "2026-11-12T11:15:00+02:00",
+      "examEndISO": "2026-11-12T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN001",
+      "courseName": "Introduction to Information and Communication Technology",
+      "examStartISO": "2026-11-17T12:15:00+02:00",
+      "examEndISO": "2026-11-17T13:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "25",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN302",
+      "courseName": "General Risk Management",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

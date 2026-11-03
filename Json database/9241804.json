@@ -1,0 +1,64 @@
+{
+  "id": "9241804",
+  "name": "ريم سامح سعيد عطية حسين حريرة",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA314",
+      "courseName": "Laboratory Instrumentation and Methodologies (1)",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "83",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA413",
+      "courseName": "Immunology and Serology",
+      "examStartISO": "2026-11-10T12:15:00+02:00",
+      "examEndISO": "2026-11-10T13:00:00+02:00",
+      "location": "الهندسة-438",
+      "seat": "32",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA323",
+      "courseName": "Virology &Mycology",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA421",
+      "courseName": "Field Training for medical laboratory technologists 2",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

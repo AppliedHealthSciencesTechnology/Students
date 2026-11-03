@@ -1,0 +1,51 @@
+{
+  "id": "9241638",
+  "name": "ولاء احمد مصطفى مصطفى الاطروش",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT212",
+      "courseName": "Dental Sciences & Dental Terminology",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "56",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT314",
+      "courseName": "Dental Impression Materials Practices",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "Hall 2",
+      "seat": "46",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT311",
+      "courseName": "Fixed Prosthodontics Technology (1)",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Simulator lab. (313-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

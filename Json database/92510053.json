@@ -1,0 +1,77 @@
+{
+  "id": "92510053",
+  "name": "هند السيد احمد علي الدشاش",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA211",
+      "courseName": "Basics of Molecular Biology",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "28",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA213",
+      "courseName": "Organic Chemistry",
+      "examStartISO": "2026-11-08T09:15:00+02:00",
+      "examEndISO": "2026-11-08T10:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "25",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA212",
+      "courseName": "Pathology for Health Science Technologists",
+      "examStartISO": "2026-11-09T13:15:00+02:00",
+      "examEndISO": "2026-11-09T14:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "29",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA214",
+      "courseName": "Laboratory Safety and Infection Control",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Hall 5",
+      "seat": "29",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN401",
+      "courseName": "Marketing skills",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

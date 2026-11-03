@@ -1,0 +1,64 @@
+{
+  "id": "92510446",
+  "name": "عبد الله كرم محمد عبد المنعم الزغل",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD214",
+      "courseName": "Instrumentation and Electrical Measurement",
+      "examStartISO": "2026-11-08T11:15:00+02:00",
+      "examEndISO": "2026-11-08T12:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "23",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD212",
+      "courseName": "Introduction to Radiologic Technology",
+      "examStartISO": "2026-11-09T15:15:00+02:00",
+      "examEndISO": "2026-11-09T16:00:00+02:00",
+      "location": "Hall 4",
+      "seat": "26",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS115",
+      "courseName": "Physics",
+      "examStartISO": "2026-11-12T11:15:00+02:00",
+      "examEndISO": "2026-11-12T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "11",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 4",
+      "seat": "55",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

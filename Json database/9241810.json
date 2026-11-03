@@ -1,0 +1,77 @@
+{
+  "id": "9241810",
+  "name": "على فهمى محمد ابو العطا",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD414",
+      "courseName": "Clinical Practice (2)",
+      "examStartISO": "2026-11-11T12:15:00+02:00",
+      "examEndISO": "2026-11-11T13:00:00+02:00",
+      "location": "هندسة الطاقة-Lab. 313",
+      "seat": "25",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab8",
+      "seat": "33",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "74",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-11-12T15:15:00+02:00",
+      "examEndISO": "2026-11-12T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab4",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN401",
+      "courseName": "Marketing skills",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "9241624",
+  "name": "جاسمين خالد رجب عبده فضل الله",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD314",
+      "courseName": "Obstetric and Pelvic Sonography Technique",
+      "examStartISO": "2026-11-10T14:15:00+02:00",
+      "examEndISO": "2026-11-10T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab10",
+      "seat": "30",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab8",
+      "seat": "2",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "61",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN001",
+      "courseName": "Introduction to Information and Communication Technology",
+      "examStartISO": "2026-11-17T12:15:00+02:00",
+      "examEndISO": "2026-11-17T13:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "14",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

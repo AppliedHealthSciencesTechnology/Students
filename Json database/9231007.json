@@ -1,0 +1,64 @@
+{
+  "id": "9231007",
+  "name": "ليلي محمد المرسي عبد الفتاح",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD413",
+      "courseName": "CT Examination Technique",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "6",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD414",
+      "courseName": "Clinical Practice (2)",
+      "examStartISO": "2026-11-11T12:15:00+02:00",
+      "examEndISO": "2026-11-11T13:00:00+02:00",
+      "location": "هندسة-Lab. 116",
+      "seat": "9",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD213",
+      "courseName": "Dosimetry Technique",
+      "examStartISO": "2026-11-12T14:15:00+02:00",
+      "examEndISO": "2026-11-12T15:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN101",
+      "courseName": "English Language II",
+      "examStartISO": "2026-11-12T15:15:00+02:00",
+      "examEndISO": "2026-11-12T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab3",
+      "seat": "6",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

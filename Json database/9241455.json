@@ -1,0 +1,64 @@
+{
+  "id": "9241455",
+  "name": "احمد عبد المنعم عبد العاطي احمد محمود",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD313",
+      "courseName": "Radiological Pathology",
+      "examStartISO": "2026-11-08T12:15:00+02:00",
+      "examEndISO": "2026-11-08T13:00:00+02:00",
+      "location": "Hall 3",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD311",
+      "courseName": "Vascular Imaging Technique",
+      "examStartISO": "2026-11-09T14:15:00+02:00",
+      "examEndISO": "2026-11-09T15:00:00+02:00",
+      "location": "هندسة الطاقة-313",
+      "seat": "21",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab3",
+      "seat": "17",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD312",
+      "courseName": "Clinical Practice (1)",
+      "examStartISO": "2026-11-12T12:15:00+02:00",
+      "examEndISO": "2026-11-12T13:00:00+02:00",
+      "location": "Hall 6",
+      "seat": "11",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

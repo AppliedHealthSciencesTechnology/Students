@@ -1,0 +1,77 @@
+{
+  "id": "9231415",
+  "name": "روميساء محمد عبد العظيم ابراهيم المشد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD413",
+      "courseName": "CT Examination Technique",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "الصيدلة-lab1",
+      "seat": "7",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD314",
+      "courseName": "Obstetric and Pelvic Sonography Technique",
+      "examStartISO": "2026-11-10T14:15:00+02:00",
+      "examEndISO": "2026-11-10T15:00:00+02:00",
+      "location": "الإدارة-108",
+      "seat": "6",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD414",
+      "courseName": "Clinical Practice (2)",
+      "examStartISO": "2026-11-11T12:15:00+02:00",
+      "examEndISO": "2026-11-11T13:00:00+02:00",
+      "location": "هندسة الطاقة-Lab. 212",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab 2",
+      "seat": "3",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-11-15T15:15:00+02:00",
+      "examEndISO": "2026-11-15T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab11",
+      "seat": "29",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

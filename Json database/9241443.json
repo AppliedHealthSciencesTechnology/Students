@@ -1,0 +1,64 @@
+{
+  "id": "9241443",
+  "name": "عمر محمد عبدالستار رمضان سليمان",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD214",
+      "courseName": "Instrumentation and Electrical Measurement",
+      "examStartISO": "2026-11-08T11:15:00+02:00",
+      "examEndISO": "2026-11-08T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "29",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD212",
+      "courseName": "Introduction to Radiologic Technology",
+      "examStartISO": "2026-11-09T15:15:00+02:00",
+      "examEndISO": "2026-11-09T16:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "21",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD211",
+      "courseName": "Radiological Imaging and Processing Techniques 1",
+      "examStartISO": "2026-11-10T15:15:00+02:00",
+      "examEndISO": "2026-11-10T16:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "13",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD316E",
+      "courseName": "Radio Chemicals",
+      "examStartISO": "2026-11-11T14:15:00+02:00",
+      "examEndISO": "2026-11-11T15:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab3",
+      "seat": "10",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

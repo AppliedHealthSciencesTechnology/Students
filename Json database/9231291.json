@@ -1,0 +1,64 @@
+{
+  "id": "9231291",
+  "name": "منار طلبه احمد يوسف علي",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD411",
+      "courseName": "Radiotherapy Technique",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "43",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD314",
+      "courseName": "Obstetric and Pelvic Sonography Technique",
+      "examStartISO": "2026-11-10T14:15:00+02:00",
+      "examEndISO": "2026-11-10T15:00:00+02:00",
+      "location": "الإدارة-101 البورصة",
+      "seat": "28",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD412",
+      "courseName": "Radiology &Radiation Protection",
+      "examStartISO": "2026-11-10T15:15:00+02:00",
+      "examEndISO": "2026-11-10T16:00:00+02:00",
+      "location": "Microbiology lab. (318) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD414",
+      "courseName": "Clinical Practice (2)",
+      "examStartISO": "2026-11-11T12:15:00+02:00",
+      "examEndISO": "2026-11-11T13:00:00+02:00",
+      "location": "هندسة الطاقة-Lab. 211",
+      "seat": "3",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

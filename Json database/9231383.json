@@ -1,0 +1,77 @@
+{
+  "id": "9231383",
+  "name": "مريم سيد عبد المنعم عبد الرازق",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "RAD413",
+      "courseName": "CT Examination Technique",
+      "examStartISO": "2026-11-07T14:15:00+02:00",
+      "examEndISO": "2026-11-07T15:00:00+02:00",
+      "location": "العلاج الطبيعي-308",
+      "seat": "41",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD411",
+      "courseName": "Radiotherapy Technique",
+      "examStartISO": "2026-11-09T09:15:00+02:00",
+      "examEndISO": "2026-11-09T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "70",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD412",
+      "courseName": "Radiology &Radiation Protection",
+      "examStartISO": "2026-11-10T15:15:00+02:00",
+      "examEndISO": "2026-11-10T16:00:00+02:00",
+      "location": "Physics Lab (214-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "5",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "RAD414",
+      "courseName": "Clinical Practice (2)",
+      "examStartISO": "2026-11-11T12:15:00+02:00",
+      "examEndISO": "2026-11-11T13:00:00+02:00",
+      "location": "هندسة الطاقة-Lab. 212",
+      "seat": "7",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN403",
+      "courseName": "Introduction to Economics",
+      "examStartISO": null,
+      "examEndISO": null,
+      "location": "TBA",
+      "seat": null,
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

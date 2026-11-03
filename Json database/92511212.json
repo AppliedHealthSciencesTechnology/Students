@@ -1,0 +1,77 @@
+{
+  "id": "92511212",
+  "name": "ايه ماهر  محمد شعبان محمد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "DNT212",
+      "courseName": "Dental Sciences & Dental Terminology",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "Hall 4",
+      "seat": "64",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT211",
+      "courseName": "Head & Neck Anatomy",
+      "examStartISO": "2026-11-08T11:15:00+02:00",
+      "examEndISO": "2026-11-08T12:00:00+02:00",
+      "location": "Histology lab. (215-1) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "4",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT214",
+      "courseName": "Fundamentals Of Technology of Dental Prostheses Manufacture",
+      "examStartISO": "2026-11-10T09:15:00+02:00",
+      "examEndISO": "2026-11-10T10:00:00+02:00",
+      "location": "Simulator lab. (313-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "2",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT215",
+      "courseName": "Dental Morphology & Occlusion Technology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Microbiology lab. (318) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "14",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "DNT213",
+      "courseName": "Dental Materials",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Microbiology lab. (318) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "13",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

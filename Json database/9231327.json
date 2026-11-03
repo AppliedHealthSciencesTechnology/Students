@@ -1,0 +1,77 @@
+{
+  "id": "9231327",
+  "name": "عاليا احمد السيد البدوى محمد حامد",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "MLA412",
+      "courseName": "Quality Management in Medical Laboratories",
+      "examStartISO": "2026-11-08T15:15:00+02:00",
+      "examEndISO": "2026-11-08T16:00:00+02:00",
+      "location": "الهندسة-439",
+      "seat": "33",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA411",
+      "courseName": "Laboratory Instrumentation and Methodologies (2)",
+      "examStartISO": "2026-11-09T15:15:00+02:00",
+      "examEndISO": "2026-11-09T16:00:00+02:00",
+      "location": "الصيدلة-lab1",
+      "seat": "33",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA413",
+      "courseName": "Immunology and Serology",
+      "examStartISO": "2026-11-10T12:15:00+02:00",
+      "examEndISO": "2026-11-10T13:00:00+02:00",
+      "location": "الهندسة-438",
+      "seat": "18",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "MLA414",
+      "courseName": "Research Methodology",
+      "examStartISO": "2026-11-11T09:15:00+02:00",
+      "examEndISO": "2026-11-11T10:00:00+02:00",
+      "location": "Simulator lab. (313-2) - Building 8 (كلية تكنولوجيا العلوم الصحية التطبيقية)",
+      "seat": "19",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN201",
+      "courseName": "Technical Report Writing I",
+      "examStartISO": "2026-11-15T15:15:00+02:00",
+      "examEndISO": "2026-11-15T16:00:00+02:00",
+      "location": "الذكاء الاصطناعي-lab11",
+      "seat": "21",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

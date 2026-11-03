@@ -1,0 +1,64 @@
+{
+  "id": "9242004",
+  "name": "صفا وليد وحيد محمد شعبان",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "ECC311",
+      "courseName": "Airway Management & Ventilation",
+      "examStartISO": "2026-11-07T12:15:00+02:00",
+      "examEndISO": "2026-11-07T13:00:00+02:00",
+      "location": "الهندسة-438",
+      "seat": "27",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC311E",
+      "courseName": "Directed Studies in Intensive Care",
+      "examStartISO": "2026-11-08T14:15:00+02:00",
+      "examEndISO": "2026-11-08T15:00:00+02:00",
+      "location": "الهندسة-439",
+      "seat": "34",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC412E",
+      "courseName": "Hemorrhage and Shock",
+      "examStartISO": "2026-11-10T12:15:00+02:00",
+      "examEndISO": "2026-11-10T13:00:00+02:00",
+      "location": "الهندسة-439",
+      "seat": "35",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "ECC214",
+      "courseName": "Pathology for Health Science Technologists",
+      "examStartISO": "2026-11-12T09:15:00+02:00",
+      "examEndISO": "2026-11-12T10:00:00+02:00",
+      "location": "Hall 7",
+      "seat": "25",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}

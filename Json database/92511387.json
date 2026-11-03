@@ -1,0 +1,64 @@
+{
+  "id": "92511387",
+  "name": "عمر حمدى على عبدالسلام",
+  "examType": "Midterm",
+  "semester": "Midterm - Fall",
+  "academicYear": "2026/2027",
+  "hasDebarredCourses": false,
+  "debarredCourseCodes": [],
+  "debarredExamCount": 0,
+  "exams": [
+    {
+      "courseCode": "AHS114",
+      "courseName": "Physiology for health science Technologists",
+      "examStartISO": "2026-11-07T11:15:00+02:00",
+      "examEndISO": "2026-11-07T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "36",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS111",
+      "courseName": "General Chemistry",
+      "examStartISO": "2026-11-10T11:15:00+02:00",
+      "examEndISO": "2026-11-10T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "34",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "AHS112",
+      "courseName": "General Biology",
+      "examStartISO": "2026-11-11T11:15:00+02:00",
+      "examEndISO": "2026-11-11T12:00:00+02:00",
+      "location": "Hall 1",
+      "seat": "22",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    },
+    {
+      "courseCode": "GEN001",
+      "courseName": "Introduction to Information and Communication Technology",
+      "examStartISO": "2026-11-17T12:15:00+02:00",
+      "examEndISO": "2026-11-17T13:00:00+02:00",
+      "location": "الإدارة-108",
+      "seat": "3",
+      "room": null,
+      "building": null,
+      "isDebarred": false,
+      "status": "eligible",
+      "statusAr": "مسموح"
+    }
+  ]
+}
